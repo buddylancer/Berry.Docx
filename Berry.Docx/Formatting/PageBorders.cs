@@ -38,7 +38,7 @@ namespace Berry.Docx.Formatting
             get
             {
                 W.PageBorders pgBorders = _sectPr.GetFirstChild<W.PageBorders>();
-				return pgBorders.OffsetFrom.Value != null ? pgBorders.OffsetFrom.Value.Convert<PageBordersPosition>() : PageBordersPosition.Text;
+				return pgBorders.OffsetFrom != null ? pgBorders.OffsetFrom.Value.Convert<PageBordersPosition>() : PageBordersPosition.Text;
             }
             set
             {

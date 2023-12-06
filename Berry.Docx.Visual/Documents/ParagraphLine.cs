@@ -65,17 +65,17 @@ namespace Berry.Docx.Visual.Documents
         #endregion
 
         #region Public Properties
-        public double Width => _availableWidth;
+        public double Width { get { return _availableWidth; } }
 
-        public double Height => _height;
+        public double Height { get { return _height; } }
 
-        public Margin Margin => _margin;
+        public Margin Margin { get { return _margin; } }
 
-        public Margin Padding => _padding;
+        public Margin Padding { get { return _padding; } }
 
-        public HorizontalAlignment HorizontalAlignment => _hAlign;
+        public HorizontalAlignment HorizontalAlignment { get { return _hAlign; } }
 
-        public List<ParagraphItem> ChildItems => _items;
+        public List<ParagraphItem> ChildItems { get { return _items; } }
         #endregion
 
         #region Internal Properties

@@ -97,20 +97,20 @@ namespace Berry.Docx.Visual.Field
         #endregion
 
         #region Public Properties
-        public char Val => _value;
-        public FormattedText FormattedText => _text;
+        public char Val { get { return _value; } }
+        public FormattedText FormattedText { get { return _text; } }
 
-        public override double Width => _width;
+        public override double Width { get { return _width; } }
 
-        public override double Height => _height;
+        public override double Height { get { return _height; } }
 
         public override HorizontalAlignment HorizontalAlignment
         {
-            get => _hAlign;
-            internal set => _hAlign = value;
+            get { return _hAlign; }
+            internal set { _hAlign = value; }
         }
 
-        public VerticalAlignment VerticalAlignment => _vAlign;
+        public VerticalAlignment VerticalAlignment { get { return _vAlign; } }
         #endregion
     }
 }

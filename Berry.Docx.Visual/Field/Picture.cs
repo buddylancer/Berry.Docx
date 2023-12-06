@@ -27,13 +27,13 @@ namespace Berry.Docx.Visual.Field
         #endregion
 
         #region Public Properties
-        public Stream Stream => _stream;
-        public override double Width => _width;
-        public override double Height => _height;
+        public Stream Stream { get { return _stream; } }
+        public override double Width { get { return _width; } }
+        public override double Height { get { return _height; } }
         public override HorizontalAlignment HorizontalAlignment
         {
-            get => _hAlign;
-            internal set => _hAlign = value;
+            get { return _hAlign; }
+			internal set { _hAlign = value; }
         }
         #endregion
     }

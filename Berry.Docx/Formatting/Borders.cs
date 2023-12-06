@@ -246,42 +246,42 @@ namespace Berry.Docx.Formatting
                 {
                     // direct formatting
                     if (BorderProperty != null)
-						return BorderProperty.Val.Value != null ? BorderProperty.Val.Value.Convert<BorderStyle>() : BorderStyle.None;
+						return BorderProperty.Val != null ? BorderProperty.Val.Value.Convert<BorderStyle>() : BorderStyle.None;
                     // character style
                     if (_ownerRun.RunProperties.RunStyle != null)
                     {
                         W.BorderType border = GetStyleBorderRecursively(_doc, _ownerRun.GetStyle(_doc), _borderType);
                         if (border != null)
-							return border.Val.Value != null ? border.Val.Value.Convert<BorderStyle>() : BorderStyle.None;
+							return border.Val != null ? border.Val.Value.Convert<BorderStyle>() : BorderStyle.None;
                     }
                     // paragraph style
                     if (_ownerRun.Ancestors<W.Paragraph>().Any())
                     {
                         W.BorderType border = GetStyleBorderRecursively(_doc, _ownerRun.Ancestors<W.Paragraph>().First().GetStyle(_doc), _borderType);
                         if (border != null)
-							return border.Val.Value != null ? border.Val.Value.Convert<BorderStyle>() : BorderStyle.None;
+							return border.Val != null ? border.Val.Value.Convert<BorderStyle>() : BorderStyle.None;
                     }
                 }
                 else if (_ownerParagraph != null)
                 {
                     // direct formatting
                     if (BorderProperty != null)
-						return BorderProperty.Val.Value!= null ? BorderProperty.Val.Value.Convert<BorderStyle>() : BorderStyle.None;
+						return BorderProperty.Val != null ? BorderProperty.Val.Value.Convert<BorderStyle>() : BorderStyle.None;
                     // paragraph style
                     W.BorderType border = GetStyleBorderRecursively(_doc, _ownerParagraph.GetStyle(_doc), _borderType);
                     if (border != null)
-						return border.Val.Value != null ? border.Val.Value.Convert<BorderStyle>() : BorderStyle.None;
+						return border.Val != null ? border.Val.Value.Convert<BorderStyle>() : BorderStyle.None;
                 }
                 else if (_ownerStyle != null)
                 {
                     W.BorderType border = GetStyleBorderRecursively(_doc, _ownerStyle, _borderType);
                     if (border != null)
-						return border.Val.Value != null ? border.Val.Value.Convert<BorderStyle>() : BorderStyle.None;
+						return border.Val != null ? border.Val.Value.Convert<BorderStyle>() : BorderStyle.None;
                 }
                 else if (_defaultRPr != null)
                 {
                     if (BorderProperty != null)
-						return BorderProperty.Val.Value != null ? BorderProperty.Val.Value.Convert<BorderStyle>() : BorderStyle.None;
+						return BorderProperty.Val != null ? BorderProperty.Val.Value.Convert<BorderStyle>() : BorderStyle.None;
                 }
                 return BorderStyle.None;
             }

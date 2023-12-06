@@ -15,14 +15,21 @@ namespace Berry.Docx.Visual
             Bottom = bottom;
         }
 
-        public double Left { get; set; } = 0;
-        public double Top { get; set; } = 0;
-        public double Right { get; set; } = 0;
-        public double Bottom { get; set; } = 0;
+		public Margin() {
+            Left = 0;
+            Top = 0;
+            Right = 0;
+            Bottom = 0;
+		}
+
+        public double Left { get; set; } //= 0;
+        public double Top { get; set; } //= 0;
+        public double Right { get; set; } //= 0;
+        public double Bottom { get; set; } //= 0;
 
         public override string ToString()
         {
-            return $"({Left}, {Top}, {Right}, {Bottom})";
+            return "({Left}, {Top}, {Right}, {Bottom})";
         }
     }
 }

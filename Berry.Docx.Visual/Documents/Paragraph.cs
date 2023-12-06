@@ -207,7 +207,7 @@ namespace Berry.Docx.Visual.Documents
         #endregion
 
         #region Public Properties
-        public double Width => _width;
+        public double Width { get { return _width; } }
 
         public double Height
         {
@@ -222,11 +222,11 @@ namespace Berry.Docx.Visual.Documents
             }
         }
 
-        public Margin Margin => _margin;
+        public Margin Margin { get { return _margin; } }
 
-        public Margin Padding => _padding;
+        public Margin Padding { get { return _padding; } }
 
-        public List<ParagraphLine> Lines => _lines;
+        public List<ParagraphLine> Lines { get { return _lines; } }
         #endregion
 
         #region Internal Methods

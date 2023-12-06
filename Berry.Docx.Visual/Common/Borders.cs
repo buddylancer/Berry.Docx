@@ -8,10 +8,18 @@ namespace Berry.Docx.Visual
 {
     public class Borders
     {
-        public Border Top { get; set; } = new Border();
-        public Border Bottom { get; set; } = new Border();
-        public Border Left { get; set; } = new Border();
-        public Border Right { get; set; } = new Border();
+        public Border Top { get; set; } //= new Border();
+        public Border Bottom { get; set; } //= new Border();
+        public Border Left { get; set; } //= new Border();
+        public Border Right { get; set; } //= new Border();
+
+		public Borders()
+		{
+			Top = new Border();
+			Bottom = new Border();
+			Left = new Border();
+			Right = new Border();
+		}
     }
 
     public class Border
@@ -20,6 +28,11 @@ namespace Berry.Docx.Visual
 
         public double Width { get; set; }
 
-        public Color Color { get; set; } = Color.Black;
+        public Color Color { get; set; } //= Color.Black;
+
+		public Border()
+		{
+			Color = Color.Black;
+		}
     }
 }

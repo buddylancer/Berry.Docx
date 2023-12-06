@@ -74,35 +74,35 @@ namespace Berry.Docx.Visual.Documents
         #endregion
 
         #region Public Properties
-        public int RowIndex => _rowIndex;
+        public int RowIndex { get { return _rowIndex; } }
 
-        public int ColumnIndex => _colIndex;
+        public int ColumnIndex { get { return _colIndex; } }
 
         public int RowSpan
         {
-            get => _rowSpan;
-            internal set => _rowSpan = value;
+            get { return _rowSpan; }
+            internal set { _rowSpan = value; }
         }
 
-        public int ColumnSpan => _colSpan;
+        public int ColumnSpan { get { return _colSpan; } }
 
-        public double Width => _width;
+        public double Width { get { return _width; } }
 
         public double Height
         {
-            get => _height;
-            internal set => _height = value;
+            get { return _height; }
+            internal set { _height = value; }
         }
 
-        public Margin Padding => _padding;
+        public Margin Padding { get { return _padding; } }
 
-        public Borders Borders => _borders;
+        public Borders Borders { get { return _borders; } }
 
-        public Color Background => _background;
+        public Color Background { get { return _background; } }
 
-        public VerticalAlignment VerticalAlignment => _vAlign;
+        public VerticalAlignment VerticalAlignment { get { return _vAlign; } }
 
-        public List<Paragraph> Paragraphs => _paragraphs;
+        public List<Paragraph> Paragraphs { get { return _paragraphs; } }
         #endregion
     }
 }

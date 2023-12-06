@@ -219,17 +219,17 @@ namespace Berry.Docx.Visual.Documents
         #endregion
 
         #region Public Properties
-        public double Width => _width;
+        public double Width { get { return _width; } }
 
-        public double Height => _height;
+        public double Height { get { return _height; } }
 
-        public List<double> RowHeights => _rowHeights;
+        public List<double> RowHeights { get { return _rowHeights; } }
 
-        public List<double> ColumnWidths => _colWidths;
+        public List<double> ColumnWidths { get { return _colWidths; } }
 
-        public HorizontalAlignment HorizontalAlignment => _hAlign;
+        public HorizontalAlignment HorizontalAlignment { get { return _hAlign; } }
 
-        public List<TableCell> Cells => _cells;
+        public List<TableCell> Cells { get { return _cells; } }
         #endregion
 
         #region Private Methods

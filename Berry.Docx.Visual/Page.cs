@@ -48,17 +48,17 @@ namespace Berry.Docx.Visual
         #endregion
 
         #region Public Properties
-        public double Width => _width;
+        public double Width { get { return _width; } }
 
-        public double Height => _height;
+        public double Height { get { return _height; } }
 
-        public Margin Padding => _padding;
+        public Margin Padding { get { return _padding; } }
 
-        public double CharSpace => _charSpace;
+        public double CharSpace { get { return _charSpace; } }
 
-        public double LineSpace => _lineSpace;
+        public double LineSpace { get { return _lineSpace; } }
 
-        public List<DocumentItem> ChildItems => _items;
+        public List<DocumentItem> ChildItems { get { return _items; } }
 
         #endregion
 

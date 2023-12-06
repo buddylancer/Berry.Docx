@@ -61,7 +61,7 @@ namespace Berry.Docx.Visual
         #endregion
 
         #region Public Properties
-        public List<Page> Pages => _pages;
+        public List<Page> Pages { get { return _pages; } }
         #endregion
     }
 }
