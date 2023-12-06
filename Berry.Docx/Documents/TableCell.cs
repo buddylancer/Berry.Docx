@@ -32,7 +32,7 @@ namespace Berry.Docx.Documents
         /// <summary>
         /// The owner table.
         /// </summary>
-        public Table Table => Row?.Table;
+        public Table Table { get { return Row.Table; } }
 
         /// <summary>
         /// The owner table row.
@@ -50,7 +50,7 @@ namespace Berry.Docx.Documents
         /// <summary>
         /// The row index of the current cell.
         /// </summary>
-        public int RowIndex => Row?.RowIndex ?? 0;
+        public int RowIndex { get { return Row != null ? Row.RowIndex : 0; } }
 
         /// <summary>
         /// The column index of the current cell.
@@ -73,22 +73,22 @@ namespace Berry.Docx.Documents
         /// <summary>
         /// The DocumentObject type.
         /// </summary>
-        public override DocumentObjectType DocumentObjectType => DocumentObjectType.TableCell;
+        public override DocumentObjectType DocumentObjectType { get { return DocumentObjectType.TableCell; } }
 
         /// <summary>
         /// The child DocumentObjects.
         /// </summary>
-        public override DocumentObjectCollection ChildObjects => Paragraphs;
+        public override DocumentObjectCollection ChildObjects { get { return Paragraphs; } }
 
         /// <summary>
         /// The child paragraphs.
         /// </summary>
-        public ParagraphCollection Paragraphs => new ParagraphCollection(_cell, GetParagraphs());
+        public ParagraphCollection Paragraphs { get { return new ParagraphCollection(_cell, GetParagraphs()); } }
 
         /// <summary>
         /// Gets the cell borders.
         /// </summary>
-        public TableBorders Borders => new TableBorders(this);
+        public TableBorders Borders { get { return new TableBorders(this); } }
 
         /// <summary>
         /// Gets or sets the cell background color.
@@ -171,8 +171,8 @@ namespace Berry.Docx.Documents
         /// </summary>
         public int ColumnSpan
         {
-            get => _tblPr.ColumnSpan ?? 1;
-            set => _tblPr.ColumnSpan = value;
+            get { return _tblPr.ColumnSpan ?? 1; }
+            set { _tblPr.ColumnSpan = value; }
         }
 
         /// <summary>
@@ -182,8 +182,8 @@ namespace Berry.Docx.Documents
         /// </summary>
         public TableCellVerticalMergeType VerticalMerge
         {
-            get => _tblPr.VMerge ?? TableCellVerticalMergeType.None;
-            set => _tblPr.VMerge = value;
+            get { return _tblPr.VMerge ?? TableCellVerticalMergeType.None; }
+            set { _tblPr.VMerge = value; }
         }
 
         #endregion
@@ -196,8 +196,8 @@ namespace Berry.Docx.Documents
         public TableCellWidth GetCellWidth()
         {
             float width = 0;
-            W.TableCellWidth tcWidth = _cell.TableCellProperties?.TableCellWidth;
-            if (tcWidth?.Type == null) return new TableCellWidth(0, CellWidthType.Auto);
+            W.TableCellWidth tcWidth = _cell.TableCellProperties.TableCellWidth;
+            if (tcWidth.Type == null) return new TableCellWidth(0, CellWidthType.Auto);
             float.TryParse(tcWidth.Width, out width);
             if(tcWidth.Type.Value == W.TableWidthUnitValues.Pct)
             {
@@ -327,7 +327,7 @@ namespace Berry.Docx.Documents
         #endregion
 
         #region Internal
-        internal new W.TableCell XElement => _cell;
+        internal new W.TableCell XElement { get { return _cell; } }
         #endregion
 
         #region Private Methods

@@ -92,7 +92,7 @@ namespace Berry.Docx
         /// <returns>The body element.</returns>
         internal static W.Body GetBody (this P.WordprocessingDocument doc)
         {
-            return doc?.MainDocumentPart?.Document?.Body;
+            return doc.MainDocumentPart.Document.Body;
         }
 
         /// <summary>
@@ -102,7 +102,7 @@ namespace Berry.Docx
         /// <returns>The SectionProperties</returns>
         internal static W.SectionProperties GetRootSectionProperties(this P.WordprocessingDocument doc)
         {
-            return doc.GetBody()?.LastChild as W.SectionProperties;
+            return doc.GetBody().LastChild as W.SectionProperties;
         }
 
         /// <summary>
@@ -114,21 +114,21 @@ namespace Berry.Docx
         internal static W.Style GetStyle(this W.Paragraph p, Document doc)
         {
             W.Styles styles = doc.Package.MainDocumentPart.StyleDefinitionsPart.Styles;
-            if(p?.ParagraphProperties?.ParagraphStyleId != null)
+            if(p.ParagraphProperties.ParagraphStyleId != null)
             {
                 string styleId = p.ParagraphProperties.ParagraphStyleId.Val.ToString();
                 return styles.Elements<W.Style>().Where(s => s.StyleId == styleId).FirstOrDefault();
             }
             else
             {
-                return styles.Elements<W.Style>().Where(s => s.Type.Value == W.StyleValues.Paragraph &&  s.Default?.Value == true).FirstOrDefault();
+                return styles.Elements<W.Style>().Where(s => s.Type.Value == W.StyleValues.Paragraph &&  s.Default.Value == true).FirstOrDefault();
             }
         }
 
         internal static W.Style GetStyle(this W.Run run, Document doc)
         {
             W.Styles styles = doc.Package.MainDocumentPart.StyleDefinitionsPart.Styles;
-            if (run?.RunProperties?.RunStyle != null)
+            if (run.RunProperties.RunStyle != null)
             {
                 string styleId = run.RunProperties.RunStyle.Val.ToString();
                 return styles.Elements<W.Style>().Where(s => s.StyleId == styleId).FirstOrDefault();
@@ -161,7 +161,7 @@ namespace Berry.Docx
         public static string GetThemeFont(this P.WordprocessingDocument doc, W.ThemeFontValues themeFont)
         {
             Dictionary<W.ThemeFontValues, string> themeFonts = new Dictionary<W.ThemeFontValues, string>();
-            A.FontScheme fonts = doc.MainDocumentPart?.ThemePart?.Theme?.ThemeElements?.FontScheme;
+            A.FontScheme fonts = doc.MainDocumentPart.ThemePart.Theme.ThemeElements.FontScheme;
             if (fonts != null)
             {
                 var majorFont = fonts.MajorFont;
@@ -173,15 +173,15 @@ namespace Berry.Docx
                     var cs = majorFont.ComplexScriptFont;
                     var hans = majorFont.Elements<A.SupplementalFont>().Where(f => f.Script == "Hans").FirstOrDefault();
                     var arab = majorFont.Elements<A.SupplementalFont>().Where(f => f.Script == "Arab").FirstOrDefault();
-                    if (!string.IsNullOrEmpty(latin?.Typeface)) 
+                    if (!string.IsNullOrEmpty(latin.Typeface)) 
                     {
                         themeFonts.Add(W.ThemeFontValues.MajorAscii, latin.Typeface);
                         themeFonts.Add(W.ThemeFontValues.MajorHighAnsi, latin.Typeface);
                     }
-                    if (!string.IsNullOrEmpty(eastAsian?.Typeface)) themeFonts.Add(W.ThemeFontValues.MajorEastAsia, eastAsian.Typeface);
-                    else if (!string.IsNullOrEmpty(hans?.Typeface)) themeFonts.Add(W.ThemeFontValues.MajorEastAsia, hans.Typeface);
-                    if (!string.IsNullOrEmpty(cs?.Typeface)) themeFonts.Add(W.ThemeFontValues.MajorBidi, cs.Typeface);
-                    else if (!string.IsNullOrEmpty(arab?.Typeface)) themeFonts.Add(W.ThemeFontValues.MajorBidi, arab.Typeface);
+                    if (!string.IsNullOrEmpty(eastAsian.Typeface)) themeFonts.Add(W.ThemeFontValues.MajorEastAsia, eastAsian.Typeface);
+                    else if (!string.IsNullOrEmpty(hans.Typeface)) themeFonts.Add(W.ThemeFontValues.MajorEastAsia, hans.Typeface);
+                    if (!string.IsNullOrEmpty(cs.Typeface)) themeFonts.Add(W.ThemeFontValues.MajorBidi, cs.Typeface);
+                    else if (!string.IsNullOrEmpty(arab.Typeface)) themeFonts.Add(W.ThemeFontValues.MajorBidi, arab.Typeface);
                 }
                 if (minorFont != null)
                 {
@@ -190,15 +190,15 @@ namespace Berry.Docx
                     var cs = minorFont.ComplexScriptFont;
                     var hans = minorFont.Elements<A.SupplementalFont>().Where(f => f.Script == "Hans").FirstOrDefault();
                     var arab = minorFont.Elements<A.SupplementalFont>().Where(f => f.Script == "Arab").FirstOrDefault();
-                    if (!string.IsNullOrEmpty(latin?.Typeface))
+                    if (!string.IsNullOrEmpty(latin.Typeface))
                     {
                         themeFonts.Add(W.ThemeFontValues.MinorAscii, latin.Typeface);
                         themeFonts.Add(W.ThemeFontValues.MinorHighAnsi, latin.Typeface);
                     }
-                    if (!string.IsNullOrEmpty(eastAsian?.Typeface)) themeFonts.Add(W.ThemeFontValues.MinorEastAsia, eastAsian.Typeface);
-                    else if (!string.IsNullOrEmpty(hans?.Typeface)) themeFonts.Add(W.ThemeFontValues.MinorEastAsia, hans.Typeface);
-                    if (!string.IsNullOrEmpty(cs?.Typeface)) themeFonts.Add(W.ThemeFontValues.MinorBidi, cs.Typeface);
-                    else if (!string.IsNullOrEmpty(arab?.Typeface)) themeFonts.Add(W.ThemeFontValues.MinorBidi, arab.Typeface);
+                    if (!string.IsNullOrEmpty(eastAsian.Typeface)) themeFonts.Add(W.ThemeFontValues.MinorEastAsia, eastAsian.Typeface);
+                    else if (!string.IsNullOrEmpty(hans.Typeface)) themeFonts.Add(W.ThemeFontValues.MinorEastAsia, hans.Typeface);
+                    if (!string.IsNullOrEmpty(cs.Typeface)) themeFonts.Add(W.ThemeFontValues.MinorBidi, cs.Typeface);
+                    else if (!string.IsNullOrEmpty(arab.Typeface)) themeFonts.Add(W.ThemeFontValues.MinorBidi, arab.Typeface);
                 }
             }
             return themeFonts.ContainsKey(themeFont) ? themeFonts[themeFont] : string.Empty;

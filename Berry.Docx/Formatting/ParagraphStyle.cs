@@ -66,19 +66,19 @@ namespace Berry.Docx.Formatting
         /// <summary>
         /// Gets the CharacterFormat of the style.
         /// </summary>
-        public CharacterFormat CharacterFormat => _cFormat;
+        public CharacterFormat CharacterFormat { get { return _cFormat; } }
 
         /// <summary>
         /// Gets the paragraph format.
         /// <para>访问当前样式的段落格式.</para>
         /// </summary>
-        public ParagraphFormat ParagraphFormat => _pFormat;
+        public ParagraphFormat ParagraphFormat { get { return _pFormat; } }
 
         /// <summary>
         /// Gets the list format.
         /// <para>访问当前样式的列表格式.</para>
         /// </summary>
-        public ListFormat ListFormat => _listFormat;
+        public ListFormat ListFormat { get { return _listFormat; } }
 
         /// <summary>
         /// Gets or sets the base style.
@@ -86,8 +86,8 @@ namespace Berry.Docx.Formatting
         /// </summary>
         public new ParagraphStyle BaseStyle
         {
-            get => base.BaseStyle as ParagraphStyle;
-            set => base.BaseStyle = value;
+            get { return base.BaseStyle as ParagraphStyle; }
+			set { base.BaseStyle = value; }
         }
         #endregion
 

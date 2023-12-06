@@ -32,12 +32,12 @@ namespace Berry.Docx.Collections
         /// </summary>
         /// <param name="index">The zero-based index.</param>
         /// <returns>The list level.</returns>
-        public ListLevel this[int index] => _levels.ElementAt(index);
+        public ListLevel this[int index] { get { return _levels.ElementAt(index); } }
 
         /// <summary>
         /// Gets the levels count.
         /// </summary>
-        public int Count => _levels.Count();
+        public int Count { get { return _levels.Count(); } }
         #endregion
 
         #region Public Methods

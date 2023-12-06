@@ -38,7 +38,7 @@ namespace Berry.Docx.Formatting
             get
             {
                 W.PageBorders pgBorders = _sectPr.GetFirstChild<W.PageBorders>();
-                return pgBorders?.OffsetFrom.Value.Convert<PageBordersPosition>() ?? PageBordersPosition.Text;
+				return pgBorders.OffsetFrom.Value != null ? pgBorders.OffsetFrom.Value.Convert<PageBordersPosition>() : PageBordersPosition.Text;
             }
             set
             {
@@ -55,22 +55,22 @@ namespace Berry.Docx.Formatting
         /// <summary>
         /// Gets the top page border.
         /// </summary>
-        public PageBorder Top => _top;
+        public PageBorder Top { get { return _top; } }
 
         /// <summary>
         /// Gets the bottom page border.
         /// </summary>
-        public PageBorder Bottom => _bottom;
+        public PageBorder Bottom { get { return _bottom; } }
 
         /// <summary>
         /// Gets the left page border.
         /// </summary>
-        public PageBorder Left => _left;
+        public PageBorder Left { get { return _left; } }
 
         /// <summary>
         /// Gets the right page border.
         /// </summary>
-        public PageBorder Right => _right;
+        public PageBorder Right { get { return _right; } }
         #endregion
 
         #region Public Methods
@@ -80,7 +80,7 @@ namespace Berry.Docx.Formatting
         public void Clear()
         {
             W.PageBorders pgBorders = _sectPr.GetFirstChild<W.PageBorders>();
-            pgBorders?.Remove();
+            pgBorders.Remove();
         }
         #endregion
     }
@@ -111,14 +111,14 @@ namespace Berry.Docx.Formatting
         {
             get
             {
-                TryGetBorder(out W.BorderType border);
-                if (border?.Val == null) return BorderStyle.Nil;
+                W.BorderType border; TryGetBorder(out border);
+                if (border.Val == null) return BorderStyle.Nil;
                 return border.Val.Value.Convert<BorderStyle>();
             }
             set
             {
                 CreateBorder();
-                TryGetBorder(out W.BorderType border);
+                W.BorderType border; TryGetBorder(out border);
                 border.Val = value.Convert<W.BorderValues>();
             }
         }
@@ -130,14 +130,14 @@ namespace Berry.Docx.Formatting
         {
             get
             {
-                TryGetBorder(out W.BorderType border);
-                if (border?.Color == null) return ColorValue.Auto;
+                W.BorderType border; TryGetBorder(out border);
+                if (border.Color == null) return ColorValue.Auto;
                 return border.Color.Value;
             }
             set
             {
                 CreateBorder();
-                TryGetBorder(out W.BorderType border);
+                W.BorderType border; TryGetBorder(out border);
                 border.Color = value.ToString();
             }
         }
@@ -149,8 +149,8 @@ namespace Berry.Docx.Formatting
         {
             get
             {
-                TryGetBorder(out W.BorderType border);
-                if (border?.Size == null) return 0;
+                W.BorderType border; TryGetBorder(out border);
+                if (border.Size == null) return 0;
                 if ((int)Style < 27)
                     return border.Size.Value / 8.0F;
                 else
@@ -159,7 +159,7 @@ namespace Berry.Docx.Formatting
             set
             {
                 CreateBorder();
-                TryGetBorder(out W.BorderType border);
+                W.BorderType border; TryGetBorder(out border);
                 if ((int)Style < 27)
                 {
                     if (value > 12)

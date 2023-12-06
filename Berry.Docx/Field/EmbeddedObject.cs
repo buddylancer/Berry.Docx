@@ -47,7 +47,7 @@ namespace Berry.Docx.Field
         /// <summary>
         /// Gets the type of the current object.
         /// </summary>
-        public override DocumentObjectType DocumentObjectType => DocumentObjectType.EmbeddedObject;
+        public override DocumentObjectType DocumentObjectType { get { return DocumentObjectType.EmbeddedObject; } }
 
         /// <summary>
         /// 
@@ -56,13 +56,13 @@ namespace Berry.Docx.Field
         {
             get
             {
-                if (_oleObject?.Type != null)
+                if (_oleObject.Type != null)
                     return _oleObject.Type.Value == Ovml.OleValues.Embed ? OleObjectType.Embed : OleObjectType.Link;
                 return OleObjectType.Embed;
             }
         }
 
-        public string OleProgId => _oleObject?.ProgId ?? string.Empty;
+        public string OleProgId { get { return _oleObject.ProgId ?? string.Empty; } }
 
         public float Width
         {
@@ -92,7 +92,7 @@ namespace Berry.Docx.Field
                     _object.DxaOriginal = Convert.ToInt32(img.Width / 96.0f * 72 * 20).ToString();
                     img.Dispose();
                 }
-                _shapeStyles["width"] = $"{Math.Round(value, 2)}pt";
+                _shapeStyles["width"] = "{Math.Round(value, 2)}pt";
             }
         }
 
@@ -128,7 +128,7 @@ namespace Berry.Docx.Field
                     _object.DyaOriginal = Convert.ToInt32(img.Height / 96.0f * 72 * 20).ToString();
                     img.Dispose();
                 }
-                _shapeStyles["height"] = $"{Math.Round(value, 2)}pt";
+                _shapeStyles["height"] = "{Math.Round(value, 2)}pt";
             }
         }
 
@@ -152,7 +152,7 @@ namespace Berry.Docx.Field
         {
             W.Run run = new W.Run();
             W.EmbeddedObject embobj = (W.EmbeddedObject)_object.CloneNode(true);
-            run.RunProperties = _ownerRun.RunProperties?.CloneNode(true) as W.RunProperties; // copy format
+            run.RunProperties = _ownerRun.RunProperties.CloneNode(true) as W.RunProperties; // copy format
             run.AppendChild(embobj);
             return new EmbeddedObject(_doc, run, embobj);
         }
@@ -167,12 +167,12 @@ namespace Berry.Docx.Field
         {
             _shape = shape;
             _styles = new Dictionary<string, string>();
-            if (!string.IsNullOrEmpty(shape?.Style?.Value))
+            if (!string.IsNullOrEmpty(shape.Style.Value))
             {
                 foreach (var style in shape.Style.Value.Split(';'))
                 {
-                    string key = style.Split(':')?.FirstOrDefault();
-                    string value = style.Split(':')?.LastOrDefault();
+                    string key = style.Split(':').FirstOrDefault();
+                    string value = style.Split(':').LastOrDefault();
                     if (string.IsNullOrEmpty(key)) continue;
                     _styles[key] = value;
                 }
@@ -191,7 +191,7 @@ namespace Berry.Docx.Field
                 StringBuilder styleStr = new StringBuilder();
                 foreach(var style in _styles)
                 {
-                    styleStr.Append($"{style.Key}:{style.Value};");
+                    styleStr.Append("{style.Key}:{style.Value};");
                 }
                 _shape.Style = styleStr.ToString();
             }

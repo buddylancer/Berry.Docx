@@ -42,12 +42,12 @@ namespace Berry.Docx.Formatting
         /// </summary>
         /// <param name="index">The zero-based index.</param>
         /// <returns>The tab stop.</returns>
-        public TabStop this[int index] => _tabStops.ElementAt(index);
+        public TabStop this[int index] { get { return _tabStops.ElementAt(index); } }
 
         /// <summary>
         /// Gets the tab stops count.
         /// </summary>
-        public int Count => _tabStops.Count();
+        public int Count { get { return _tabStops.Count(); } }
         #endregion
 
         #region Public Methods
@@ -93,11 +93,11 @@ namespace Berry.Docx.Formatting
         /// </summary>
         public void Clear()
         {
-            if (_ownerParagraph?.ParagraphProperties?.Tabs != null)
+            if (_ownerParagraph.ParagraphProperties.Tabs != null)
                 _ownerParagraph.ParagraphProperties.Tabs = null;
             if (_ownerStyle != null)
             {
-                if(_ownerStyle.StyleParagraphProperties?.Tabs != null)
+                if(_ownerStyle.StyleParagraphProperties.Tabs != null)
                     _ownerStyle.StyleParagraphProperties.Tabs = null;
                 // clear tabs in base style.
                 W.Style baseStyle = _ownerStyle.GetBaseStyle(_doc);
@@ -128,7 +128,7 @@ namespace Berry.Docx.Formatting
         {
             if (_ownerParagraph != null)
             {
-                if (_ownerParagraph.ParagraphProperties?.Tabs != null)
+                if (_ownerParagraph.ParagraphProperties.Tabs != null)
                 {
                     foreach (W.TabStop tab in _ownerParagraph.ParagraphProperties.Tabs.Elements<W.TabStop>())
                         yield return new TabStop(tab);
@@ -153,7 +153,7 @@ namespace Berry.Docx.Formatting
                     yield return tab;
                 }
             }
-            if(style.StyleParagraphProperties?.Tabs != null)
+            if(style.StyleParagraphProperties.Tabs != null)
             {
                 foreach(W.TabStop tab in style.StyleParagraphProperties.Tabs.Elements<W.TabStop>())
                 {
@@ -264,7 +264,7 @@ namespace Berry.Docx.Formatting
         #endregion
 
         #region Internal Properties
-        internal W.TabStop XETabStop => _tab;
+        internal W.TabStop XETabStop { get { return _tab; } }
         #endregion
 
     }

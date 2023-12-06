@@ -41,7 +41,7 @@ namespace Berry.Docx.Field
         /// <summary>
         /// Returns the type of the object.
         /// </summary>
-        public override DocumentObjectType DocumentObjectType => DocumentObjectType.Hyperlink;
+        public override DocumentObjectType DocumentObjectType { get { return DocumentObjectType.Hyperlink; } }
 
         /// <summary>
         /// Returns the type of the target.

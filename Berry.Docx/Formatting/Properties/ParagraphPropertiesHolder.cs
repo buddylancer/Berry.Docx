@@ -96,21 +96,21 @@ namespace Berry.Docx.Formatting
                 W.Justification jc = null;
                 if (_paragraph != null)
                 {
-                    jc = _paragraph.ParagraphProperties?.Justification;
+                    jc = _paragraph.ParagraphProperties.Justification;
                 }
                 else if(_style != null)
                 {
                     if (_tableStyleRegion != null && _tableStyleRegion != TableRegionType.WholeTable)
                     {
                         jc = _style.Elements<W.TableStyleProperties>().Where(t => t.Type == _tableStyleRegion.Val.Convert<W.TableStyleOverrideValues>()).FirstOrDefault()
-                                ?.StyleParagraphProperties?.Justification;
+                                .StyleParagraphProperties.Justification;
                     }
                     else
                     {
-                        jc = _style.StyleParagraphProperties?.Justification;
+                        jc = _style.StyleParagraphProperties.Justification;
                     }
                 }
-                if (jc?.Val == null) return null;
+                if (jc.Val == null) return null;
                 return jc.Val.Value.Convert<JustificationType>();
             }
             set
@@ -148,21 +148,21 @@ namespace Berry.Docx.Formatting
                 W.OutlineLevel outline = null;
                 if (_paragraph != null)
                 {
-                    outline = _paragraph.ParagraphProperties?.OutlineLevel;
+                    outline = _paragraph.ParagraphProperties.OutlineLevel;
                 }
                 else if (_style != null)
                 {
                     if (_tableStyleRegion != null && _tableStyleRegion != TableRegionType.WholeTable)
                     {
                         outline = _style.Elements<W.TableStyleProperties>().Where(t => t.Type == _tableStyleRegion.Val.Convert<W.TableStyleOverrideValues>()).FirstOrDefault()
-                                ?.StyleParagraphProperties?.OutlineLevel;
+                                .StyleParagraphProperties.OutlineLevel;
                     }
                     else
                     {
-                        outline = _style.StyleParagraphProperties?.OutlineLevel;
+                        outline = _style.StyleParagraphProperties.OutlineLevel;
                     }
                 }
-                if (outline?.Val == null) return null;
+                if (outline.Val == null) return null;
                 return (OutlineLevelType)outline.Val.Value;
             }
             set
@@ -199,16 +199,16 @@ namespace Berry.Docx.Formatting
             get
             {
                 if (NoInstance()) return _leftInd;
-                TryGetIndentation(out W.Indentation ind);
-                if (ind?.Left == null) return null;
-                float.TryParse(ind.Left, out float val);
+                W.Indentation ind; TryGetIndentation(out ind);
+                if (ind.Left == null) return null;
+                float val; float.TryParse(ind.Left, out val);
                 return val / 20;
             }
             set
             {
                 _leftInd = value;
                 CreateIndentation();
-                TryGetIndentation(out W.Indentation ind);
+                W.Indentation ind; TryGetIndentation(out ind);
                 if (ind == null) return;
                 ind.Left = ((int)(value * 20)).ToString();
             }
@@ -223,16 +223,16 @@ namespace Berry.Docx.Formatting
             get
             {
                 if (NoInstance()) return _rightInd;
-                TryGetIndentation(out W.Indentation ind);
-                if (ind?.Right == null) return null;
-                float.TryParse(ind.Right, out float val);
+                W.Indentation ind; TryGetIndentation(out ind);
+                if (ind.Right == null) return null;
+                float val; float.TryParse(ind.Right, out val);
                 return val / 20;
             }
             set
             {
                 _rightInd = value;
                 CreateIndentation();
-                TryGetIndentation(out W.Indentation ind);
+                W.Indentation ind; TryGetIndentation(out ind);
                 if (ind == null) return;
                 ind.Right = ((int)(value * 20)).ToString();
             }
@@ -246,15 +246,15 @@ namespace Berry.Docx.Formatting
             get
             {
                 if (NoInstance()) return _leftIndChars;
-                TryGetIndentation(out W.Indentation ind);
-                if (ind?.LeftChars == null) return null;
+                W.Indentation ind; TryGetIndentation(out ind);
+                if (ind.LeftChars == null) return null;
                 return ind.LeftChars.Value / 100.0F;
             }
             set
             {
                 _leftIndChars = value;
                 CreateIndentation();
-                TryGetIndentation(out W.Indentation ind);
+                W.Indentation ind; TryGetIndentation(out ind);
                 if (ind == null) return;
                 ind.LeftChars = (int)(value * 100);
             }
@@ -267,15 +267,15 @@ namespace Berry.Docx.Formatting
             get
             {
                 if (NoInstance()) return _rightIndChars;
-                TryGetIndentation(out W.Indentation ind);
-                if (ind?.RightChars == null) return null;
+                W.Indentation ind; TryGetIndentation(out ind);
+                if (ind.RightChars == null) return null;
                 return ind.RightChars.Value / 100.0F;
             }
             set
             {
                 _rightIndChars = value;
                 CreateIndentation();
-                TryGetIndentation(out W.Indentation ind);
+                W.Indentation ind; TryGetIndentation(out ind);
                 if (ind == null) return;
                 ind.RightChars = (int)(value * 100);
             }
@@ -288,16 +288,16 @@ namespace Berry.Docx.Formatting
             get
             {
                 if (NoInstance()) return _firstLineInd;
-                TryGetIndentation(out W.Indentation ind);
-                if (ind?.FirstLine == null) return null;
-                float.TryParse(ind.FirstLine, out float val);
+                W.Indentation ind; TryGetIndentation(out ind);
+                if (ind.FirstLine == null) return null;
+                float val; float.TryParse(ind.FirstLine, out val);
                 return val / 20;
             }
             set
             {
                 _firstLineInd = value;
                 CreateIndentation();
-                TryGetIndentation(out W.Indentation ind);
+                W.Indentation ind; TryGetIndentation(out ind);
                 if (ind == null) return;
                 if (value != null)
                     ind.FirstLine = ((int)(value * 20)).ToString();
@@ -314,15 +314,15 @@ namespace Berry.Docx.Formatting
             get
             {
                 if (NoInstance()) return _firstLineIndChars;
-                TryGetIndentation(out W.Indentation ind);
-                if (ind?.FirstLineChars == null) return null;
+                W.Indentation ind; TryGetIndentation(out ind);
+                if (ind.FirstLineChars == null) return null;
                 return ind.FirstLineChars.Value / 100.0F;
             }
             set
             {
                 _firstLineIndChars = value;
                 CreateIndentation();
-                TryGetIndentation(out W.Indentation ind);
+                W.Indentation ind; TryGetIndentation(out ind);
                 if (ind == null) return;
                 if (value != null)
                     ind.FirstLineChars = (int)(value * 100);
@@ -338,16 +338,16 @@ namespace Berry.Docx.Formatting
             get
             {
                 if (NoInstance()) return _hangingInd;
-                TryGetIndentation(out W.Indentation ind);
-                if (ind?.Hanging == null) return null;
-                float.TryParse(ind.Hanging, out float val);
+                W.Indentation ind; TryGetIndentation(out ind);
+                if (ind.Hanging == null) return null;
+                float val; float.TryParse(ind.Hanging, out val);
                 return val / 20;
             }
             set
             {
                 _hangingInd = value;
                 CreateIndentation();
-                TryGetIndentation(out W.Indentation ind);
+                W.Indentation ind; TryGetIndentation(out ind);
                 if (ind == null) return;
                 if (value != null)
                     ind.Hanging = ((int)(value * 20)).ToString();
@@ -363,15 +363,15 @@ namespace Berry.Docx.Formatting
             get
             {
                 if (NoInstance()) return _hangingIndChars;
-                TryGetIndentation(out W.Indentation ind);
-                if (ind?.HangingChars == null) return null;
+                W.Indentation ind; TryGetIndentation(out ind);
+                if (ind.HangingChars == null) return null;
                 return ind.HangingChars.Value / 100.0F;
             }
             set
             {
                 _hangingIndChars = value;
                 CreateIndentation();
-                TryGetIndentation(out W.Indentation ind);
+                W.Indentation ind; TryGetIndentation(out ind);
                 if (ind == null) return;
                 if (value != null)
                     ind.HangingChars = (int)(value * 100);
@@ -392,18 +392,18 @@ namespace Berry.Docx.Formatting
                 W.MirrorIndents ele = null;
                 if (_paragraph != null)
                 {
-                    ele = _paragraph.ParagraphProperties?.MirrorIndents;
+                    ele = _paragraph.ParagraphProperties.MirrorIndents;
                 }
                 else if (_style != null)
                 {
                     if (_tableStyleRegion != null && _tableStyleRegion != TableRegionType.WholeTable)
                     {
                         ele = _style.Elements<W.TableStyleProperties>().Where(t => t.Type == _tableStyleRegion.Val.Convert<W.TableStyleOverrideValues>()).FirstOrDefault()
-                                ?.StyleParagraphProperties?.MirrorIndents;
+                                .StyleParagraphProperties.MirrorIndents;
                     }
                     else
                     {
-                        ele = _style.StyleParagraphProperties?.MirrorIndents;
+                        ele = _style.StyleParagraphProperties.MirrorIndents;
                     }
                 }
                 if (ele == null) return null;
@@ -452,18 +452,18 @@ namespace Berry.Docx.Formatting
                 W.AdjustRightIndent ele = null;
                 if (_paragraph != null)
                 {
-                    ele = _paragraph.ParagraphProperties?.AdjustRightIndent;
+                    ele = _paragraph.ParagraphProperties.AdjustRightIndent;
                 }
                 else if (_style != null)
                 {
                     if (_tableStyleRegion != null && _tableStyleRegion != TableRegionType.WholeTable)
                     {
                         ele = _style.Elements<W.TableStyleProperties>().Where(t => t.Type == _tableStyleRegion.Val.Convert<W.TableStyleOverrideValues>()).FirstOrDefault()
-                                ?.StyleParagraphProperties?.AdjustRightIndent;
+                                .StyleParagraphProperties.AdjustRightIndent;
                     }
                     else
                     {
-                        ele = _style.StyleParagraphProperties?.AdjustRightIndent;
+                        ele = _style.StyleParagraphProperties.AdjustRightIndent;
                     }
                 }
                 if (ele == null) return null;
@@ -511,16 +511,16 @@ namespace Berry.Docx.Formatting
             get
             {
                 if(NoInstance()) return _beforeSpacing;
-                TryGetSpacing(out W.SpacingBetweenLines spacing);
-                if (spacing?.Before == null) return null;
-                float.TryParse(spacing.Before, out float val);
+                W.SpacingBetweenLines spacing; TryGetSpacing(out spacing);
+                if (spacing.Before == null) return null;
+                float val; float.TryParse(spacing.Before, out val);
                 return val / 20;
             }
             set
             {
                 _beforeSpacing = value;
                 CreateSpacing();
-                TryGetSpacing(out W.SpacingBetweenLines spacing);
+                W.SpacingBetweenLines spacing; TryGetSpacing(out spacing);
                 if (spacing == null) return;
                 spacing.Before = ((int)(value * 20)).ToString();
             }
@@ -534,15 +534,15 @@ namespace Berry.Docx.Formatting
             get
             {
                 if (NoInstance()) return _beforeSpacingLines;
-                TryGetSpacing(out W.SpacingBetweenLines spacing);
-                if (spacing?.BeforeLines == null) return null;
+                W.SpacingBetweenLines spacing; TryGetSpacing(out spacing);
+                if (spacing.BeforeLines == null) return null;
                 return spacing.BeforeLines.Value / 100.0F;
             }
             set
             {
                 _beforeSpacingLines = value;
                 CreateSpacing();
-                TryGetSpacing(out W.SpacingBetweenLines spacing);
+                W.SpacingBetweenLines spacing; TryGetSpacing(out spacing);
                 if (spacing == null) return;
                 spacing.BeforeLines = (int)(value * 100);
             }
@@ -556,15 +556,15 @@ namespace Berry.Docx.Formatting
             get
             {
                 if (NoInstance()) return _beforeAutoSpacing;
-                TryGetSpacing(out W.SpacingBetweenLines spacing);
-                if (spacing?.BeforeAutoSpacing == null) return null;
+                W.SpacingBetweenLines spacing; TryGetSpacing(out spacing);
+                if (spacing.BeforeAutoSpacing == null) return null;
                 return spacing.BeforeAutoSpacing.Value;
             }
             set
             {
                 _beforeAutoSpacing = value;
                 CreateSpacing();
-                TryGetSpacing(out W.SpacingBetweenLines spacing);
+                W.SpacingBetweenLines spacing; TryGetSpacing(out spacing);
                 if (spacing == null) return;
                 spacing.BeforeAutoSpacing = value.Val;
             }
@@ -578,16 +578,16 @@ namespace Berry.Docx.Formatting
             get
             {
                 if (NoInstance()) return _afterSpacing;
-                TryGetSpacing(out W.SpacingBetweenLines spacing);
-                if (spacing?.After == null) return null;
-                float.TryParse(spacing.After, out float val);
+                W.SpacingBetweenLines spacing; TryGetSpacing(out spacing);
+                if (spacing.After == null) return null;
+                float val; float.TryParse(spacing.After, out val);
                 return val / 20;
             }
             set
             {
                 _afterSpacing = value;
                 CreateSpacing();
-                TryGetSpacing(out W.SpacingBetweenLines spacing);
+                W.SpacingBetweenLines spacing; TryGetSpacing(out spacing);
                 if (spacing == null) return;
                 spacing.After = ((int)(value * 20)).ToString();
             }
@@ -601,15 +601,15 @@ namespace Berry.Docx.Formatting
             get
             {
                 if (NoInstance()) return _afterSpacingLines;
-                TryGetSpacing(out W.SpacingBetweenLines spacing);
-                if (spacing?.AfterLines == null) return null;
+                W.SpacingBetweenLines spacing; TryGetSpacing(out spacing);
+                if (spacing.AfterLines == null) return null;
                 return spacing.AfterLines.Value / 100.0F;
             }
             set
             {
                 _afterSpacingLines = value;
                 CreateSpacing();
-                TryGetSpacing(out W.SpacingBetweenLines spacing);
+                W.SpacingBetweenLines spacing; TryGetSpacing(out spacing);
                 if (spacing == null) return;
                 spacing.AfterLines = (int)(value * 100);
             }
@@ -623,15 +623,15 @@ namespace Berry.Docx.Formatting
             get
             {
                 if (NoInstance()) return _afterAutoSpacing;
-                TryGetSpacing(out W.SpacingBetweenLines spacing);
-                if (spacing?.AfterAutoSpacing == null) return null;
+                W.SpacingBetweenLines spacing; TryGetSpacing(out spacing);
+                if (spacing.AfterAutoSpacing == null) return null;
                 return spacing.AfterAutoSpacing.Value;
             }
             set
             {
                 _afterAutoSpacing = value;
                 CreateSpacing();
-                TryGetSpacing(out W.SpacingBetweenLines spacing);
+                W.SpacingBetweenLines spacing; TryGetSpacing(out spacing);
                 if (spacing == null) return;
                 spacing.AfterAutoSpacing = value.Val;
             }
@@ -645,16 +645,16 @@ namespace Berry.Docx.Formatting
             get
             {
                 if (NoInstance()) return _lineSpacing;
-                TryGetSpacing(out W.SpacingBetweenLines spacing);
-                if (spacing?.Line == null) return null;
-                float.TryParse(spacing.Line, out float val);
+                W.SpacingBetweenLines spacing; TryGetSpacing(out spacing);
+                if (spacing.Line == null) return null;
+                float val; float.TryParse(spacing.Line, out val);
                 return val / 20;
             }
             set
             {
                 _lineSpacing = value;
                 CreateSpacing();
-                TryGetSpacing(out W.SpacingBetweenLines spacing);
+                W.SpacingBetweenLines spacing; TryGetSpacing(out spacing);
                 if (spacing == null) return;
                 spacing.Line = ((int)(value * 20)).ToString();
             }
@@ -667,8 +667,8 @@ namespace Berry.Docx.Formatting
             get
             {
                 if (NoInstance()) return _lineSpacingRule;
-                TryGetSpacing(out W.SpacingBetweenLines spacing);
-                if (spacing?.LineRule == null) return null;
+                W.SpacingBetweenLines spacing; TryGetSpacing(out spacing);
+                if (spacing.LineRule == null) return null;
                 if (spacing.LineRule.Value == W.LineSpacingRuleValues.AtLeast)
                     return Docx.LineSpacingRule.AtLeast;
                 else if (spacing.LineRule.Value == W.LineSpacingRuleValues.Exact)
@@ -680,7 +680,7 @@ namespace Berry.Docx.Formatting
             {
                 _lineSpacingRule = value;
                 CreateSpacing();
-                TryGetSpacing(out W.SpacingBetweenLines spacing);
+                W.SpacingBetweenLines spacing; TryGetSpacing(out spacing);
                 if (spacing == null) return;
                 if (value == Docx.LineSpacingRule.AtLeast)
                     spacing.LineRule = W.LineSpacingRuleValues.AtLeast;
@@ -702,18 +702,18 @@ namespace Berry.Docx.Formatting
                 W.ContextualSpacing ele = null;
                 if (_paragraph != null)
                 {
-                    ele = _paragraph.ParagraphProperties?.ContextualSpacing;
+                    ele = _paragraph.ParagraphProperties.ContextualSpacing;
                 }
                 else if (_style != null)
                 {
                     if (_tableStyleRegion != null && _tableStyleRegion != TableRegionType.WholeTable)
                     {
                         ele = _style.Elements<W.TableStyleProperties>().Where(t => t.Type == _tableStyleRegion.Val.Convert<W.TableStyleOverrideValues>()).FirstOrDefault()
-                                ?.StyleParagraphProperties?.ContextualSpacing;
+                                .StyleParagraphProperties.ContextualSpacing;
                     }
                     else
                     {
-                        ele = _style.StyleParagraphProperties?.ContextualSpacing;
+                        ele = _style.StyleParagraphProperties.ContextualSpacing;
                     }
                 }
                 if (ele == null) return null;
@@ -762,7 +762,7 @@ namespace Berry.Docx.Formatting
                 W.SnapToGrid ele = null;
                 if (_paragraph != null)
                 {
-                    ele = _paragraph.ParagraphProperties?.SnapToGrid;
+                    ele = _paragraph.ParagraphProperties.SnapToGrid;
                     if (ele == null) return null;
                     if (ele.Val == null) return true;
                     return ele.Val.Value;
@@ -773,11 +773,11 @@ namespace Berry.Docx.Formatting
                     {
                         W.TableStyleOverrideValues type = _tableStyleRegion.Val.Convert<W.TableStyleOverrideValues>();
                         ele = _style.Elements<W.TableStyleProperties>().Where(t => t.Type == type).FirstOrDefault()
-                                ?.StyleParagraphProperties?.SnapToGrid;
+                                .StyleParagraphProperties.SnapToGrid;
                     }
                     else
                     {
-                        ele = _style.StyleParagraphProperties?.SnapToGrid;
+                        ele = _style.StyleParagraphProperties.SnapToGrid;
                     }
                 }
                 if (ele == null) return null;
@@ -829,7 +829,7 @@ namespace Berry.Docx.Formatting
                 W.WidowControl ele = null;
                 if (_paragraph != null)
                 {
-                    ele = _paragraph.ParagraphProperties?.WidowControl;
+                    ele = _paragraph.ParagraphProperties.WidowControl;
                 }
                 else if (_style != null)
                 {
@@ -837,11 +837,11 @@ namespace Berry.Docx.Formatting
                     {
                         W.TableStyleOverrideValues type = _tableStyleRegion.Val.Convert<W.TableStyleOverrideValues>();
                         ele = _style.Elements<W.TableStyleProperties>().Where(t => t.Type == type).FirstOrDefault()
-                                ?.StyleParagraphProperties?.WidowControl;
+                                .StyleParagraphProperties.WidowControl;
                     }
                     else
                     {
-                        ele = _style.StyleParagraphProperties?.WidowControl;
+                        ele = _style.StyleParagraphProperties.WidowControl;
                     }
                 }
                 if (ele == null) return null;
@@ -890,7 +890,7 @@ namespace Berry.Docx.Formatting
                 W.KeepNext ele = null;
                 if (_paragraph != null)
                 {
-                    ele = _paragraph.ParagraphProperties?.KeepNext;
+                    ele = _paragraph.ParagraphProperties.KeepNext;
                 }
                 else if (_style != null)
                 {
@@ -898,11 +898,11 @@ namespace Berry.Docx.Formatting
                     {
                         W.TableStyleOverrideValues type = _tableStyleRegion.Val.Convert<W.TableStyleOverrideValues>();
                         ele = _style.Elements<W.TableStyleProperties>().Where(t => t.Type == type).FirstOrDefault()
-                                ?.StyleParagraphProperties?.KeepNext;
+                                .StyleParagraphProperties.KeepNext;
                     }
                     else
                     {
-                        ele = _style.StyleParagraphProperties?.KeepNext;
+                        ele = _style.StyleParagraphProperties.KeepNext;
                     }
                 }
                 if (ele == null) return null;
@@ -951,7 +951,7 @@ namespace Berry.Docx.Formatting
                 W.KeepLines ele = null;
                 if (_paragraph != null)
                 {
-                    ele = _paragraph.ParagraphProperties?.KeepLines;
+                    ele = _paragraph.ParagraphProperties.KeepLines;
                 }
                 else if (_style != null)
                 {
@@ -959,11 +959,11 @@ namespace Berry.Docx.Formatting
                     {
                         W.TableStyleOverrideValues type = _tableStyleRegion.Val.Convert<W.TableStyleOverrideValues>();
                         ele = _style.Elements<W.TableStyleProperties>().Where(t => t.Type == type).FirstOrDefault()
-                                ?.StyleParagraphProperties?.KeepLines;
+                                .StyleParagraphProperties.KeepLines;
                     }
                     else
                     {
-                        ele = _style.StyleParagraphProperties?.KeepLines;
+                        ele = _style.StyleParagraphProperties.KeepLines;
                     }
                 }
                 if (ele == null) return null;
@@ -1012,7 +1012,7 @@ namespace Berry.Docx.Formatting
                 W.PageBreakBefore ele = null;
                 if (_paragraph != null)
                 {
-                    ele = _paragraph.ParagraphProperties?.PageBreakBefore;
+                    ele = _paragraph.ParagraphProperties.PageBreakBefore;
                 }
                 else if (_style != null)
                 {
@@ -1020,11 +1020,11 @@ namespace Berry.Docx.Formatting
                     {
                         W.TableStyleOverrideValues type = _tableStyleRegion.Val.Convert<W.TableStyleOverrideValues>();
                         ele = _style.Elements<W.TableStyleProperties>().Where(t => t.Type == type).FirstOrDefault()
-                                ?.StyleParagraphProperties?.PageBreakBefore;
+                                .StyleParagraphProperties.PageBreakBefore;
                     }
                     else
                     {
-                        ele = _style.StyleParagraphProperties?.PageBreakBefore;
+                        ele = _style.StyleParagraphProperties.PageBreakBefore;
                     }
                 }
                 if (ele == null) return null;
@@ -1075,7 +1075,7 @@ namespace Berry.Docx.Formatting
                 W.SuppressLineNumbers ele = null;
                 if (_paragraph != null)
                 {
-                    ele = _paragraph.ParagraphProperties?.SuppressLineNumbers;
+                    ele = _paragraph.ParagraphProperties.SuppressLineNumbers;
                 }
                 else if (_style != null)
                 {
@@ -1083,11 +1083,11 @@ namespace Berry.Docx.Formatting
                     {
                         W.TableStyleOverrideValues type = _tableStyleRegion.Val.Convert<W.TableStyleOverrideValues>();
                         ele = _style.Elements<W.TableStyleProperties>().Where(t => t.Type == type).FirstOrDefault()
-                                ?.StyleParagraphProperties?.SuppressLineNumbers;
+                                .StyleParagraphProperties.SuppressLineNumbers;
                     }
                     else
                     {
-                        ele = _style.StyleParagraphProperties?.SuppressLineNumbers;
+                        ele = _style.StyleParagraphProperties.SuppressLineNumbers;
                     }
                 }
                 if (ele == null) return null;
@@ -1136,7 +1136,7 @@ namespace Berry.Docx.Formatting
                 W.SuppressAutoHyphens ele = null;
                 if (_paragraph != null)
                 {
-                    ele = _paragraph.ParagraphProperties?.SuppressAutoHyphens;
+                    ele = _paragraph.ParagraphProperties.SuppressAutoHyphens;
                 }
                 else if (_style != null)
                 {
@@ -1144,11 +1144,11 @@ namespace Berry.Docx.Formatting
                     {
                         W.TableStyleOverrideValues type = _tableStyleRegion.Val.Convert<W.TableStyleOverrideValues>();
                         ele = _style.Elements<W.TableStyleProperties>().Where(t => t.Type == type).FirstOrDefault()
-                                ?.StyleParagraphProperties?.SuppressAutoHyphens;
+                                .StyleParagraphProperties.SuppressAutoHyphens;
                     }
                     else
                     {
-                        ele = _style.StyleParagraphProperties?.SuppressAutoHyphens;
+                        ele = _style.StyleParagraphProperties.SuppressAutoHyphens;
                     }
                 }
                 if (ele == null) return null;
@@ -1199,7 +1199,7 @@ namespace Berry.Docx.Formatting
                 W.Kinsoku ele = null;
                 if (_paragraph != null)
                 {
-                   ele = _paragraph.ParagraphProperties?.Kinsoku;
+                   ele = _paragraph.ParagraphProperties.Kinsoku;
                 }
                 else if (_style != null)
                 {
@@ -1207,11 +1207,11 @@ namespace Berry.Docx.Formatting
                     {
                         W.TableStyleOverrideValues type = _tableStyleRegion.Val.Convert<W.TableStyleOverrideValues>();
                         ele = _style.Elements<W.TableStyleProperties>().Where(t => t.Type == type).FirstOrDefault()
-                                ?.StyleParagraphProperties?.Kinsoku;
+                                .StyleParagraphProperties.Kinsoku;
                     }
                     else
                     {
-                        ele = _style.StyleParagraphProperties?.Kinsoku;
+                        ele = _style.StyleParagraphProperties.Kinsoku;
                     }
                 }
                 if (ele == null) return null;
@@ -1260,7 +1260,7 @@ namespace Berry.Docx.Formatting
                 W.WordWrap ele = null;
                 if (_paragraph != null)
                 {
-                    ele = _paragraph.ParagraphProperties?.WordWrap;
+                    ele = _paragraph.ParagraphProperties.WordWrap;
                 }
                 else if (_style != null)
                 {
@@ -1268,11 +1268,11 @@ namespace Berry.Docx.Formatting
                     {
                         W.TableStyleOverrideValues type = _tableStyleRegion.Val.Convert<W.TableStyleOverrideValues>();
                         ele = _style.Elements<W.TableStyleProperties>().Where(t => t.Type == type).FirstOrDefault()
-                                ?.StyleParagraphProperties?.WordWrap;
+                                .StyleParagraphProperties.WordWrap;
                     }
                     else
                     {
-                        ele = _style.StyleParagraphProperties?.WordWrap;
+                        ele = _style.StyleParagraphProperties.WordWrap;
                     }
                 }
                 if (ele == null) return null;
@@ -1321,7 +1321,7 @@ namespace Berry.Docx.Formatting
                 W.OverflowPunctuation ele = null;
                 if (_paragraph != null)
                 {
-                    ele = _paragraph.ParagraphProperties?.OverflowPunctuation;
+                    ele = _paragraph.ParagraphProperties.OverflowPunctuation;
                 }
                 else if (_style != null)
                 {
@@ -1329,11 +1329,11 @@ namespace Berry.Docx.Formatting
                     {
                         W.TableStyleOverrideValues type = _tableStyleRegion.Val.Convert<W.TableStyleOverrideValues>();
                         ele = _style.Elements<W.TableStyleProperties>().Where(t => t.Type == type).FirstOrDefault()
-                                ?.StyleParagraphProperties?.OverflowPunctuation;
+                                .StyleParagraphProperties.OverflowPunctuation;
                     }
                     else
                     {
-                        ele = _style.StyleParagraphProperties?.OverflowPunctuation;
+                        ele = _style.StyleParagraphProperties.OverflowPunctuation;
                     }
                 }
                 if (ele == null) return null;
@@ -1384,7 +1384,7 @@ namespace Berry.Docx.Formatting
                 W.TopLinePunctuation ele = null;
                 if (_paragraph != null)
                 {
-                    ele = _paragraph.ParagraphProperties?.TopLinePunctuation;
+                    ele = _paragraph.ParagraphProperties.TopLinePunctuation;
                 }
                 else if (_style != null)
                 {
@@ -1392,11 +1392,11 @@ namespace Berry.Docx.Formatting
                     {
                         W.TableStyleOverrideValues type = _tableStyleRegion.Val.Convert<W.TableStyleOverrideValues>();
                         ele = _style.Elements<W.TableStyleProperties>().Where(t => t.Type == type).FirstOrDefault()
-                                ?.StyleParagraphProperties?.TopLinePunctuation;
+                                .StyleParagraphProperties.TopLinePunctuation;
                     }
                     else
                     {
-                        ele = _style.StyleParagraphProperties?.TopLinePunctuation;
+                        ele = _style.StyleParagraphProperties.TopLinePunctuation;
                     }
                 }
                 if (ele == null) return null;
@@ -1445,7 +1445,7 @@ namespace Berry.Docx.Formatting
                 W.AutoSpaceDE ele = null;
                 if (_paragraph != null)
                 {
-                    ele = _paragraph.ParagraphProperties?.AutoSpaceDE;
+                    ele = _paragraph.ParagraphProperties.AutoSpaceDE;
                 }
                 else if (_style != null)
                 {
@@ -1453,11 +1453,11 @@ namespace Berry.Docx.Formatting
                     {
                         W.TableStyleOverrideValues type = _tableStyleRegion.Val.Convert<W.TableStyleOverrideValues>();
                         ele = _style.Elements<W.TableStyleProperties>().Where(t => t.Type == type).FirstOrDefault()
-                                ?.StyleParagraphProperties?.AutoSpaceDE;
+                                .StyleParagraphProperties.AutoSpaceDE;
                     }
                     else
                     {
-                        ele = _style.StyleParagraphProperties?.AutoSpaceDE;
+                        ele = _style.StyleParagraphProperties.AutoSpaceDE;
                     }
                 }
                 if (ele == null) return null;
@@ -1506,7 +1506,7 @@ namespace Berry.Docx.Formatting
                 W.AutoSpaceDN ele = null;
                 if (_paragraph != null)
                 {
-                    ele = _paragraph.ParagraphProperties?.AutoSpaceDN;
+                    ele = _paragraph.ParagraphProperties.AutoSpaceDN;
                 }
                 else if (_style != null)
                 {
@@ -1514,11 +1514,11 @@ namespace Berry.Docx.Formatting
                     {
                         W.TableStyleOverrideValues type = _tableStyleRegion.Val.Convert<W.TableStyleOverrideValues>();
                         ele = _style.Elements<W.TableStyleProperties>().Where(t => t.Type == type).FirstOrDefault()
-                                ?.StyleParagraphProperties?.AutoSpaceDN;
+                                .StyleParagraphProperties.AutoSpaceDN;
                     }
                     else
                     {
-                        ele = _style.StyleParagraphProperties?.AutoSpaceDN;
+                        ele = _style.StyleParagraphProperties.AutoSpaceDN;
                     }
                 }
                 if (ele == null) return null;
@@ -1567,8 +1567,8 @@ namespace Berry.Docx.Formatting
                 W.TextAlignment ele = null;
                 if (_paragraph != null)
                 {
-                    ele = _paragraph.ParagraphProperties?.TextAlignment;
-                    if (ele?.Val == null) return null;
+                    ele = _paragraph.ParagraphProperties.TextAlignment;
+                    if (ele.Val == null) return null;
                     return ele.Val.Value.Convert<VerticalTextAlignment>();
                 }
                 else if (_style != null)
@@ -1577,14 +1577,14 @@ namespace Berry.Docx.Formatting
                     {
                         W.TableStyleOverrideValues type = _tableStyleRegion.Val.Convert<W.TableStyleOverrideValues>();
                         ele = _style.Elements<W.TableStyleProperties>().Where(t => t.Type == type).FirstOrDefault()
-                                ?.StyleParagraphProperties?.TextAlignment;
+                                .StyleParagraphProperties.TextAlignment;
                     }
                     else
                     {
-                        ele = _style.StyleParagraphProperties?.TextAlignment;
+                        ele = _style.StyleParagraphProperties.TextAlignment;
                     }
                 }
-                if (ele?.Val == null) return null;
+                if (ele.Val == null) return null;
                 return ele.Val.Value.Convert<VerticalTextAlignment>();
             }
             set
@@ -1630,7 +1630,7 @@ namespace Berry.Docx.Formatting
         /// </summary>
         public void ClearFormatting()
         {
-            if (_paragraph?.ParagraphProperties != null)
+            if (_paragraph.ParagraphProperties != null)
             {
                 _paragraph.ParagraphProperties = null;
             }
@@ -1640,7 +1640,7 @@ namespace Berry.Docx.Formatting
                 {
                     W.TableStyleOverrideValues type = _tableStyleRegion.Val.Convert<W.TableStyleOverrideValues>();
                     W.TableStyleProperties tblPr = _style.Elements<W.TableStyleProperties>().Where(t => t.Type == type).FirstOrDefault();
-                    if(tblPr?.StyleParagraphProperties != null) tblPr.StyleParagraphProperties = null;
+                    if(tblPr.StyleParagraphProperties != null) tblPr.StyleParagraphProperties = null;
                 }
                 else
                 {
@@ -1654,11 +1654,11 @@ namespace Berry.Docx.Formatting
         /// </summary>
         public void RemoveFrame()
         {
-            if (_paragraph?.ParagraphProperties?.FrameProperties != null)
+            if (_paragraph.ParagraphProperties.FrameProperties != null)
             {
                 _paragraph.ParagraphProperties.FrameProperties = null;
             }
-            else if(_style?.StyleParagraphProperties?.FrameProperties != null)
+            else if(_style.StyleParagraphProperties.FrameProperties != null)
             {
                 _style.StyleParagraphProperties.FrameProperties = null;
             }
@@ -1707,18 +1707,18 @@ namespace Berry.Docx.Formatting
             ind = null;
             if (_paragraph != null)
             {
-                ind = _paragraph.ParagraphProperties?.Indentation;
+                ind = _paragraph.ParagraphProperties.Indentation;
             }
             else if (_style != null)
             {
                 if (_tableStyleRegion != null && _tableStyleRegion != TableRegionType.WholeTable)
                 {
                     ind = _style.Elements<W.TableStyleProperties>().Where(t => t.Type == _tableStyleRegion.Val.Convert<W.TableStyleOverrideValues>()).FirstOrDefault()
-                            ?.StyleParagraphProperties?.Indentation;
+                            .StyleParagraphProperties.Indentation;
                 }
                 else
                 {
-                    ind = _style.StyleParagraphProperties?.Indentation;
+                    ind = _style.StyleParagraphProperties.Indentation;
                 }
             }
         }
@@ -1753,18 +1753,18 @@ namespace Berry.Docx.Formatting
             spacing = null;
             if (_paragraph != null)
             {
-                spacing = _paragraph.ParagraphProperties?.SpacingBetweenLines;
+                spacing = _paragraph.ParagraphProperties.SpacingBetweenLines;
             }
             else if (_style != null)
             {
                 if (_tableStyleRegion != null && _tableStyleRegion != TableRegionType.WholeTable)
                 {
                     spacing = _style.Elements<W.TableStyleProperties>().Where(t => t.Type == _tableStyleRegion.Val.Convert<W.TableStyleOverrideValues>()).FirstOrDefault()
-                            ?.StyleParagraphProperties?.SpacingBetweenLines;
+                            .StyleParagraphProperties.SpacingBetweenLines;
                 }
                 else
                 {
-                    spacing = _style.StyleParagraphProperties?.SpacingBetweenLines;
+                    spacing = _style.StyleParagraphProperties.SpacingBetweenLines;
                 }
             }
         }

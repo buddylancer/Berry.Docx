@@ -28,7 +28,7 @@ namespace Berry.Docx.Formatting
             get
             {
                 if (_column.Width == null) return 0;
-                int.TryParse(_column.Width, out int width);
+                int width; int.TryParse(_column.Width, out width);
                 return width / 20f;
             }
             set

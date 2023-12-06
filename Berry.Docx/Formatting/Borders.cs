@@ -173,13 +173,13 @@ namespace Berry.Docx.Formatting
         /// </summary>
         public void Clear()
         {
-            if(_ownerParagraph?.ParagraphProperties?.ParagraphBorders != null)
+            if(_ownerParagraph.ParagraphProperties.ParagraphBorders != null)
             {
                 _ownerParagraph.ParagraphProperties.ParagraphBorders = null;
             }
             else if(_ownerStyle != null)
             {
-                if (_ownerStyle.StyleParagraphProperties?.ParagraphBorders != null)
+                if (_ownerStyle.StyleParagraphProperties.ParagraphBorders != null)
                     _ownerStyle.StyleParagraphProperties.ParagraphBorders = null;
                 // clear borders in base style.
                 W.Style baseStyle = _ownerStyle.GetBaseStyle(_doc);
@@ -246,42 +246,42 @@ namespace Berry.Docx.Formatting
                 {
                     // direct formatting
                     if (BorderProperty != null)
-                        return BorderProperty.Val?.Value.Convert<BorderStyle>() ?? BorderStyle.None;
+						return BorderProperty.Val.Value != null ? BorderProperty.Val.Value.Convert<BorderStyle>() : BorderStyle.None;
                     // character style
-                    if (_ownerRun?.RunProperties?.RunStyle != null)
+                    if (_ownerRun.RunProperties.RunStyle != null)
                     {
                         W.BorderType border = GetStyleBorderRecursively(_doc, _ownerRun.GetStyle(_doc), _borderType);
                         if (border != null)
-                            return border.Val?.Value.Convert<BorderStyle>() ?? BorderStyle.None;
+							return border.Val.Value != null ? border.Val.Value.Convert<BorderStyle>() : BorderStyle.None;
                     }
                     // paragraph style
                     if (_ownerRun.Ancestors<W.Paragraph>().Any())
                     {
                         W.BorderType border = GetStyleBorderRecursively(_doc, _ownerRun.Ancestors<W.Paragraph>().First().GetStyle(_doc), _borderType);
                         if (border != null)
-                            return border.Val?.Value.Convert<BorderStyle>() ?? BorderStyle.None;
+							return border.Val.Value != null ? border.Val.Value.Convert<BorderStyle>() : BorderStyle.None;
                     }
                 }
                 else if (_ownerParagraph != null)
                 {
                     // direct formatting
                     if (BorderProperty != null)
-                        return BorderProperty.Val?.Value.Convert<BorderStyle>() ?? BorderStyle.None;
+						return BorderProperty.Val.Value!= null ? BorderProperty.Val.Value.Convert<BorderStyle>() : BorderStyle.None;
                     // paragraph style
                     W.BorderType border = GetStyleBorderRecursively(_doc, _ownerParagraph.GetStyle(_doc), _borderType);
                     if (border != null)
-                        return border.Val?.Value.Convert<BorderStyle>() ?? BorderStyle.None;
+						return border.Val.Value != null ? border.Val.Value.Convert<BorderStyle>() : BorderStyle.None;
                 }
                 else if (_ownerStyle != null)
                 {
                     W.BorderType border = GetStyleBorderRecursively(_doc, _ownerStyle, _borderType);
                     if (border != null)
-                        return border.Val?.Value.Convert<BorderStyle>() ?? BorderStyle.None;
+						return border.Val.Value != null ? border.Val.Value.Convert<BorderStyle>() : BorderStyle.None;
                 }
                 else if (_defaultRPr != null)
                 {
                     if (BorderProperty != null)
-                        return BorderProperty.Val?.Value.Convert<BorderStyle>() ?? BorderStyle.None;
+						return BorderProperty.Val.Value != null ? BorderProperty.Val.Value.Convert<BorderStyle>() : BorderStyle.None;
                 }
                 return BorderStyle.None;
             }
@@ -306,42 +306,42 @@ namespace Berry.Docx.Formatting
                 {
                     // direct formatting
                     if (BorderProperty != null)
-                        return BorderProperty.Color?.Value ?? ColorValue.Auto;
+                        return BorderProperty.Color.Value ?? ColorValue.Auto;
                     // character style
-                    if (_ownerRun?.RunProperties?.RunStyle != null)
+                    if (_ownerRun.RunProperties.RunStyle != null)
                     {
                         W.BorderType border = GetStyleBorderRecursively(_doc, _ownerRun.GetStyle(_doc), _borderType);
                         if (border != null)
-                            return border.Color?.Value ?? ColorValue.Auto;
+                            return border.Color.Value ?? ColorValue.Auto;
                     }
                     // paragraph style
                     if (_ownerRun.Ancestors<W.Paragraph>().Any())
                     {
                         W.BorderType border = GetStyleBorderRecursively(_doc, _ownerRun.Ancestors<W.Paragraph>().First().GetStyle(_doc), _borderType);
                         if (border != null)
-                            return border.Color?.Value ?? ColorValue.Auto;
+                            return border.Color.Value ?? ColorValue.Auto;
                     }
                 }
                 else if (_ownerParagraph != null)
                 {
                     // direct formatting
                     if (BorderProperty != null)
-                        return BorderProperty.Color?.Value ?? ColorValue.Auto;
+                        return BorderProperty.Color.Value ?? ColorValue.Auto;
                     // paragraph style
                     W.BorderType border = GetStyleBorderRecursively(_doc, _ownerParagraph.GetStyle(_doc), _borderType);
                     if (border != null)
-                        return border.Color?.Value ?? ColorValue.Auto;
+                        return border.Color.Value ?? ColorValue.Auto;
                 }
                 else if (_ownerStyle != null)
                 {
                     W.BorderType border = GetStyleBorderRecursively(_doc, _ownerStyle, _borderType);
                     if (border != null)
-                        return border.Color?.Value ?? ColorValue.Auto;
+                        return border.Color.Value ?? ColorValue.Auto;
                 }
                 else if (_defaultRPr != null)
                 {
                     if (BorderProperty != null)
-                        return BorderProperty.Color?.Value ?? ColorValue.Auto;
+                        return BorderProperty.Color.Value ?? ColorValue.Auto;
                 }
                 return ColorValue.Auto;
             }
@@ -374,7 +374,7 @@ namespace Berry.Docx.Formatting
                             return BorderProperty.Size.Value;
                     }
                     // character style
-                    if (_ownerRun?.RunProperties?.RunStyle != null)
+                    if (_ownerRun.RunProperties.RunStyle != null)
                     {
                         W.BorderType border = GetStyleBorderRecursively(_doc, _ownerRun.GetStyle(_doc), _borderType);
                         if (border != null)
@@ -486,45 +486,45 @@ namespace Berry.Docx.Formatting
             {
                 if (_ownerRun != null)
                 {
-                    return _ownerRun.RunProperties?.Border;
+                    return _ownerRun.RunProperties.Border;
                 }
                 else if (_ownerParagraph != null)
                 {
                     if (_borderType == null)
-                        return _ownerParagraph.ParagraphProperties?.ParagraphMarkRunProperties?.GetFirstChild<W.Border>();
+                        return _ownerParagraph.ParagraphProperties.ParagraphMarkRunProperties.GetFirstChild<W.Border>();
                     if (_borderType == BorderType.Top)
-                        return _ownerParagraph.ParagraphProperties?.ParagraphBorders?.TopBorder;
+                        return _ownerParagraph.ParagraphProperties.ParagraphBorders.TopBorder;
                     else if (_borderType == BorderType.Bottom)
-                        return _ownerParagraph.ParagraphProperties?.ParagraphBorders?.BottomBorder;
+                        return _ownerParagraph.ParagraphProperties.ParagraphBorders.BottomBorder;
                     else if (_borderType == BorderType.Left)
-                        return _ownerParagraph.ParagraphProperties?.ParagraphBorders?.LeftBorder;
+                        return _ownerParagraph.ParagraphProperties.ParagraphBorders.LeftBorder;
                     else if (_borderType == BorderType.Right)
-                        return _ownerParagraph.ParagraphProperties?.ParagraphBorders?.RightBorder;
+                        return _ownerParagraph.ParagraphProperties.ParagraphBorders.RightBorder;
                     else if (_borderType == BorderType.Between)
-                        return _ownerParagraph.ParagraphProperties?.ParagraphBorders?.BetweenBorder;
+                        return _ownerParagraph.ParagraphProperties.ParagraphBorders.BetweenBorder;
                     else if (_borderType == BorderType.Bar)
-                        return _ownerParagraph.ParagraphProperties?.ParagraphBorders?.BarBorder;
+                        return _ownerParagraph.ParagraphProperties.ParagraphBorders.BarBorder;
                 }
                 else if (_ownerStyle != null)
                 {
                     if (_borderType == null)
-                        return _ownerStyle.StyleRunProperties?.Border;
+                        return _ownerStyle.StyleRunProperties.Border;
                     if (_borderType == BorderType.Top)
-                        return _ownerStyle.StyleParagraphProperties?.ParagraphBorders?.TopBorder;
+                        return _ownerStyle.StyleParagraphProperties.ParagraphBorders.TopBorder;
                     else if (_borderType == BorderType.Bottom)
-                        return _ownerStyle.StyleParagraphProperties?.ParagraphBorders?.BottomBorder;
+                        return _ownerStyle.StyleParagraphProperties.ParagraphBorders.BottomBorder;
                     else if (_borderType == BorderType.Left)
-                        return _ownerStyle.StyleParagraphProperties?.ParagraphBorders?.LeftBorder;
+                        return _ownerStyle.StyleParagraphProperties.ParagraphBorders.LeftBorder;
                     else if (_borderType == BorderType.Right)
-                        return _ownerStyle.StyleParagraphProperties?.ParagraphBorders?.RightBorder;
+                        return _ownerStyle.StyleParagraphProperties.ParagraphBorders.RightBorder;
                     else if (_borderType == BorderType.Between)
-                        return _ownerStyle.StyleParagraphProperties?.ParagraphBorders?.BetweenBorder;
+                        return _ownerStyle.StyleParagraphProperties.ParagraphBorders.BetweenBorder;
                     else if (_borderType == BorderType.Bar)
-                        return _ownerStyle.StyleParagraphProperties?.ParagraphBorders?.BarBorder;
+                        return _ownerStyle.StyleParagraphProperties.ParagraphBorders.BarBorder;
                 }
                 else if (_defaultRPr != null)
                 {
-                    return _defaultRPr.RunPropertiesBaseStyle?.Border;
+                    return _defaultRPr.RunPropertiesBaseStyle.Border;
                 }
                 return null;
             }
@@ -615,21 +615,21 @@ namespace Berry.Docx.Formatting
             if (type != null)
             {
                 if (type == BorderType.Top)
-                    return style.StyleParagraphProperties?.ParagraphBorders?.TopBorder ?? baseBdr;
+                    return style.StyleParagraphProperties.ParagraphBorders.TopBorder ?? baseBdr;
                 else if (type == BorderType.Bottom)
-                    return style.StyleParagraphProperties?.ParagraphBorders?.BottomBorder ?? baseBdr;
+                    return style.StyleParagraphProperties.ParagraphBorders.BottomBorder ?? baseBdr;
                 else if (type == BorderType.Left)
-                    return style.StyleParagraphProperties?.ParagraphBorders?.LeftBorder ?? baseBdr;
+                    return style.StyleParagraphProperties.ParagraphBorders.LeftBorder ?? baseBdr;
                 else if (type == BorderType.Right)
-                    return style.StyleParagraphProperties?.ParagraphBorders?.RightBorder ?? baseBdr;
+                    return style.StyleParagraphProperties.ParagraphBorders.RightBorder ?? baseBdr;
                 else if (type == BorderType.Between)
-                    return style.StyleParagraphProperties?.ParagraphBorders?.BetweenBorder ?? baseBdr;
+                    return style.StyleParagraphProperties.ParagraphBorders.BetweenBorder ?? baseBdr;
                 else
-                    return style.StyleParagraphProperties?.ParagraphBorders?.BarBorder ?? baseBdr;
+                    return style.StyleParagraphProperties.ParagraphBorders.BarBorder ?? baseBdr;
             }
             else
             {
-                return style.StyleRunProperties?.Border ?? baseBdr;
+                return style.StyleRunProperties.Border ?? baseBdr;
             }
         }
         #endregion

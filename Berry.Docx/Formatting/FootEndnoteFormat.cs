@@ -34,20 +34,20 @@ namespace Berry.Docx.Formatting
                 {
                     W.FootnoteDocumentWideProperties fnPr =
                             _settings.XElement.Elements<W.FootnoteDocumentWideProperties>().FirstOrDefault();
-                    if (fnPr?.NumberingRestart?.Val != null)
+                    if (fnPr.NumberingRestart.Val != null)
                         return Convert(fnPr.NumberingRestart.Val);
                 }
                 else if(_noteType == NoteType.DocumentWideEndnote)
                 {
                     W.EndnoteDocumentWideProperties enPr =
                             _settings.XElement.Elements<W.EndnoteDocumentWideProperties>().FirstOrDefault();
-                    if (enPr?.NumberingRestart?.Val != null)
+                    if (enPr.NumberingRestart.Val != null)
                         return Convert(enPr.NumberingRestart.Val);
                 }
                 else if (_noteType == NoteType.SectionWideFootnote)
                 {
                     W.FootnoteProperties fnPr = _section.XElement.Elements<W.FootnoteProperties>().FirstOrDefault();
-                    if (fnPr?.NumberingRestart?.Val != null)
+                    if (fnPr.NumberingRestart.Val != null)
                     {
                         return Convert(fnPr.NumberingRestart.Val);
                     }
@@ -59,7 +59,7 @@ namespace Berry.Docx.Formatting
                 else
                 {
                     W.EndnoteProperties enPr = _section.XElement.Elements<W.EndnoteProperties>().FirstOrDefault();
-                    if (enPr?.NumberingRestart?.Val != null)
+                    if (enPr.NumberingRestart.Val != null)
                     {
                         return Convert(enPr.NumberingRestart.Val);
                     }

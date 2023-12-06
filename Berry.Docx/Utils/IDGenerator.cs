@@ -23,7 +23,7 @@ namespace Berry.Docx
                 ids.Add(part.RelationshipId.Remove(0, 3).ToInt());
             }
             ids.Sort();
-            return $"rId{ids.Last()+1}";
+            return "rId{ids.Last()+1}";
         }
 
         public static string GenerateStyleID(Document doc)
@@ -43,7 +43,7 @@ namespace Berry.Docx
         public static int GenerateNumId(Document doc)
         {
             List<int> ids = new List<int>();
-            Numbering numbering = doc.Package.MainDocumentPart.NumberingDefinitionsPart?.Numbering;
+            Numbering numbering = doc.Package.MainDocumentPart.NumberingDefinitionsPart.Numbering;
             if (numbering != null)
             {
                 foreach(NumberingInstance num in numbering.Elements<NumberingInstance>())
@@ -58,7 +58,7 @@ namespace Berry.Docx
         public static int GenerateAbstractNumId(Document doc)
         {
             List<int> ids = new List<int>();
-            Numbering numbering = doc.Package.MainDocumentPart.NumberingDefinitionsPart?.Numbering;
+            Numbering numbering = doc.Package.MainDocumentPart.NumberingDefinitionsPart.Numbering;
             if (numbering != null)
             {
                 foreach (AbstractNum num in numbering.Elements<AbstractNum>())
@@ -73,13 +73,13 @@ namespace Berry.Docx
         public static string GenerateBookmarkId(Document doc)
         {
             List<int> ids = new List<int>();
-            Body body = doc.Package.MainDocumentPart?.Document?.Body;
+            Body body = doc.Package.MainDocumentPart.Document.Body;
             if (body == null) return "0";
             foreach(var bookmark in body.Descendants<BookmarkStart>())
             {
-                if (!string.IsNullOrEmpty(bookmark.Id?.Value))
+                if (!string.IsNullOrEmpty(bookmark.Id.Value))
                 {
-                    int.TryParse(bookmark.Id.Value, out int id);
+                    int id; int.TryParse(bookmark.Id.Value, out id);
                     ids.Add(id);
                 }
             }

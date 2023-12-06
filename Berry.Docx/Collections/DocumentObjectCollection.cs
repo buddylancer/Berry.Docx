@@ -31,12 +31,12 @@ namespace Berry.Docx.Collections
         /// </summary>
         /// <param name="index">The zero-based index.</param>
         /// <returns>The DocumentObject at the specified index.</returns>
-        public DocumentObject this[int index] => _objects.ElementAt(index);
+        public DocumentObject this[int index] { get { return _objects.ElementAt(index); } }
 
         /// <summary>
         /// Gets the number of DocumentObjects in the collection.
         /// </summary>
-        public virtual int Count => _objects.Count();
+        public virtual int Count { get { return _objects.Count(); } }
         #endregion
 
         #region Public Methods

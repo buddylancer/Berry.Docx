@@ -142,7 +142,7 @@ namespace Berry.Docx.Formatting
                         return _directRHld.FontNameEastAsia;
                     }
                     // character style
-                    if (_ownerRun?.RunProperties?.RunStyle != null)
+                    if (_ownerRun.RunProperties.RunStyle != null)
                     {
                         RunPropertiesHolder rStyle = RunPropertiesHolder.GetRunStyleFormatRecursively(_doc, _ownerRun.GetStyle(_doc));
                         if (rStyle.FontNameEastAsia != null)
@@ -176,7 +176,7 @@ namespace Berry.Docx.Formatting
                 else if(_ownerStyle != null)
                 {
                     // table style
-                    if (_tblStyleHld?.FontNameEastAsia != null)
+                    if (_tblStyleHld.FontNameEastAsia != null)
                     {
                         return _tblStyleHld.FontNameEastAsia;
                     }
@@ -243,7 +243,7 @@ namespace Berry.Docx.Formatting
                         return _directRHld.FontNameAscii;
                     }
                     // character style
-                    if (_ownerRun?.RunProperties?.RunStyle != null)
+                    if (_ownerRun.RunProperties.RunStyle != null)
                     {
                         RunPropertiesHolder rStyle = RunPropertiesHolder.GetRunStyleFormatRecursively(_doc, _ownerRun.GetStyle(_doc));
                         if (rStyle.FontNameAscii != null)
@@ -277,7 +277,7 @@ namespace Berry.Docx.Formatting
                 else if (_ownerStyle != null)
                 {
                     // table style
-                    if (_tblStyleHld?.FontNameAscii != null)
+                    if (_tblStyleHld.FontNameAscii != null)
                     {
                         return _tblStyleHld.FontNameAscii;
                     }
@@ -343,7 +343,7 @@ namespace Berry.Docx.Formatting
                         return _directRHld.FontNameHighAnsi;
                     }
                     // character style
-                    if (_ownerRun?.RunProperties?.RunStyle != null)
+                    if (_ownerRun.RunProperties.RunStyle != null)
                     {
                         RunPropertiesHolder rStyle = RunPropertiesHolder.GetRunStyleFormatRecursively(_doc, _ownerRun.GetStyle(_doc));
                         if (rStyle.FontNameHighAnsi != null)
@@ -377,7 +377,7 @@ namespace Berry.Docx.Formatting
                 else if (_ownerStyle != null)
                 {
                     // table style
-                    if (_tblStyleHld?.FontNameHighAnsi != null)
+                    if (_tblStyleHld.FontNameHighAnsi != null)
                     {
                         return _tblStyleHld.FontNameHighAnsi;
                     }
@@ -443,7 +443,7 @@ namespace Berry.Docx.Formatting
                         return _directRHld.FontNameComplexScript;
                     }
                     // character style
-                    if (_ownerRun?.RunProperties?.RunStyle != null)
+                    if (_ownerRun.RunProperties.RunStyle != null)
                     {
                         RunPropertiesHolder rStyle = RunPropertiesHolder.GetRunStyleFormatRecursively(_doc, _ownerRun.GetStyle(_doc));
                         if (rStyle.FontNameComplexScript != null)
@@ -477,7 +477,7 @@ namespace Berry.Docx.Formatting
                 else if (_ownerStyle != null)
                 {
                     // table style
-                    if (_tblStyleHld?.FontNameComplexScript != null)
+                    if (_tblStyleHld.FontNameComplexScript != null)
                     {
                         return _tblStyleHld.FontNameComplexScript;
                     }
@@ -546,7 +546,7 @@ namespace Berry.Docx.Formatting
                 else if(_ownerStyle != null)
                 {
                     // table style
-                    if (_tblStyleHld?.FontTypeHint != null)
+                    if (_tblStyleHld.FontTypeHint != null)
                     {
                         return _tblStyleHld.FontTypeHint;
                     }
@@ -599,7 +599,7 @@ namespace Berry.Docx.Formatting
                         return _directRHld.FontSize;
                     }
                     // character style
-                    if (_ownerRun?.RunProperties?.RunStyle != null)
+                    if (_ownerRun.RunProperties.RunStyle != null)
                     {
                         RunPropertiesHolder rStyle = RunPropertiesHolder.GetRunStyleFormatRecursively(_doc, _ownerRun.GetStyle(_doc));
                         if (rStyle.FontSize != null)
@@ -632,7 +632,7 @@ namespace Berry.Docx.Formatting
                 }
                 else if (_ownerStyle != null)
                 {
-                    if (_tblStyleHld?.FontSize != null)
+                    if (_tblStyleHld.FontSize != null)
                     {
                         return _tblStyleHld.FontSize;
                     }
@@ -725,7 +725,7 @@ namespace Berry.Docx.Formatting
                         return _directRHld.FontSizeCs;
                     }
                     // character style
-                    if (_ownerRun?.RunProperties?.RunStyle != null)
+                    if (_ownerRun.RunProperties.RunStyle != null)
                     {
                         RunPropertiesHolder rStyle = RunPropertiesHolder.GetRunStyleFormatRecursively(_doc, _ownerRun.GetStyle(_doc));
                         if (rStyle.FontSizeCs != null)
@@ -758,7 +758,7 @@ namespace Berry.Docx.Formatting
                 }
                 else if (_ownerStyle != null)
                 {
-                    if (_tblStyleHld?.FontSizeCs != null)
+                    if (_tblStyleHld.FontSizeCs != null)
                     {
                         return _tblStyleHld.FontSizeCs;
                     }
@@ -827,7 +827,7 @@ namespace Berry.Docx.Formatting
                         return true;
                     // character & paragraph
                     BooleanValue cVal = null;
-                    if (_ownerRun?.RunProperties?.RunStyle != null)
+                    if (_ownerRun.RunProperties.RunStyle != null)
                     {
                         RunPropertiesHolder rStyle = RunPropertiesHolder.GetRunStyleFormatRecursively(_doc, _ownerRun.GetStyle(_doc));
                         cVal = rStyle.Bold;
@@ -864,7 +864,7 @@ namespace Berry.Docx.Formatting
                 }
                 else if (_ownerStyle != null)
                 {
-                    if (_tblStyleHld?.Bold != null)
+                    if (_tblStyleHld.Bold != null)
                     {
                         return _tblStyleHld.Bold;
                     }
@@ -933,7 +933,7 @@ namespace Berry.Docx.Formatting
                         return true;
                     // character & paragraph
                     BooleanValue cVal = null;
-                    if (_ownerRun?.RunProperties?.RunStyle != null)
+                    if (_ownerRun.RunProperties.RunStyle != null)
                     {
                         RunPropertiesHolder rStyle = RunPropertiesHolder.GetRunStyleFormatRecursively(_doc, _ownerRun.GetStyle(_doc));
                         cVal = rStyle.BoldCs;
@@ -970,7 +970,7 @@ namespace Berry.Docx.Formatting
                 }
                 else if (_ownerStyle != null)
                 {
-                    if (_tblStyleHld?.BoldCs != null)
+                    if (_tblStyleHld.BoldCs != null)
                     {
                         return _tblStyleHld.BoldCs;
                     }
@@ -1039,7 +1039,7 @@ namespace Berry.Docx.Formatting
                         return true;
                     // character & paragraph
                     BooleanValue cVal = null;
-                    if (_ownerRun?.RunProperties?.RunStyle != null)
+                    if (_ownerRun.RunProperties.RunStyle != null)
                     {
                         RunPropertiesHolder rStyle = RunPropertiesHolder.GetRunStyleFormatRecursively(_doc, _ownerRun.GetStyle(_doc));
                         cVal = rStyle.Italic;
@@ -1076,7 +1076,7 @@ namespace Berry.Docx.Formatting
                 }
                 else if (_ownerStyle != null)
                 {
-                    if (_tblStyleHld?.Italic != null)
+                    if (_tblStyleHld.Italic != null)
                     {
                         return _tblStyleHld.Italic;
                     }
@@ -1145,7 +1145,7 @@ namespace Berry.Docx.Formatting
                         return true;
                     // character & paragraph
                     BooleanValue cVal = null;
-                    if (_ownerRun?.RunProperties?.RunStyle != null)
+                    if (_ownerRun.RunProperties.RunStyle != null)
                     {
                         RunPropertiesHolder rStyle = RunPropertiesHolder.GetRunStyleFormatRecursively(_doc, _ownerRun.GetStyle(_doc));
                         cVal = rStyle.ItalicCs;
@@ -1182,7 +1182,7 @@ namespace Berry.Docx.Formatting
                 }
                 else if (_ownerStyle != null)
                 {
-                    if (_tblStyleHld?.ItalicCs != null)
+                    if (_tblStyleHld.ItalicCs != null)
                     {
                         return _tblStyleHld.ItalicCs;
                     }
@@ -1248,7 +1248,7 @@ namespace Berry.Docx.Formatting
                         return _directRHld.SubSuperScript;
                     }
                     // character style
-                    if (_ownerRun?.RunProperties?.RunStyle != null)
+                    if (_ownerRun.RunProperties.RunStyle != null)
                     {
                         RunPropertiesHolder rStyle = RunPropertiesHolder.GetRunStyleFormatRecursively(_doc, _ownerRun.GetStyle(_doc));
                         if (rStyle.SubSuperScript != null)
@@ -1281,7 +1281,7 @@ namespace Berry.Docx.Formatting
                 }
                 else if (_ownerStyle != null)
                 {
-                    if (_tblStyleHld?.SubSuperScript != null)
+                    if (_tblStyleHld.SubSuperScript != null)
                     {
                         return _tblStyleHld.SubSuperScript;
                     }
@@ -1347,7 +1347,7 @@ namespace Berry.Docx.Formatting
                         return _directRHld.UnderlineStyle;
                     }
                     // character style
-                    if (_ownerRun?.RunProperties?.RunStyle != null)
+                    if (_ownerRun.RunProperties.RunStyle != null)
                     {
                         RunPropertiesHolder rStyle = RunPropertiesHolder.GetRunStyleFormatRecursively(_doc, _ownerRun.GetStyle(_doc));
                         if (rStyle.UnderlineStyle != null)
@@ -1380,7 +1380,7 @@ namespace Berry.Docx.Formatting
                 }
                 else if (_ownerStyle != null)
                 {
-                    if (_tblStyleHld?.UnderlineStyle != null)
+                    if (_tblStyleHld.UnderlineStyle != null)
                     {
                         return _tblStyleHld.UnderlineStyle;
                     }
@@ -1446,7 +1446,7 @@ namespace Berry.Docx.Formatting
                         return _directRHld.TextColor;
                     }
                     // character style
-                    if (_ownerRun?.RunProperties?.RunStyle != null)
+                    if (_ownerRun.RunProperties.RunStyle != null)
                     {
                         RunPropertiesHolder rStyle = RunPropertiesHolder.GetRunStyleFormatRecursively(_doc, _ownerRun.GetStyle(_doc));
                         if (rStyle.TextColor != null)
@@ -1479,7 +1479,7 @@ namespace Berry.Docx.Formatting
                 }
                 else if (_ownerStyle != null)
                 {
-                    if (_tblStyleHld?.TextColor != null)
+                    if (_tblStyleHld.TextColor != null)
                     {
                         return _tblStyleHld.TextColor;
                     }
@@ -1548,7 +1548,7 @@ namespace Berry.Docx.Formatting
                         return _directRHld.CharacterScale;
                     }
                     // character style
-                    if (_ownerRun?.RunProperties?.RunStyle != null)
+                    if (_ownerRun.RunProperties.RunStyle != null)
                     {
                         RunPropertiesHolder rStyle = RunPropertiesHolder.GetRunStyleFormatRecursively(_doc, _ownerRun.GetStyle(_doc));
                         if (rStyle.CharacterScale != null)
@@ -1581,7 +1581,7 @@ namespace Berry.Docx.Formatting
                 }
                 else if (_ownerStyle != null)
                 {
-                    if (_tblStyleHld?.CharacterScale != null)
+                    if (_tblStyleHld.CharacterScale != null)
                     {
                         return _tblStyleHld.CharacterScale;
                     }
@@ -1648,7 +1648,7 @@ namespace Berry.Docx.Formatting
                         return _directRHld.CharacterSpacing;
                     }
                     // character style
-                    if (_ownerRun?.RunProperties?.RunStyle != null)
+                    if (_ownerRun.RunProperties.RunStyle != null)
                     {
                         RunPropertiesHolder rStyle = RunPropertiesHolder.GetRunStyleFormatRecursively(_doc, _ownerRun.GetStyle(_doc));
                         if (rStyle.CharacterSpacing != null)
@@ -1681,7 +1681,7 @@ namespace Berry.Docx.Formatting
                 }
                 else if (_ownerStyle != null)
                 {
-                    if (_tblStyleHld?.CharacterSpacing != null)
+                    if (_tblStyleHld.CharacterSpacing != null)
                     {
                         return _tblStyleHld.CharacterSpacing;
                     }
@@ -1748,7 +1748,7 @@ namespace Berry.Docx.Formatting
                         return _directRHld.Position;
                     }
                     // character style
-                    if (_ownerRun?.RunProperties?.RunStyle != null)
+                    if (_ownerRun.RunProperties.RunStyle != null)
                     {
                         RunPropertiesHolder rStyle = RunPropertiesHolder.GetRunStyleFormatRecursively(_doc, _ownerRun.GetStyle(_doc));
                         if (rStyle.Position != null)
@@ -1782,7 +1782,7 @@ namespace Berry.Docx.Formatting
                 }
                 else if (_ownerStyle != null)
                 {
-                    if (_tblStyleHld?.Position != null)
+                    if (_tblStyleHld.Position != null)
                     {
                         return _tblStyleHld.Position;
                     }
@@ -1851,7 +1851,7 @@ namespace Berry.Docx.Formatting
                         return true;
                     // character & paragraph
                     BooleanValue cVal = null;
-                    if (_ownerRun?.RunProperties?.RunStyle != null)
+                    if (_ownerRun.RunProperties.RunStyle != null)
                     {
                         RunPropertiesHolder rStyle = RunPropertiesHolder.GetRunStyleFormatRecursively(_doc, _ownerRun.GetStyle(_doc));
                         cVal = rStyle.IsHidden;
@@ -1888,7 +1888,7 @@ namespace Berry.Docx.Formatting
                 }
                 else if (_ownerStyle != null)
                 {
-                    if (_tblStyleHld?.IsHidden != null)
+                    if (_tblStyleHld.IsHidden != null)
                     {
                         return _tblStyleHld.IsHidden;
                     }
@@ -1954,7 +1954,7 @@ namespace Berry.Docx.Formatting
                         return _directRHld.SnapToGrid;
                     }
                     // character style
-                    if (_ownerRun?.RunProperties?.RunStyle != null)
+                    if (_ownerRun.RunProperties.RunStyle != null)
                     {
                         RunPropertiesHolder rStyle = RunPropertiesHolder.GetRunStyleFormatRecursively(_doc, _ownerRun.GetStyle(_doc));
                         if (rStyle.SnapToGrid != null)
@@ -1987,7 +1987,7 @@ namespace Berry.Docx.Formatting
                 }
                 else if (_ownerStyle != null)
                 {
-                    if (_tblStyleHld?.SnapToGrid != null)
+                    if (_tblStyleHld.SnapToGrid != null)
                     {
                         return _tblStyleHld.SnapToGrid;
                     }
@@ -2131,8 +2131,8 @@ namespace Berry.Docx.Formatting
         /// </summary>
         public Border Border
         {
-            get => _border;
-            internal set => _border = value;
+            get { return _border; }
+			internal set { _border = value; }
         }
         #endregion
 

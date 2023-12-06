@@ -37,7 +37,7 @@ namespace Berry.Docx.Formatting
         {
             get
             {
-                if (_level.LevelText?.Val == null) return string.Empty;
+                if (_level.LevelText.Val == null) return string.Empty;
                 return _level.LevelText.Val.Value.Replace("%", "");
             }
             set
@@ -63,7 +63,7 @@ namespace Berry.Docx.Formatting
         {
             get
             {
-                if (_level.NumberingFormat?.Val == null) return ListNumberStyle.Decimal;
+                if (_level.NumberingFormat.Val == null) return ListNumberStyle.Decimal;
                 return _level.NumberingFormat.Val.Value.Convert<ListNumberStyle>();
             }
             set
@@ -81,7 +81,7 @@ namespace Berry.Docx.Formatting
         {
             get
             {
-                if (_level.StartNumberingValue?.Val == null) return 0;
+                if (_level.StartNumberingValue.Val == null) return 0;
                 return _level.StartNumberingValue.Val.Value;
             }
             set
@@ -118,7 +118,7 @@ namespace Berry.Docx.Formatting
         {
             get
             {
-                if(_level.LevelJustification?.Val == null) return ListNumberAlignment.Left;
+                if(_level.LevelJustification.Val == null) return ListNumberAlignment.Left;
                 return _level.LevelJustification.Val.Value.Convert<ListNumberAlignment>();
             }
             set
@@ -138,7 +138,7 @@ namespace Berry.Docx.Formatting
         {
             get
             {
-                if (_level.LevelSuffix?.Val == null) return LevelSuffixCharacter.Tab;
+                if (_level.LevelSuffix.Val == null) return LevelSuffixCharacter.Tab;
                 return _level.LevelSuffix.Val.Value.Convert<LevelSuffixCharacter>();
             }
             set
@@ -172,7 +172,7 @@ namespace Berry.Docx.Formatting
         /// </summary>
         public float TextIndentation
         {
-            get => LeftIndent;
+            get { return LeftIndent; }
             set
             {
                 float temp = NumberPosition;
@@ -184,7 +184,7 @@ namespace Berry.Docx.Formatting
         /// <summary>
         /// Gets the character format.
         /// </summary>
-        public CharacterFormat CharacterFormat => new CharacterFormat(_doc, _level);
+        public CharacterFormat CharacterFormat { get { return new CharacterFormat(_doc, _level); } }
         #endregion
 
         #region Internal Properties
@@ -192,7 +192,7 @@ namespace Berry.Docx.Formatting
         {
             get
             {
-                if (_level.PreviousParagraphProperties?.Indentation == null) return 0;
+                if (_level.PreviousParagraphProperties.Indentation == null) return 0;
                 W.Indentation ind = _level.PreviousParagraphProperties.Indentation;
                 if (ind.Hanging != null) return -(ind.Hanging.Value.ToFloat() / 20);
                 if (ind.FirstLine != null) return ind.FirstLine.Value.ToFloat() / 20;
@@ -222,7 +222,7 @@ namespace Berry.Docx.Formatting
         {
             get
             {
-                if (_level.PreviousParagraphProperties?.Indentation == null) return 0;
+                if (_level.PreviousParagraphProperties.Indentation == null) return 0;
                 W.Indentation ind = _level.PreviousParagraphProperties.Indentation;
                 if (ind.Left != null) return ind.Left.Value.ToFloat() / 20;
                 return 0;
@@ -238,7 +238,7 @@ namespace Berry.Docx.Formatting
             }
         }
 
-        internal int ListLevelNumber => _level.LevelIndex + 1;
+        internal int ListLevelNumber { get { return _level.LevelIndex + 1; } }
 
         internal string ParagraphStyleId
         {

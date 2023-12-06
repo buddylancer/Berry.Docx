@@ -40,7 +40,7 @@ namespace Berry.Docx.Documents
         /// </summary>
         public int StartOutlineLevel
         {
-            get => _startLevel;
+            get { return _startLevel; }
             set
             {
                 if (_startLevel == value) return;
@@ -54,7 +54,7 @@ namespace Berry.Docx.Documents
         /// </summary>
         public int EndOutlineLevel
         {
-            get => _endLevel;
+            get { return _endLevel; }
             set
             {
                 if(_endLevel == value) return;
@@ -69,7 +69,7 @@ namespace Berry.Docx.Documents
         /// </summary>
         public bool UseHyperlink
         {
-            get => _useHyperlink;
+            get { return _useHyperlink; }
             set
             {
                 if(_useHyperlink == value) return;
@@ -84,7 +84,7 @@ namespace Berry.Docx.Documents
         /// </summary>
         public bool ShowPageNumber
         {
-            get => _showPageNum;
+            get { return _showPageNum; }
             set
             {
                 if(_showPageNum == value) return;
@@ -99,7 +99,7 @@ namespace Berry.Docx.Documents
         /// </summary>
         public bool PageNumberAlignRight
         {
-            get => _pageNumAlignRight;
+            get { return _pageNumAlignRight; }
             set
             {
                 if (_pageNumAlignRight == value) return;
@@ -113,8 +113,8 @@ namespace Berry.Docx.Documents
         /// </summary>
         public TabStopLeader TabStopLeader
         {
-            get => _tabStopLeader;
-            set => _tabStopLeader = value;
+            get { return _tabStopLeader; }
+			set { _tabStopLeader = value; }
         }
         #endregion
 
@@ -151,7 +151,7 @@ namespace Berry.Docx.Documents
                 List <TabStop> tabStops = new List<TabStop>();
                 // Add bookmark
                 string bookmarkId = Bookmark.CreateNewId(_doc);
-                string bookmarkName = $"_Toc{bookmarkId}";
+                string bookmarkName = "_Toc{bookmarkId}";
                 BookmarkStart bookmarkStart = new BookmarkStart(_doc, bookmarkId, bookmarkName);
                 BookmarkEnd bookmarkEnd = new BookmarkEnd(_doc, bookmarkId);
                 p.ChildItems.InsertAt(bookmarkStart, 0);
@@ -194,7 +194,7 @@ namespace Berry.Docx.Documents
                     }
                     // Add PAGEREF Field
                     var fieldBegin = new FieldChar(_doc, FieldCharType.Begin);
-                    var fieldCode = new FieldCode(_doc, $" PAGEREF {bookmarkName} \\h ");
+                    var fieldCode = new FieldCode(_doc, " PAGEREF {bookmarkName} \\h ");
                     var fieldSeparate = new FieldChar(_doc, FieldCharType.Separate);
                     var text = new TextRange(_doc, "1");
                     var fieldEnd = new FieldChar(_doc, FieldCharType.End);
@@ -281,7 +281,7 @@ namespace Berry.Docx.Documents
             // 生成域代码
             StringBuilder code = new StringBuilder();
             // 大纲级别
-            code.Append($" TOC \\o \"{_startLevel}-{_endLevel}\" ");
+            code.Append(" TOC \\o \"{_startLevel}-{_endLevel}\" ");
             // 不显示页码
             if (!_showPageNum) code.Append("\\n ");
             // 显示页码时页码不右对齐

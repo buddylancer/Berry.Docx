@@ -128,7 +128,7 @@ namespace Berry.Docx.Formatting
                 else if (_ownerStyle != null)
                 {
                     // table style
-                    if(_tblStyleHld?.Justification != null) return _tblStyleHld.Justification;
+                    if(_tblStyleHld.Justification != null) return _tblStyleHld.Justification;
                     // paragraph style inheritance
                     ParagraphPropertiesHolder inheritedStyle = ParagraphPropertiesHolder.GetParagraphStyleFormatRecursively(_doc, _ownerStyle);
                     if (inheritedStyle.Justification != null) return inheritedStyle.Justification;
@@ -178,7 +178,7 @@ namespace Berry.Docx.Formatting
                 else if (_ownerStyle != null)
                 {
                     // table style
-                    if (_tblStyleHld?.OutlineLevel != null) return _tblStyleHld.OutlineLevel;
+                    if (_tblStyleHld.OutlineLevel != null) return _tblStyleHld.OutlineLevel;
                     // paragraph style inheritance
                     ParagraphPropertiesHolder inheritedStyle = ParagraphPropertiesHolder.GetParagraphStyleFormatRecursively(_doc, _ownerStyle);
                     if (inheritedStyle.OutlineLevel != null) return inheritedStyle.OutlineLevel;
@@ -230,7 +230,7 @@ namespace Berry.Docx.Formatting
                 else if (_ownerStyle != null)
                 {
                     // table style
-                    if (_tblStyleHld?.MirrorIndents != null) return _tblStyleHld.MirrorIndents;
+                    if (_tblStyleHld.MirrorIndents != null) return _tblStyleHld.MirrorIndents;
                     // paragraph style inheritance
                     ParagraphPropertiesHolder inheritedStyle = ParagraphPropertiesHolder.GetParagraphStyleFormatRecursively(_doc, _ownerStyle);
                     if (inheritedStyle.MirrorIndents != null) return inheritedStyle.MirrorIndents;
@@ -280,7 +280,7 @@ namespace Berry.Docx.Formatting
                 else if (_ownerStyle != null)
                 {
                     // table style
-                    if (_tblStyleHld?.AdjustRightIndent != null) return _tblStyleHld.AdjustRightIndent;
+                    if (_tblStyleHld.AdjustRightIndent != null) return _tblStyleHld.AdjustRightIndent;
                     // paragraph style inheritance
                     ParagraphPropertiesHolder inheritedStyle = ParagraphPropertiesHolder.GetParagraphStyleFormatRecursively(_doc, _ownerStyle);
                     if (inheritedStyle.AdjustRightIndent != null) return inheritedStyle.AdjustRightIndent;
@@ -332,7 +332,7 @@ namespace Berry.Docx.Formatting
                 else if (_ownerStyle != null)
                 {
                     // table style
-                    if (_tblStyleHld?.BeforeAutoSpacing != null) return _tblStyleHld.BeforeAutoSpacing;
+                    if (_tblStyleHld.BeforeAutoSpacing != null) return _tblStyleHld.BeforeAutoSpacing;
                     // paragraph style inheritance
                     ParagraphPropertiesHolder inheritedStyle = ParagraphPropertiesHolder.GetParagraphStyleFormatRecursively(_doc, _ownerStyle);
                     if (inheritedStyle.BeforeAutoSpacing != null) return inheritedStyle.BeforeAutoSpacing;
@@ -383,7 +383,7 @@ namespace Berry.Docx.Formatting
                 else if (_ownerStyle != null)
                 {
                     // table style
-                    if (_tblStyleHld?.AfterAutoSpacing != null) return _tblStyleHld.AfterAutoSpacing;
+                    if (_tblStyleHld.AfterAutoSpacing != null) return _tblStyleHld.AfterAutoSpacing;
                     // paragraph style inheritance
                     ParagraphPropertiesHolder inheritedStyle = ParagraphPropertiesHolder.GetParagraphStyleFormatRecursively(_doc, _ownerStyle);
                     if (inheritedStyle.AfterAutoSpacing != null) return inheritedStyle.AfterAutoSpacing;
@@ -433,7 +433,7 @@ namespace Berry.Docx.Formatting
                 else if (_ownerStyle != null)
                 {
                     // table style
-                    if (_tblStyleHld?.ContextualSpacing != null) return _tblStyleHld.ContextualSpacing;
+                    if (_tblStyleHld.ContextualSpacing != null) return _tblStyleHld.ContextualSpacing;
                     // paragraph style inheritance
                     ParagraphPropertiesHolder inheritedStyle = ParagraphPropertiesHolder.GetParagraphStyleFormatRecursively(_doc, _ownerStyle);
                     if (inheritedStyle.ContextualSpacing != null) return inheritedStyle.ContextualSpacing;
@@ -483,7 +483,7 @@ namespace Berry.Docx.Formatting
                 else if (_ownerStyle != null)
                 {
                     // table style
-                    if (_tblStyleHld?.SnapToGrid != null) return _tblStyleHld.SnapToGrid;
+                    if (_tblStyleHld.SnapToGrid != null) return _tblStyleHld.SnapToGrid;
                     // paragraph style inheritance
                     ParagraphPropertiesHolder inheritedStyle = ParagraphPropertiesHolder.GetParagraphStyleFormatRecursively(_doc, _ownerStyle);
                     if (inheritedStyle.SnapToGrid != null) return inheritedStyle.SnapToGrid;
@@ -536,7 +536,7 @@ namespace Berry.Docx.Formatting
                 else if (_ownerStyle != null)
                 {
                     // table style
-                    if (_tblStyleHld?.WidowControl != null) return _tblStyleHld.WidowControl;
+                    if (_tblStyleHld.WidowControl != null) return _tblStyleHld.WidowControl;
                     // paragraph style inheritance
                     ParagraphPropertiesHolder inheritedStyle = ParagraphPropertiesHolder.GetParagraphStyleFormatRecursively(_doc, _ownerStyle);
                     if (inheritedStyle.WidowControl != null) return inheritedStyle.WidowControl;
@@ -586,7 +586,7 @@ namespace Berry.Docx.Formatting
                 else if (_ownerStyle != null)
                 {
                     // table style
-                    if (_tblStyleHld?.KeepNext != null) return _tblStyleHld.KeepNext;
+                    if (_tblStyleHld.KeepNext != null) return _tblStyleHld.KeepNext;
                     // paragraph style inheritance
                     ParagraphPropertiesHolder inheritedStyle = ParagraphPropertiesHolder.GetParagraphStyleFormatRecursively(_doc, _ownerStyle);
                     if (inheritedStyle.KeepNext != null) return inheritedStyle.KeepNext;
@@ -636,7 +636,7 @@ namespace Berry.Docx.Formatting
                 else if (_ownerStyle != null)
                 {
                     // table style
-                    if (_tblStyleHld?.KeepLines != null) return _tblStyleHld.KeepLines;
+                    if (_tblStyleHld.KeepLines != null) return _tblStyleHld.KeepLines;
                     // paragraph style inheritance
                     ParagraphPropertiesHolder inheritedStyle = ParagraphPropertiesHolder.GetParagraphStyleFormatRecursively(_doc, _ownerStyle);
                     if (inheritedStyle.KeepLines != null) return inheritedStyle.KeepLines;
@@ -686,7 +686,7 @@ namespace Berry.Docx.Formatting
                 else if (_ownerStyle != null)
                 {
                     // table style
-                    if (_tblStyleHld?.PageBreakBefore != null) return _tblStyleHld.PageBreakBefore;
+                    if (_tblStyleHld.PageBreakBefore != null) return _tblStyleHld.PageBreakBefore;
                     // paragraph style inheritance
                     ParagraphPropertiesHolder inheritedStyle = ParagraphPropertiesHolder.GetParagraphStyleFormatRecursively(_doc, _ownerStyle);
                     if (inheritedStyle.PageBreakBefore != null) return inheritedStyle.PageBreakBefore;
@@ -738,7 +738,7 @@ namespace Berry.Docx.Formatting
                 else if (_ownerStyle != null)
                 {
                     // table style
-                    if (_tblStyleHld?.SuppressLineNumbers != null) return _tblStyleHld.SuppressLineNumbers;
+                    if (_tblStyleHld.SuppressLineNumbers != null) return _tblStyleHld.SuppressLineNumbers;
                     // paragraph style inheritance
                     ParagraphPropertiesHolder inheritedStyle = ParagraphPropertiesHolder.GetParagraphStyleFormatRecursively(_doc, _ownerStyle);
                     if (inheritedStyle.SuppressLineNumbers != null) return inheritedStyle.SuppressLineNumbers;
@@ -788,7 +788,7 @@ namespace Berry.Docx.Formatting
                 else if (_ownerStyle != null)
                 {
                     // table style
-                    if (_tblStyleHld?.SuppressAutoHyphens != null) return _tblStyleHld.SuppressAutoHyphens;
+                    if (_tblStyleHld.SuppressAutoHyphens != null) return _tblStyleHld.SuppressAutoHyphens;
                     // paragraph style inheritance
                     ParagraphPropertiesHolder inheritedStyle = ParagraphPropertiesHolder.GetParagraphStyleFormatRecursively(_doc, _ownerStyle);
                     if (inheritedStyle.SuppressAutoHyphens != null) return inheritedStyle.SuppressAutoHyphens;
@@ -840,7 +840,7 @@ namespace Berry.Docx.Formatting
                 else if (_ownerStyle != null)
                 {
                     // table style
-                    if (_tblStyleHld?.Kinsoku != null) return _tblStyleHld.Kinsoku;
+                    if (_tblStyleHld.Kinsoku != null) return _tblStyleHld.Kinsoku;
                     // paragraph style inheritance
                     ParagraphPropertiesHolder inheritedStyle = ParagraphPropertiesHolder.GetParagraphStyleFormatRecursively(_doc, _ownerStyle);
                     if (inheritedStyle.Kinsoku != null) return inheritedStyle.Kinsoku;
@@ -890,7 +890,7 @@ namespace Berry.Docx.Formatting
                 else if (_ownerStyle != null)
                 {
                     // table style
-                    if (_tblStyleHld?.WordWrap != null) return _tblStyleHld.WordWrap;
+                    if (_tblStyleHld.WordWrap != null) return _tblStyleHld.WordWrap;
                     // paragraph style inheritance
                     ParagraphPropertiesHolder inheritedStyle = ParagraphPropertiesHolder.GetParagraphStyleFormatRecursively(_doc, _ownerStyle);
                     if (inheritedStyle.WordWrap != null) return inheritedStyle.WordWrap;
@@ -940,7 +940,7 @@ namespace Berry.Docx.Formatting
                 else if (_ownerStyle != null)
                 {
                     // table style
-                    if (_tblStyleHld?.OverflowPunctuation != null) return _tblStyleHld.OverflowPunctuation;
+                    if (_tblStyleHld.OverflowPunctuation != null) return _tblStyleHld.OverflowPunctuation;
                     // paragraph style inheritance
                     ParagraphPropertiesHolder inheritedStyle = ParagraphPropertiesHolder.GetParagraphStyleFormatRecursively(_doc, _ownerStyle);
                     if (inheritedStyle.OverflowPunctuation != null) return inheritedStyle.OverflowPunctuation;
@@ -992,7 +992,7 @@ namespace Berry.Docx.Formatting
                 else if (_ownerStyle != null)
                 {
                     // table style
-                    if (_tblStyleHld?.TopLinePunctuation != null) return _tblStyleHld.TopLinePunctuation;
+                    if (_tblStyleHld.TopLinePunctuation != null) return _tblStyleHld.TopLinePunctuation;
                     // paragraph style inheritance
                     ParagraphPropertiesHolder inheritedStyle = ParagraphPropertiesHolder.GetParagraphStyleFormatRecursively(_doc, _ownerStyle);
                     if (inheritedStyle.TopLinePunctuation != null) return inheritedStyle.TopLinePunctuation;
@@ -1042,7 +1042,7 @@ namespace Berry.Docx.Formatting
                 else if (_ownerStyle != null)
                 {
                     // table style
-                    if (_tblStyleHld?.AutoSpaceDE != null) return _tblStyleHld.AutoSpaceDE;
+                    if (_tblStyleHld.AutoSpaceDE != null) return _tblStyleHld.AutoSpaceDE;
                     // paragraph style inheritance
                     ParagraphPropertiesHolder inheritedStyle = ParagraphPropertiesHolder.GetParagraphStyleFormatRecursively(_doc, _ownerStyle);
                     if (inheritedStyle.AutoSpaceDE != null) return inheritedStyle.AutoSpaceDE;
@@ -1092,7 +1092,7 @@ namespace Berry.Docx.Formatting
                 else if (_ownerStyle != null)
                 {
                     // table style
-                    if (_tblStyleHld?.AutoSpaceDN != null) return _tblStyleHld.AutoSpaceDN;
+                    if (_tblStyleHld.AutoSpaceDN != null) return _tblStyleHld.AutoSpaceDN;
                     // paragraph style inheritance
                     ParagraphPropertiesHolder inheritedStyle = ParagraphPropertiesHolder.GetParagraphStyleFormatRecursively(_doc, _ownerStyle);
                     if (inheritedStyle.AutoSpaceDN != null) return inheritedStyle.AutoSpaceDN;
@@ -1142,7 +1142,7 @@ namespace Berry.Docx.Formatting
                 else if (_ownerStyle != null)
                 {
                     // table style
-                    if (_tblStyleHld?.TextAlignment != null) return _tblStyleHld.TextAlignment;
+                    if (_tblStyleHld.TextAlignment != null) return _tblStyleHld.TextAlignment;
                     // paragraph style inheritance
                     ParagraphPropertiesHolder inheritedStyle = ParagraphPropertiesHolder.GetParagraphStyleFormatRecursively(_doc, _ownerStyle);
                     if (inheritedStyle.TextAlignment != null) return inheritedStyle.TextAlignment;
@@ -1177,12 +1177,12 @@ namespace Berry.Docx.Formatting
         /// <summary>
         /// Gets paragraph borders.
         /// </summary>
-        public Borders Borders => _borders;
+        public Borders Borders { get { return _borders; } }
 
         /// <summary>
         /// Gets paragraph tab stops.
         /// </summary>
-        public TabStops Tabs => _tabs;
+        public TabStops Tabs { get { return _tabs; } }
         #endregion
 
         #endregion
@@ -1786,9 +1786,9 @@ namespace Berry.Docx.Formatting
         /// </summary>
         public void ClearFormatting()
         {
-            _directPHld?.ClearFormatting();
+            _directPHld.ClearFormatting();
             if(_tblStyleHld != null) _tblStyleHld.ClearFormatting();
-            else _directSHld?.ClearFormatting();
+            else _directSHld.ClearFormatting();
         }
 
         /// <summary>

@@ -66,32 +66,32 @@ namespace Berry.Docx.Formatting
         /// <summary>
         /// Gets the table cell top border.
         /// </summary>
-        public TableBorder Top => _top;
+        public TableBorder Top { get { return _top; } }
 
         /// <summary>
         /// Gets the table cell bottom border.
         /// </summary>
-        public TableBorder Bottom => _bottom;
+        public TableBorder Bottom { get { return _bottom; } }
 
         /// <summary>
         /// Gets the table cell left border.
         /// </summary>
-        public TableBorder Left => _left;
+        public TableBorder Left { get { return _left; } }
 
         /// <summary>
         /// Gets the table cell right border.
         /// </summary>
-        public TableBorder Right => _right;
+        public TableBorder Right { get { return _right; } }
 
         /// <summary>
         /// Gets the table cell inside horizontal border.
         /// </summary>
-        public TableBorder InsideH => _insideH;
+        public TableBorder InsideH { get { return _insideH; } }
 
         /// <summary>
         /// Gets the table cell inside vertical border.
         /// </summary>
-        public TableBorder InsideV => _insideV;
+        public TableBorder InsideV { get { return _insideV; } }
         #endregion
 
         #region Public Methods
@@ -102,24 +102,24 @@ namespace Berry.Docx.Formatting
         {
             if(_cell != null)
             {
-                _cell.XElement?.TableCellProperties?.TableCellBorders?.Remove();
+                _cell.XElement.TableCellProperties.TableCellBorders.Remove();
             }
             else if(_table != null)
             {
-                _table.XElement.GetFirstChild<W.TableProperties>()?.TableBorders?.Remove();
+                _table.XElement.GetFirstChild<W.TableProperties>().TableBorders.Remove();
             }
             else if(_style != null)
             {
                 if (_region == TableRegionType.WholeTable)
                 {
-                    _style.XElement.StyleTableProperties?.TableBorders?.Remove();
+                    _style.XElement.StyleTableProperties.TableBorders.Remove();
                 }
                 else
                 {
                     var type = _region.Convert<W.TableStyleOverrideValues>();
                     var tblStylePr = _style.XElement.Elements<W.TableStyleProperties>()
                         .Where(t => t.Type == type).FirstOrDefault();
-                    tblStylePr?.TableStyleConditionalFormattingTableCellProperties?.TableCellBorders?.Remove();
+                    tblStylePr.TableStyleConditionalFormattingTableCellProperties.TableCellBorders.Remove();
                 }
             }
         }
@@ -456,12 +456,12 @@ namespace Berry.Docx.Formatting
             get
             {
                 var border = TryGetBorder(_type);
-                if (border?.Val == null) return null;
+                if (border.Val == null) return null;
                 return border.Val.Value.Convert<BorderStyle>();
             }
             set
             {
-                CreateBorder(out W.BorderType border);
+                W.BorderType border; CreateBorder(out border);
                 border.Val = value.Val.Convert<W.BorderValues>();
             }
         }
@@ -472,7 +472,7 @@ namespace Berry.Docx.Formatting
             {
                 if(Style == null) return null;
                 var border = TryGetBorder(_type);
-                if (border?.Size == null) return null;
+                if (border.Size == null) return null;
                 if ((int)Style.Val < 27)
                     return border.Size.Value / 8.0F;
                 else
@@ -480,7 +480,7 @@ namespace Berry.Docx.Formatting
             }
             set
             {
-                CreateBorder(out W.BorderType border);
+                W.BorderType border; CreateBorder(out border);
                 if (Style == null || (int)Style.Val < 27)
                 {
                     if (value > 12)
@@ -512,12 +512,12 @@ namespace Berry.Docx.Formatting
             {
                 if (Style == null) return null;
                 var border = TryGetBorder(_type);
-                if (border?.Color == null) return null;
+                if (border.Color == null) return null;
                 return border.Color.Value;
             }
             set
             {
-                CreateBorder(out W.BorderType border);
+                W.BorderType border; CreateBorder(out border);
                 border.Color = value.ToString();
             }
         }
@@ -530,144 +530,144 @@ namespace Berry.Docx.Formatting
                 case TableBorderType.Left:
                     if (_cell != null)
                     {
-                        border = _cell.TableCellProperties?.TableCellBorders?.LeftBorder;
+                        border = _cell.TableCellProperties.TableCellBorders.LeftBorder;
                     }
                     else if (_table != null)
                     {
-                        border = _table.GetFirstChild<W.TableProperties>()?.TableBorders?.LeftBorder;
+                        border = _table.GetFirstChild<W.TableProperties>().TableBorders.LeftBorder;
                     }
                     else if (_style != null)
                     {
                         if (_styleRegion == TableRegionType.WholeTable)
                         {
-                            border = _style.StyleTableProperties?.TableBorders?.LeftBorder;
+                            border = _style.StyleTableProperties.TableBorders.LeftBorder;
                         }
                         else
                         {
                             W.TableStyleOverrideValues type = _styleRegion.Convert<W.TableStyleOverrideValues>();
                             W.TableStyleProperties tblStylePr = _style.Elements<W.TableStyleProperties>()
                                 .Where(t => t.Type == type).FirstOrDefault();
-                            border = tblStylePr?.TableStyleConditionalFormattingTableCellProperties?.TableCellBorders?.LeftBorder;
+                            border = tblStylePr.TableStyleConditionalFormattingTableCellProperties.TableCellBorders.LeftBorder;
                         }
                     }
                     break;
                 case TableBorderType.Top:
                     if (_cell != null)
                     {
-                        border = _cell.TableCellProperties?.TableCellBorders?.TopBorder;
+                        border = _cell.TableCellProperties.TableCellBorders.TopBorder;
                     }
                     else if (_table != null)
                     {
-                        border = _table.GetFirstChild<W.TableProperties>()?.TableBorders?.TopBorder;
+                        border = _table.GetFirstChild<W.TableProperties>().TableBorders.TopBorder;
                     }
                     else if (_style != null)
                     {
                         if (_styleRegion == TableRegionType.WholeTable)
                         {
-                            border = _style.StyleTableProperties?.TableBorders?.TopBorder;
+                            border = _style.StyleTableProperties.TableBorders.TopBorder;
                         }
                         else
                         {
                             W.TableStyleOverrideValues type = _styleRegion.Convert<W.TableStyleOverrideValues>();
                             W.TableStyleProperties tblStylePr = _style.Elements<W.TableStyleProperties>()
                                 .Where(t => t.Type == type).FirstOrDefault();
-                            border = tblStylePr?.TableStyleConditionalFormattingTableCellProperties?.TableCellBorders?.TopBorder;
+                            border = tblStylePr.TableStyleConditionalFormattingTableCellProperties.TableCellBorders.TopBorder;
                         }
                     }
                     break;
                 case TableBorderType.Right:
                     if (_cell != null)
                     {
-                        border = _cell.TableCellProperties?.TableCellBorders?.RightBorder;
+                        border = _cell.TableCellProperties.TableCellBorders.RightBorder;
                     }
                     else if (_table != null)
                     {
-                        border = _table.GetFirstChild<W.TableProperties>()?.TableBorders?.RightBorder;
+                        border = _table.GetFirstChild<W.TableProperties>().TableBorders.RightBorder;
                     }
                     else if (_style != null)
                     {
                         if (_styleRegion == TableRegionType.WholeTable)
                         {
-                            border = _style.StyleTableProperties?.TableBorders?.RightBorder;
+                            border = _style.StyleTableProperties.TableBorders.RightBorder;
                         }
                         else
                         {
                             W.TableStyleOverrideValues type = _styleRegion.Convert<W.TableStyleOverrideValues>();
                             W.TableStyleProperties tblStylePr = _style.Elements<W.TableStyleProperties>()
                                 .Where(t => t.Type == type).FirstOrDefault();
-                            border = tblStylePr?.TableStyleConditionalFormattingTableCellProperties?.TableCellBorders?.RightBorder;
+                            border = tblStylePr.TableStyleConditionalFormattingTableCellProperties.TableCellBorders.RightBorder;
                         }
                     }
                     break;
                 case TableBorderType.Bottom:
                     if (_cell != null)
                     {
-                        border = _cell.TableCellProperties?.TableCellBorders?.BottomBorder;
+                        border = _cell.TableCellProperties.TableCellBorders.BottomBorder;
                     }
                     else if (_table != null)
                     {
-                        border = _table.GetFirstChild<W.TableProperties>()?.TableBorders?.BottomBorder;
+                        border = _table.GetFirstChild<W.TableProperties>().TableBorders.BottomBorder;
                     }
                     else if (_style != null)
                     {
                         if (_styleRegion == TableRegionType.WholeTable)
                         {
-                            border = _style.StyleTableProperties?.TableBorders?.BottomBorder;
+                            border = _style.StyleTableProperties.TableBorders.BottomBorder;
                         }
                         else
                         {
                             W.TableStyleOverrideValues type = _styleRegion.Convert<W.TableStyleOverrideValues>();
                             W.TableStyleProperties tblStylePr = _style.Elements<W.TableStyleProperties>()
                                 .Where(t => t.Type == type).FirstOrDefault();
-                            border = tblStylePr?.TableStyleConditionalFormattingTableCellProperties?.TableCellBorders?.BottomBorder;
+                            border = tblStylePr.TableStyleConditionalFormattingTableCellProperties.TableCellBorders.BottomBorder;
                         }
                     }
                     break;
                 case TableBorderType.InsideH:
                     if (_cell != null)
                     {
-                        border = _cell.TableCellProperties?.TableCellBorders?.InsideHorizontalBorder;
+                        border = _cell.TableCellProperties.TableCellBorders.InsideHorizontalBorder;
                     }
                     else if (_table != null)
                     {
-                        border = _table.GetFirstChild<W.TableProperties>()?.TableBorders?.InsideHorizontalBorder;
+                        border = _table.GetFirstChild<W.TableProperties>().TableBorders.InsideHorizontalBorder;
                     }
                     else if (_style != null)
                     {
                         if (_styleRegion == TableRegionType.WholeTable)
                         {
-                            border = _style.StyleTableProperties?.TableBorders?.InsideHorizontalBorder;
+                            border = _style.StyleTableProperties.TableBorders.InsideHorizontalBorder;
                         }
                         else
                         {
                             W.TableStyleOverrideValues type = _styleRegion.Convert<W.TableStyleOverrideValues>();
                             W.TableStyleProperties tblStylePr = _style.Elements<W.TableStyleProperties>()
                                 .Where(t => t.Type == type).FirstOrDefault();
-                            border = tblStylePr?.TableStyleConditionalFormattingTableCellProperties?.TableCellBorders?.InsideHorizontalBorder;
+                            border = tblStylePr.TableStyleConditionalFormattingTableCellProperties.TableCellBorders.InsideHorizontalBorder;
                         }
                     }
                     break;
                 case TableBorderType.InsideV:
                     if (_cell != null)
                     {
-                        border = _cell.TableCellProperties?.TableCellBorders?.InsideVerticalBorder;
+                        border = _cell.TableCellProperties.TableCellBorders.InsideVerticalBorder;
                     }
                     else if (_table != null)
                     {
-                        border = _table.GetFirstChild<W.TableProperties>()?.TableBorders?.InsideVerticalBorder;
+                        border = _table.GetFirstChild<W.TableProperties>().TableBorders.InsideVerticalBorder;
                     }
                     else if (_style != null)
                     {
                         if (_styleRegion == TableRegionType.WholeTable)
                         {
-                            border = _style.StyleTableProperties?.TableBorders?.InsideVerticalBorder;
+                            border = _style.StyleTableProperties.TableBorders.InsideVerticalBorder;
                         }
                         else
                         {
                             W.TableStyleOverrideValues type = _styleRegion.Convert<W.TableStyleOverrideValues>();
                             W.TableStyleProperties tblStylePr = _style.Elements<W.TableStyleProperties>()
                                 .Where(t => t.Type == type).FirstOrDefault();
-                            border = tblStylePr?.TableStyleConditionalFormattingTableCellProperties?.TableCellBorders?.InsideVerticalBorder;
+                            border = tblStylePr.TableStyleConditionalFormattingTableCellProperties.TableCellBorders.InsideVerticalBorder;
                         }
                     }
                     break;

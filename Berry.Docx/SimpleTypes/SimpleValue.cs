@@ -6,7 +6,7 @@ namespace Berry.Docx
 {
     internal abstract class SimpleValue<T> : IEquatable<SimpleValue<T>> where T : struct
     {
-        private protected T _value = default(T);
+        /*private*/ protected T _value = default(T);
 
         public SimpleValue(){}
 
@@ -25,8 +25,8 @@ namespace Berry.Docx
         /// </summary>
         public T Val
         {
-            get => _value;
-            set => _value = value;
+            get { return _value; }
+            set { _value = value; }
         }
 
         public static implicit operator T(SimpleValue<T> value)

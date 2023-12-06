@@ -26,7 +26,7 @@ namespace Berry.Docx.Field
         /// <summary>
         /// Gets the type of the current object.
         /// </summary>
-        public override DocumentObjectType DocumentObjectType => DocumentObjectType.DeletedTextRange;
+        public override DocumentObjectType DocumentObjectType { get { return DocumentObjectType.DeletedTextRange; } }
 
         /// <summary>
         /// Gets the deleted text.
@@ -35,7 +35,7 @@ namespace Berry.Docx.Field
         {
             get
             {
-                return _text?.Text;
+                return _text.Text;
             }
         }
         #endregion

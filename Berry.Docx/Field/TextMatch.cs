@@ -41,7 +41,7 @@ namespace Berry.Docx.Field
         /// <summary>
         /// Gets the matched text.
         /// </summary>
-        public string Text => _text.Substring(_startCharPos, _endCharPos - _startCharPos + 1);
+        public string Text { get { return _text.Substring(_startCharPos, _endCharPos - _startCharPos + 1); } }
         #endregion
 
         #region Public Methods

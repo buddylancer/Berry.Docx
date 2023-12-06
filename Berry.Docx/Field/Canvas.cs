@@ -27,7 +27,7 @@ namespace Berry.Docx.Field
         #endregion
 
         #region Public Properties
-        public override DocumentObjectType DocumentObjectType => DocumentObjectType.Canvas;
+        public override DocumentObjectType DocumentObjectType { get { return DocumentObjectType.Canvas; } }
         #endregion
 
         #region Public Methods
@@ -39,7 +39,7 @@ namespace Berry.Docx.Field
         {
             W.Run run = new W.Run();
             W.Drawing drawing = (W.Drawing)_drawing.CloneNode(true);
-            run.RunProperties = _ownerRun.RunProperties?.CloneNode(true) as W.RunProperties; // copy format
+            run.RunProperties = _ownerRun.RunProperties.CloneNode(true) as W.RunProperties; // copy format
             run.AppendChild(drawing);
             return new Canvas(_doc, run, drawing);
         }

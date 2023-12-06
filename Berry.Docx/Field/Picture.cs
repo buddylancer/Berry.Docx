@@ -43,7 +43,7 @@ namespace Berry.Docx.Field
         /// <summary>
         /// Gets the type of the current object.
         /// </summary>
-        public override DocumentObjectType DocumentObjectType => DocumentObjectType.Picture;
+        public override DocumentObjectType DocumentObjectType { get { return DocumentObjectType.Picture; } }
 
         /// <summary>
         /// Gets the picture data stream.
@@ -56,7 +56,7 @@ namespace Berry.Docx.Field
                 if (blip == null) return null;
                 string rId = blip.Embed;
                 P.ImagePart imagePart = (P.ImagePart)_doc.Package.MainDocumentPart.GetPartById(rId);
-                return imagePart?.GetStream();
+                return imagePart.GetStream();
             }
         }
 
@@ -139,7 +139,7 @@ namespace Berry.Docx.Field
         public override DocumentObject Clone()
         {
             W.Run run = new W.Run();
-            run.RunProperties = _ownerRun.RunProperties?.CloneNode(true) as W.RunProperties; // copy format
+            run.RunProperties = _ownerRun.RunProperties.CloneNode(true) as W.RunProperties; // copy format
             if(_drawing != null)
             {
                 W.Drawing drawing = (W.Drawing)_drawing.CloneNode(true);

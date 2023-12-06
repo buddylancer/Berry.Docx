@@ -29,7 +29,7 @@ namespace Berry.Docx.Field
         /// <summary>
         /// Gets the type of the current object.
         /// </summary>
-        public override DocumentObjectType DocumentObjectType => DocumentObjectType.InsertedRange;
+        public override DocumentObjectType DocumentObjectType { get { return DocumentObjectType.InsertedRange; } }
 
         /// <summary>
         /// Gets the inserted text.

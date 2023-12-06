@@ -30,7 +30,7 @@ namespace Berry.Docx.Collections
         /// </summary>
         /// <param name="index">The zero-based index.</param>
         /// <returns>The table at the specified index.</returns>
-        public new Table this[int index] => (Table)base[index];
+        public new Table this[int index] { get { return (Table)base[index]; } }
         #endregion
 
         #region Public Methods

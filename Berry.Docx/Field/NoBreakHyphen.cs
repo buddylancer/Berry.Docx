@@ -46,15 +46,15 @@ namespace Berry.Docx.Field
         /// <summary>
         /// Gets the type of the current objetc.
         /// </summary>
-        public override DocumentObjectType DocumentObjectType => DocumentObjectType.NoBreakHyphen;
+        public override DocumentObjectType DocumentObjectType { get { return DocumentObjectType.NoBreakHyphen; } }
 
         /// <summary>
         /// The "-" character.
         /// </summary>
         public override string Text
         {
-            get => "-";
-            set => throw new NotSupportedException("The Hyphen Character does not support modifying.");
+            get { return "-"; }
+			set { throw new NotSupportedException("The Hyphen Character does not support modifying."); }
         }
         #endregion
 
@@ -67,7 +67,7 @@ namespace Berry.Docx.Field
         {
             W.Run run = new W.Run();
             W.NoBreakHyphen hyphen = (W.NoBreakHyphen)_hyphen.CloneNode(true);
-            run.RunProperties = _ownerRun.RunProperties?.CloneNode(true) as W.RunProperties; // copy format
+            run.RunProperties = _ownerRun.RunProperties.CloneNode(true) as W.RunProperties; // copy format
             run.AppendChild(hyphen);
             return new NoBreakHyphen(_doc, run, hyphen);
         }

@@ -17,7 +17,7 @@ namespace Berry.Docx
             string r = Convert.ToString(color.R, 16).PadLeft(2, '0').ToUpper();
             string g = Convert.ToString(color.G, 16).PadLeft(2, '0').ToUpper();
             string b = Convert.ToString(color.B, 16).PadLeft(2, '0').ToUpper();
-            return $"{r}{g}{b}";
+            return "{r}{g}{b}";
         }
 
         /// <summary>

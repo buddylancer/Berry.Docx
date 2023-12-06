@@ -51,27 +51,27 @@ namespace Berry.Docx.Formatting
         /// <summary>
         /// Gets the whole table format.
         /// </summary>
-        public TableRegionStyle WholeTable => _wholeTable;
+        public TableRegionStyle WholeTable { get { return _wholeTable; } }
 
         /// <summary>
         /// Gets the first row format of the current table.
         /// </summary>
-        public TableRegionStyle FirstRow => _firstRow;
+        public TableRegionStyle FirstRow { get { return _firstRow; } }
 
         /// <summary>
         /// Gets the last row format of the current table.
         /// </summary>
-        public TableRegionStyle LastRow => _lastRow;
+        public TableRegionStyle LastRow { get { return _lastRow; } }
 
         /// <summary>
         /// Gets the first column format of the current table.
         /// </summary>
-        public TableRegionStyle FirstColumn => _firstColumn;
+        public TableRegionStyle FirstColumn { get { return _firstColumn; } }
 
         /// <summary>
         /// Gets the last column format of the current table.
         /// </summary>
-        public TableRegionStyle LastColumn => _lastColumn;
+        public TableRegionStyle LastColumn { get { return _lastColumn; } }
         #endregion
 
         #region Public Methods

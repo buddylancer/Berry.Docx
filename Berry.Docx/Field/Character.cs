@@ -179,70 +179,70 @@ namespace Berry.Docx.Field
         /// <summary>
         /// The char value.
         /// </summary>
-        public char Val => _value;
+        public char Val { get { return _value; } }
 
         /// <summary>
         /// Gets the font family name.
         /// </summary>
-        public string FontName => _fontName;
+        public string FontName { get { return _fontName; } }
 
         /// <summary>
         /// Gets the font size.
         /// </summary>
-        public float FontSize => _fontSize;
+        public float FontSize { get { return _fontSize; } }
 
         /// <summary>
         /// Bold font weight.
         /// </summary>
-        public bool Bold => _bold;
+        public bool Bold { get { return _bold; } }
 
         /// <summary>
         /// Italic font style.
         /// </summary>
-        public bool Italic => _italic;
+        public bool Italic { get { return _italic; } }
 
         /// <summary>
         /// Gets the vertical positioning of the character.
         /// </summary>
-        public SubSuperScript SubSuperScript => _format.SubSuperScript;
+        public SubSuperScript SubSuperScript { get { return _format.SubSuperScript; } }
 
         /// <summary>
         /// Gets the underline style.
         /// </summary>
-        public UnderlineStyle UnderlineStyle => _format.UnderlineStyle;
+        public UnderlineStyle UnderlineStyle { get { return _format.UnderlineStyle; } }
 
         /// <summary>
         /// Gets the text color.
         /// </summary>
-        public ColorValue TextColor => _format.TextColor;
+        public ColorValue TextColor { get { return _format.TextColor; } }
 
         /// <summary>
         /// Gets the percent value of the normal character width that each 
         /// character shall be scaled.
         /// </summary>
-        public int CharacterScale => _format.CharacterScale;
+        public int CharacterScale { get { return _format.CharacterScale; } }
 
         /// <summary>
         /// Gets the amount (in points) of character pitch which shall be added 
         /// or removed after each character.
         /// </summary>
-        public float CharacterSpacing => _format.CharacterSpacing;
+        public float CharacterSpacing { get { return _format.CharacterSpacing; } }
 
         /// <summary>
         /// Gets the amount (in points) by which text shall be raised 
         /// or lowered in relation to the default baseline location.
         /// </summary>
-        public float Position => _format.Position;
+        public float Position { get { return _format.Position; } }
 
         /// <summary>
         /// Gets a value indicating whether the text is hidden.
         /// </summary>
-        public bool IsHidden => _format.IsHidden;
+        public bool IsHidden { get { return _format.IsHidden; } }
 
         /// <summary>
         /// Gets a value indicating whether snap to grid when document grid is defined.
         /// </summary>
-        public bool SnapToGrid => _format.SnapToGrid;
+        public bool SnapToGrid { get { return _format.SnapToGrid; } }
         #endregion
     }
 }

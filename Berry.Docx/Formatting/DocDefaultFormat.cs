@@ -19,8 +19,8 @@ namespace Berry.Docx.Formatting
             _cFormat = new CharacterFormat();
             _pFormat = new ParagraphFormat();
 
-            W.DocDefaults defaults = doc.Package.MainDocumentPart?.StyleDefinitionsPart?.Styles?.DocDefaults;
-            if (defaults?.RunPropertiesDefault != null)
+            W.DocDefaults defaults = doc.Package.MainDocumentPart.StyleDefinitionsPart.Styles.DocDefaults;
+            if (defaults.RunPropertiesDefault != null)
             {
                 RunPropertiesHolder rHld = new RunPropertiesHolder(doc.Package, defaults.RunPropertiesDefault);
 
@@ -45,7 +45,7 @@ namespace Berry.Docx.Formatting
 
                 _cFormat.Border = new Border(doc, defaults.RunPropertiesDefault);
             }
-            if (defaults?.ParagraphPropertiesDefault != null)
+            if (defaults.ParagraphPropertiesDefault != null)
             {
 
             }
@@ -54,11 +54,11 @@ namespace Berry.Docx.Formatting
         /// <summary>
         /// The default character format.
         /// </summary>
-        public CharacterFormat CharacterFormat => _cFormat;
+        public CharacterFormat CharacterFormat { get { return _cFormat; } }
 
         /// <summary>
         /// The default paragraph format.
         /// </summary>
-        public ParagraphFormat ParagraphFormat => _pFormat;
+        public ParagraphFormat ParagraphFormat { get { return _pFormat; } }
     }
 }

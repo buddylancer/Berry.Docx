@@ -21,7 +21,7 @@ namespace Berry.Docx.Field
             _oMathPara = oMath.Ancestors<M.Paragraph>().FirstOrDefault();
         }
 
-        public override DocumentObjectType DocumentObjectType => DocumentObjectType.OfficeMath;
+        public override DocumentObjectType DocumentObjectType { get { return DocumentObjectType.OfficeMath; } }
 
         public bool IsInline()
         {
@@ -34,7 +34,7 @@ namespace Berry.Docx.Field
             {
                 if(_oMathPara != null)
                 {
-                    M.Justification jc = _oMathPara.ParagraphProperties?.Justification;
+                    M.Justification jc = _oMathPara.ParagraphProperties.Justification;
                     if (jc != null)
                     {
                         if (jc.Val.Value == M.JustificationValues.Left)

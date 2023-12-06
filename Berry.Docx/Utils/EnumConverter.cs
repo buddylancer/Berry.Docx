@@ -24,7 +24,7 @@ namespace Berry.Docx
             }
             catch (Exception) 
             {
-                throw new InvalidCastException($"{typeof(T).FullName} does not have a field named \"{fieldname}\" !");
+                throw new InvalidCastException("{typeof(T).FullName} does not have a field named \"{fieldname}\" !");
             }
             return value != null ? (T)value : default(T);
         }

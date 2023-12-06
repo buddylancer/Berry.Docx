@@ -43,7 +43,7 @@ namespace Berry.Docx.Field
         /// <summary>
         /// Gets the type of the current object.
         /// </summary>
-        public override DocumentObjectType DocumentObjectType => DocumentObjectType.SimpleField;
+        public override DocumentObjectType DocumentObjectType { get { return DocumentObjectType.SimpleField; } }
 
         /// <summary>
         /// Gets or sets the field code.
@@ -76,7 +76,7 @@ namespace Berry.Docx.Field
             }
             set
             {
-                TextRange tr = ChildObjects.OfType<TextRange>().FirstOrDefault()?.Clone() as TextRange;
+                TextRange tr = ChildObjects.OfType<TextRange>().FirstOrDefault().Clone() as TextRange;
                 if (tr == null) tr = new TextRange(_doc);
                 ChildObjects.RemoveAll<TextRange>();
                 ChildObjects.Add(tr);

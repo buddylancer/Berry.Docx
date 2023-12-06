@@ -58,24 +58,24 @@ namespace Berry.Docx.Documents
         /// <summary>
         /// The DocumentObject type.
         /// </summary>
-        public override DocumentObjectType DocumentObjectType => DocumentObjectType.TableRow;
+        public override DocumentObjectType DocumentObjectType { get { return DocumentObjectType.TableRow; } }
 
         /// <summary>
         /// The child DocumentObjects.
         /// </summary>
-        public override DocumentObjectCollection ChildObjects => Cells;
+        public override DocumentObjectCollection ChildObjects { get { return Cells; } }
 
         /// <summary>
         /// Gets the table cell at the specified column.
         /// </summary>
         /// <param name="column">The zero-based index.</param>
         /// <returns>The table cell at the specified index.</returns>
-        public TableCell this[int column] => Cells[column];
+        public TableCell this[int column] { get { return Cells[column]; } }
 
         /// <summary>
         /// The table cells.
         /// </summary>
-        public TableCellCollection Cells => new TableCellCollection(_row, GetTableCells());
+        public TableCellCollection Cells { get { return new TableCellCollection(_row, GetTableCells()); } }
 
         /// <summary>
         /// Gets or sets the row height (int points).
@@ -84,15 +84,15 @@ namespace Berry.Docx.Documents
         {
             get
             {
-                W.TableRowHeight trHeight = _row.TableRowProperties?.GetFirstChild<W.TableRowHeight>();
-                if(trHeight?.Val == null) return 0f;
+                W.TableRowHeight trHeight = _row.TableRowProperties.GetFirstChild<W.TableRowHeight>();
+                if(trHeight.Val == null) return 0f;
                 return trHeight.Val.Value / 20.0f;
             }
             set
             {
                 if(value <= 0)
                 {
-                    if(_row.TableRowProperties?.GetFirstChild<W.TableRowHeight>() != null)
+                    if(_row.TableRowProperties.GetFirstChild<W.TableRowHeight>() != null)
                     {
                         W.TableRowHeight trH = _row.TableRowProperties.GetFirstChild<W.TableRowHeight>();
                         if (trH.HeightType == null) _row.TableRowProperties.RemoveChild(trH);
@@ -120,15 +120,15 @@ namespace Berry.Docx.Documents
         {
             get
             {
-                W.TableRowHeight trHeight = _row.TableRowProperties?.GetFirstChild<W.TableRowHeight>();
-                if (trHeight?.HeightType == null) return TableRowHeightType.Auto;
+                W.TableRowHeight trHeight = _row.TableRowProperties.GetFirstChild<W.TableRowHeight>();
+                if (trHeight.HeightType == null) return TableRowHeightType.Auto;
                 return trHeight.HeightType.Value.Convert<TableRowHeightType>();
             }
             set
             {
                 if (value == TableRowHeightType.Auto)
                 {
-                    if (_row.TableRowProperties?.GetFirstChild<W.TableRowHeight>() != null)
+                    if (_row.TableRowProperties.GetFirstChild<W.TableRowHeight>() != null)
                     {
                         W.TableRowHeight trH = _row.TableRowProperties.GetFirstChild<W.TableRowHeight>();
                         if (trH.Val == null) _row.TableRowProperties.RemoveChild(trH);
@@ -190,11 +190,11 @@ namespace Berry.Docx.Documents
         /// </summary>
         internal bool RepeatHeaderRow
         {
-            get => _tblPr.RepeatHeaderRow ?? false;
-            set => _tblPr.RepeatHeaderRow = value;
+            get { return _tblPr.RepeatHeaderRow ?? false; }
+			set { _tblPr.RepeatHeaderRow = value; }
         }
 
-        internal new W.TableRow XElement => _row;
+        internal new W.TableRow XElement { get { return _row; } }
         #endregion
 
         #region Public Methods

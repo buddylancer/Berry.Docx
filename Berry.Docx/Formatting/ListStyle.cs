@@ -40,7 +40,7 @@ namespace Berry.Docx.Formatting
         /// <summary>
         /// Gets the list levels collection of the current style.
         /// </summary>
-        public ListLevelCollection Levels => new ListLevelCollection(GetLevels());
+        public ListLevelCollection Levels { get { return new ListLevelCollection(GetLevels()); } }
         #endregion
 
         #region Public Methods
@@ -75,16 +75,16 @@ namespace Berry.Docx.Formatting
         #endregion
 
         #region Internal Properties
-        internal int NumberID => NumberingInstance.NumberID;
+        internal int NumberID { get { return NumberingInstance.NumberID; } }
 
-        internal int AbstractNumberID => _abstractNum.AbstractNumberId;
+        internal int AbstractNumberID { get { return _abstractNum.AbstractNumberId; } }
 
-        internal W.AbstractNum AbstractNum => _abstractNum;
+        internal W.AbstractNum AbstractNum { get { return _abstractNum; } }
         internal W.NumberingInstance NumberingInstance
         {
             get
             {
-                W.Numbering numbering = _doc.Package.MainDocumentPart.NumberingDefinitionsPart?.Numbering;
+                W.Numbering numbering = _doc.Package.MainDocumentPart.NumberingDefinitionsPart.Numbering;
                 if (numbering != null)
                 {
                     W.NumberingInstance num = numbering.Elements<W.NumberingInstance>()

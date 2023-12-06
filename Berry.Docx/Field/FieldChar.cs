@@ -44,7 +44,7 @@ namespace Berry.Docx.Field
         /// <summary>
         /// Gets the type of the current object.
         /// </summary>
-        public override DocumentObjectType DocumentObjectType => DocumentObjectType.FieldChar;
+        public override DocumentObjectType DocumentObjectType { get { return DocumentObjectType.FieldChar; } }
 
         /// <summary>
         /// Gets or sets the type of the FieldChar.
@@ -72,7 +72,7 @@ namespace Berry.Docx.Field
         {
             W.Run run = new W.Run();
             W.FieldChar fieldChar = (W.FieldChar)_fieldChar.CloneNode(true);
-            run.RunProperties = _ownerRun.RunProperties?.CloneNode(true) as W.RunProperties; // copy format
+            run.RunProperties = _ownerRun.RunProperties.CloneNode(true) as W.RunProperties; // copy format
             run.AppendChild(fieldChar);
             return new FieldChar(_doc, run, fieldChar);
         }

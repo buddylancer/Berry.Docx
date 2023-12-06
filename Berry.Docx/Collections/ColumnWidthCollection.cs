@@ -25,7 +25,7 @@ namespace Berry.Docx.Collections
         #endregion
 
         #region Public Properties
-        public ColumnWidth this[int index] => Columns().ElementAt(index);
+        public ColumnWidth this[int index] { get { return Columns().ElementAt(index); } }
         #endregion
 
 

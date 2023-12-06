@@ -42,7 +42,7 @@ namespace Berry.Docx
         #region Public Methods
         public override string ToString()
         {
-            return $"Spacing[{Val} {Unit}]";
+            return "Spacing[{Val} {Unit}]";
         }
         #endregion
 

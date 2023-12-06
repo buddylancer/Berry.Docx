@@ -33,8 +33,8 @@ namespace Berry.Docx.Documents
         /// </summary>
         public bool DifferentEvenAndOddHeaders
         {
-            get => _doc.Settings.EvenAndOddHeaders;
-            set => _doc.Settings.EvenAndOddHeaders = value;
+            get { return _doc.Settings.EvenAndOddHeaders; }
+            set { _doc.Settings.EvenAndOddHeaders = value; }
         }
 
         /// <summary>
@@ -64,7 +64,7 @@ namespace Berry.Docx.Documents
         /// <summary>
         /// Gets the default header of the section. This is equivalent to <see cref="OddHeader"/>.
         /// </summary>
-        public HeaderFooter Header => OddHeader;
+        public HeaderFooter Header { get { return OddHeader; } }
 
         /// <summary>
         /// Gets the first page header of the section.
@@ -82,7 +82,7 @@ namespace Berry.Docx.Documents
                 else
                 {
                     if (_section.XElement.Elements<W.TitlePage>().Any()
-                        && _section.PreviousSection?.HeaderFooters.FirstPageHeader != null)
+                        && _section.PreviousSection.HeaderFooters.FirstPageHeader != null)
                     {
                         return new HeaderFooter(_doc, _section, _section.PreviousSection.HeaderFooters.FirstPageHeader);
                     }
@@ -106,7 +106,7 @@ namespace Berry.Docx.Documents
                 }
                 else
                 {
-                    if(_section.PreviousSection?.HeaderFooters.OddHeader != null)
+                    if(_section.PreviousSection.HeaderFooters.OddHeader != null)
                         return new HeaderFooter(_doc, _section, _section.PreviousSection.HeaderFooters.OddHeader);
                     return null;
                 }
@@ -129,7 +129,7 @@ namespace Berry.Docx.Documents
                 else
                 {
                     if (_doc.Settings.EvenAndOddHeaders
-                        && _section.PreviousSection?.HeaderFooters.EvenHeader != null)
+                        && _section.PreviousSection.HeaderFooters.EvenHeader != null)
                     {
                         return new HeaderFooter(_doc, _section, _section.PreviousSection.HeaderFooters.EvenHeader);
                     }
@@ -141,7 +141,7 @@ namespace Berry.Docx.Documents
         /// <summary>
         /// Gets the default footer of the section. This is equivalent to <see cref="OddFooter"/>.
         /// </summary>
-        public HeaderFooter Footer => OddFooter;
+        public HeaderFooter Footer { get { return OddFooter; } }
 
         /// <summary>
         /// Gets the first page footer of the section.
@@ -159,7 +159,7 @@ namespace Berry.Docx.Documents
                 else
                 {
                     if (_section.XElement.Elements<W.TitlePage>().Any()
-                        && _section.PreviousSection?.HeaderFooters.FirstPageFooter != null)
+                        && _section.PreviousSection.HeaderFooters.FirstPageFooter != null)
                     {
                         return new HeaderFooter(_doc, _section, _section.PreviousSection.HeaderFooters.FirstPageFooter);
                     }
@@ -183,7 +183,7 @@ namespace Berry.Docx.Documents
                 }
                 else
                 {
-                    if (_section.PreviousSection?.HeaderFooters.OddFooter != null)
+                    if (_section.PreviousSection.HeaderFooters.OddFooter != null)
                         return new HeaderFooter(_doc, _section, _section.PreviousSection.HeaderFooters.OddFooter);
                     return null;
                 }
@@ -206,7 +206,7 @@ namespace Berry.Docx.Documents
                 else
                 {
                     if (_doc.Settings.EvenAndOddHeaders
-                        && _section.PreviousSection?.HeaderFooters.EvenFooter != null)
+                        && _section.PreviousSection.HeaderFooters.EvenFooter != null)
                     {
                         return new HeaderFooter(_doc, _section, _section.PreviousSection.HeaderFooters.EvenFooter);
                     }
@@ -372,12 +372,12 @@ namespace Berry.Docx.Documents
         /// </summary>
         public void Remove()
         {
-            FirstPageHeader?.Remove();
-            OddHeader?.Remove();
-            EvenHeader?.Remove();
-            FirstPageFooter?.Remove();
-            OddFooter?.Remove();
-            EvenFooter?.Remove();
+            FirstPageHeader.Remove();
+            OddHeader.Remove();
+            EvenHeader.Remove();
+            FirstPageFooter.Remove();
+            OddFooter.Remove();
+            EvenFooter.Remove();
         }
         #endregion
     }

@@ -19,7 +19,7 @@ namespace Berry.Docx.Documents
             _column = new W.Column() { Width = "0", Space = "0" };
         }
 
-        internal W.Column XElement => _column;
+        internal W.Column XElement { get { return _column; } }
         public float Width
         {
             get

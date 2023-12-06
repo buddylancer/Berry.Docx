@@ -32,12 +32,12 @@ namespace Berry.Docx.Collections
         /// </summary>
         /// <param name="index">The zero-based index.</param>
         /// <returns>The style at the specified index in the current collection.</returns>
-        public Style this[int index] => _styles.ElementAt(index);
+        public Style this[int index] { get { return _styles.ElementAt(index); } }
 
         /// <summary>
         /// Gets the number of styles in the collection.
         /// </summary>
-        public int Count => _styles.Count();
+        public int Count { get { return _styles.Count(); } }
         #endregion
 
         #region Public Methods

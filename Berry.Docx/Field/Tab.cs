@@ -44,15 +44,15 @@ namespace Berry.Docx.Field
         /// <summary>
         /// Gets the type of the current objetc.
         /// </summary>
-        public override DocumentObjectType DocumentObjectType => DocumentObjectType.Tab;
+        public override DocumentObjectType DocumentObjectType { get { return DocumentObjectType.Tab; } }
 
         /// <summary>
         /// The "\t" character.
         /// </summary>
         public override string Text
         {
-            get => "\t";
-            set => throw new NotSupportedException("The Tab Character does not support modifying.");
+            get { return "\t"; }
+			set { throw new NotSupportedException("The Tab Character does not support modifying."); }
         }
         #endregion
 
@@ -65,7 +65,7 @@ namespace Berry.Docx.Field
         {
             W.Run run = new W.Run();
             W.TabChar tab = (W.TabChar)_tab.CloneNode(true);
-            run.RunProperties = _ownerRun.RunProperties?.CloneNode(true) as W.RunProperties; // copy format
+            run.RunProperties = _ownerRun.RunProperties.CloneNode(true) as W.RunProperties; // copy format
             run.AppendChild(tab);
             return new Tab(_doc, run, tab);
         }

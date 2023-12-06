@@ -50,9 +50,9 @@ namespace Berry.Docx
         public override string ToString()
         {
             if (Type != SpecialIndentationType.None)
-                return $"SpecialIndentation[{Type}: {Val} {Unit}]";
+                return "SpecialIndentation[{Type}: {Val} {Unit}]";
             else
-                return $"SpecialIndentation[{Type}]";
+                return "SpecialIndentation[{Type}]";
         }
         #endregion
 

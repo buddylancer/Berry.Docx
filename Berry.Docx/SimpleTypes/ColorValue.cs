@@ -60,8 +60,8 @@ namespace Berry.Docx
         /// </summary>
         public bool IsAuto
         {
-            get => _auto;
-            set => _auto = value;
+            get { return _auto; }
+            set { _auto = value; }
         }
 
         /// <summary>
@@ -69,8 +69,8 @@ namespace Berry.Docx
         /// </summary>
         public Color Val
         {
-            get => _color;
-            set => _color = value;
+            get { return _color; }
+			set { _color = value; }
         }
         #endregion
 

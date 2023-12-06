@@ -78,7 +78,7 @@ namespace Berry.Docx.Field
         /// <summary>
         /// Gets the character format.
         /// </summary>
-        public virtual CharacterFormat CharacterFormat => _cFmt;
+        public virtual CharacterFormat CharacterFormat { get { return _cFmt; } }
 
         /// <summary>
         /// Gets the object that immediately precedes the current object. 
@@ -315,9 +315,9 @@ namespace Berry.Docx.Field
         #endregion
 
         #region Internal Properties
-        internal bool InsideRun => _ownerRun != null;
+        internal bool InsideRun { get { return _ownerRun != null; } }
 
-        internal W.Run OwnerRun => _ownerRun;
+        internal W.Run OwnerRun { get { return _ownerRun; } }
         #endregion
     }
 }

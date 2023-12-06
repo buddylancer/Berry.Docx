@@ -30,7 +30,7 @@ namespace Berry.Docx.Documents
         #region Public Properties
 
         
-        public Column this[int index] => GetColumns().ElementAt(index);
+        public Column this[int index] { get { return GetColumns().ElementAt(index); } }
 
         public bool EqualColumnWidth
         {

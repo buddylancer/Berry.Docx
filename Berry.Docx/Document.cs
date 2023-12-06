@@ -151,7 +151,7 @@ namespace Berry.Docx
         /// Return a collection of <see cref="Section"/> that supports traversal in the document. 
         /// <para>返回当前文档中所有节的可遍历集合</para>
         /// </summary>
-        public SectionCollection Sections => new SectionCollection(SectionsPrivate());
+        public SectionCollection Sections{ get { return new SectionCollection(SectionsPrivate()); } }
 
         /// <summary>
         /// Return the last section of the document.
@@ -169,25 +169,25 @@ namespace Berry.Docx
         /// Gets a collection of all <see cref="Paragraph"/> in the current document.
         /// <para>返回当前文档中所有段落的集合。</para>
         /// </summary>
-        public ParagraphCollection Paragraphs => new ParagraphCollection(Package.GetBody(), GetAllParagraphs());
+        public ParagraphCollection Paragraphs{ get { return new ParagraphCollection(Package.GetBody(), GetAllParagraphs()); } }
 
         /// <summary>
         /// Gets a collection of all <see cref="Table"/> in the current document.
         /// <para>返回当前文档中所有表格的集合。</para>
         /// </summary>
-        public TableCollection Tables => new TableCollection(Package.GetBody(), GetAllTables());
+        public TableCollection Tables{ get { return new TableCollection(Package.GetBody(), GetAllTables()); } }
 
         /// <summary>
         /// Return a collection of <see cref="Style"/> that supports traversal in the document. 
         /// <para>返回当前文档中所有样式的可遍历集合。</para>
         /// </summary>
-        public StyleCollection Styles => new StyleCollection(this);
+        public StyleCollection Styles{ get { return new StyleCollection(this); } }
 
         /// <summary>
         /// Return a collection of <see cref="ListStyle"/> that supports traversal in the document. 
         /// <para>返回当前文档中所有列表样式的可遍历集合。</para>
         /// </summary>
-        public ListStyleCollection ListStyles => new ListStyleCollection(this);
+        public ListStyleCollection ListStyles{ get { return new ListStyleCollection(this); } }
 
         /// <summary>
         /// Return a collection of <see cref="Footnote"/> in the document.
@@ -235,24 +235,24 @@ namespace Berry.Docx
         /// Returns the footnote format in the document.
         /// <para>返回当前文档的脚注格式。</para>
         /// </summary>
-        public FootEndnoteFormat FootnoteFormat => _settings.FootnoteFormt;
+        public FootEndnoteFormat FootnoteFormat { get { return _settings.FootnoteFormt; } }
 
         /// <summary>
         /// Returns the endnote format in the document.
         /// <para>返回当前文档的尾注格式。</para>
         /// </summary>
-        public FootEndnoteFormat EndnoteFormat => _settings.EndnoteFormt;
+        public FootEndnoteFormat EndnoteFormat { get { return _settings.EndnoteFormt; } }
 
         /// <summary>
         /// Returns all of the bookmarks in the document.
         /// </summary>
-        public BookmarkCollection Bookmarks => new BookmarkCollection(this);
+        public BookmarkCollection Bookmarks { get { return new BookmarkCollection(this); } }
 
         /// <summary>
         /// Returns the document default paragraph and character formats.
         /// <para>返回文档默认段落和字符格式。</para>
         /// </summary>
-        public DocDefaultFormat DefaultFormat => new DocDefaultFormat(this);
+        public DocDefaultFormat DefaultFormat { get { return new DocDefaultFormat(this); } }
 #endregion
 
         #region Public Methods
@@ -393,8 +393,8 @@ namespace Berry.Docx
         public void Dispose()
         {
             if(_closeStream)
-                _stream?.Close();
-            _doc?.Close();
+                _stream.Close();
+            _doc.Close();
         }
 
         /// <summary>
@@ -440,13 +440,13 @@ namespace Berry.Docx
         #endregion
 
         #region Internal Properties
-        internal P.WordprocessingDocument Package => _doc;
+        internal P.WordprocessingDocument Package { get { return _doc; } }
 
         /// <summary>
         /// Returns document settings.
         /// <para>返回文档 settings。</para>
         /// </summary>
-        internal Settings Settings { get => _settings; }
+		internal Settings Settings { get { return _settings; } }
         #endregion
 
         #region Private Methods

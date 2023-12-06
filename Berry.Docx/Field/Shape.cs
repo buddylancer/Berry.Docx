@@ -30,7 +30,7 @@ namespace Berry.Docx.Field
         /// <summary>
         /// Gets the type of the current object.
         /// </summary>
-        public override DocumentObjectType DocumentObjectType => DocumentObjectType.Shape;
+        public override DocumentObjectType DocumentObjectType { get { return DocumentObjectType.Shape; } }
         #endregion
 
         #region Public Methods
@@ -42,7 +42,7 @@ namespace Berry.Docx.Field
         {
             W.Run run = new W.Run();
             W.Drawing drawing = (W.Drawing)_drawing.CloneNode(true);
-            run.RunProperties = _ownerRun.RunProperties?.CloneNode(true) as W.RunProperties; // copy format
+            run.RunProperties = _ownerRun.RunProperties.CloneNode(true) as W.RunProperties; // copy format
             run.AppendChild(drawing);
             return new Shape(_doc, run, drawing);
         }

@@ -1,0 +1,29 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Berry.Docx.Visual", "Berry.Docx.Visual\Berry.Docx.Visual.csproj", "{5A74C75D-E155-4513-B07F-F86A80BC53C0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Berry.Docx.Old", "Berry.Docx\Berry.Docx.Old.csproj", "{42E80F35-2276-4BD5-BF48-A542050453EA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5A74C75D-E155-4513-B07F-F86A80BC53C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A74C75D-E155-4513-B07F-F86A80BC53C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A74C75D-E155-4513-B07F-F86A80BC53C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A74C75D-E155-4513-B07F-F86A80BC53C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{42E80F35-2276-4BD5-BF48-A542050453EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{42E80F35-2276-4BD5-BF48-A542050453EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{42E80F35-2276-4BD5-BF48-A542050453EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{42E80F35-2276-4BD5-BF48-A542050453EA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C25A57C5-B47A-48B4-BA15-53A462F4E25C}
+	EndGlobalSection
+EndGlobal

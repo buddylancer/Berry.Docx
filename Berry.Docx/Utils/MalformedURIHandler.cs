@@ -14,7 +14,7 @@ namespace Berry.Docx.Utils
         public override string Rewrite(Uri partUri, string id, string uri)
         {
             // return the correct hyperlink
-            return Regex.Match(uri, @"https?://(\w+\.?)+")?.Value;
+            return Regex.Match(uri, @"https?://(\w+\.?)+").Value;
         }
     }
 }

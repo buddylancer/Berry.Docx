@@ -28,12 +28,12 @@ namespace Berry.Docx.Collections
         /// </summary>
         /// <param name="index">The zero-based index.</param>
         /// <returns>The section at the specified index in the current collection.</returns>
-        public Section this[int index] => _sections.ElementAt(index);
+        public Section this[int index] { get { return _sections.ElementAt(index); } }
 
         /// <summary>
         /// Gets the number of sections in the collection.
         /// </summary>
-        public int Count => _sections.Count();
+        public int Count { get { return _sections.Count(); } }
         #endregion
 
         #region Public Methods
@@ -42,7 +42,7 @@ namespace Berry.Docx.Collections
         /// </summary> 
         /// <param name="section">The specified section.</param>
         /// <returns>The zero-based index of the first occurrence of section within the entire collection,if found; otherwise, -1.</returns>
-        public int IndexOf(Section section) => _sections.ToList().IndexOf(section);
+        public int IndexOf(Section section) { return _sections.ToList().IndexOf(section); }
 
         /// <summary>
         /// Removes all sections of the current document.

@@ -37,15 +37,15 @@ namespace Berry.Docx.Field
         /// <summary>
         /// Gets the type of the current document object.
         /// </summary>
-        public override DocumentObjectType DocumentObjectType => DocumentObjectType.BookmarkEnd;
+        public override DocumentObjectType DocumentObjectType { get { return DocumentObjectType.BookmarkEnd; } }
 
         /// <summary>
         /// Gets or sets the unique identifier for the bookmark. The id should be the same with the previous <see cref="BookmarkStart"/>.
         /// </summary>
         public string Id
         {
-            get => _bookmarkEnd.Id;
-            set => _bookmarkEnd.Id = value;
+            get { return _bookmarkEnd.Id; }
+			set { _bookmarkEnd.Id = value; }
         }
         #endregion
     }

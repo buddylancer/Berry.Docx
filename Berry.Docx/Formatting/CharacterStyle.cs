@@ -34,7 +34,7 @@ namespace Berry.Docx.Formatting
         /// <summary>
         /// Gets the CharacterFormat of the style.
         /// </summary>
-        public CharacterFormat CharacterFormat => _cFormat;
+        public CharacterFormat CharacterFormat { get { return _cFormat; } }
 
         /// <summary>
         /// Gets or sets the base style.
@@ -42,8 +42,8 @@ namespace Berry.Docx.Formatting
         /// </summary>
         public new CharacterStyle BaseStyle
         {
-            get => base.BaseStyle as CharacterStyle;
-            set => base.BaseStyle = value;
+            get { return base.BaseStyle as CharacterStyle; }
+			set { base.BaseStyle = value; }
         }
         #endregion
 

@@ -13,7 +13,7 @@ namespace Berry.Docx.Documents
             _docPartObject = new DocPartObject(doc, sdtPr);
         }
 
-        public DocPartObject DocPart => _docPartObject;
+        public DocPartObject DocPart { get { return _docPartObject; } }
     }
 
     public class DocPartObject
@@ -28,7 +28,7 @@ namespace Berry.Docx.Documents
         {
             get
             {
-                var gallery = _sdtPr.GetFirstChild<W.SdtContentDocPartObject>()?.GetFirstChild<W.DocPartGallery>();
+                var gallery = _sdtPr.GetFirstChild<W.SdtContentDocPartObject>().GetFirstChild<W.DocPartGallery>();
                 if(gallery == null) return null;
                 return gallery.Val;
             }

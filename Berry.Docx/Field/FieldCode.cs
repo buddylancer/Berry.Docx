@@ -51,14 +51,14 @@ namespace Berry.Docx.Field
         /// <summary>
         /// Gets the type of the current object.
         /// </summary>
-        public override DocumentObjectType DocumentObjectType => DocumentObjectType.FieldCode;
+        public override DocumentObjectType DocumentObjectType { get { return DocumentObjectType.FieldCode; } }
 
         /// <summary>
         /// Gets or sets the code string of the FieldCode.
         /// </summary>
         public string Code
         {
-            get => _fieldCode.Text;
+			get { return _fieldCode.Text; }
             set
             {
                 _fieldCode.Text = value;
@@ -83,7 +83,7 @@ namespace Berry.Docx.Field
         {
             W.Run run = new W.Run();
             W.FieldCode fieldCode = (W.FieldCode)_fieldCode.CloneNode(true);
-            run.RunProperties = _ownerRun.RunProperties?.CloneNode(true) as W.RunProperties; // copy format
+            run.RunProperties = _ownerRun.RunProperties.CloneNode(true) as W.RunProperties; // copy format
             run.AppendChild(fieldCode);
             return new FieldCode(_doc, run, fieldCode);
         }

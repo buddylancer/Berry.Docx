@@ -42,7 +42,7 @@ namespace Berry.Docx
         #region Public Methods
         public override string ToString()
         {
-            return $"Indentation[{Val} {Unit}]";
+            return "Indentation[{Val} {Unit}]";
         }
         #endregion
 

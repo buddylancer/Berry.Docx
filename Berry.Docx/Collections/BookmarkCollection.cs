@@ -30,11 +30,11 @@ namespace Berry.Docx.Collections
         /// <returns></returns>
         public IEnumerator<Bookmark> GetEnumerator()
         {
-            W.Body body = _doc.Package.MainDocumentPart?.Document?.Body;
+            W.Body body = _doc.Package.MainDocumentPart.Document.Body;
             if (body == null) yield break;
             foreach (var bookmark in body.Descendants<W.BookmarkStart>())
             {
-                if (!string.IsNullOrEmpty(bookmark.Id?.Value))
+                if (!string.IsNullOrEmpty(bookmark.Id.Value))
                 {
                     yield return new Bookmark(_doc, bookmark);
                 }

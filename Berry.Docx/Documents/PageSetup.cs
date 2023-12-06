@@ -64,7 +64,7 @@ namespace Berry.Docx.Documents
         {
             get
             {
-                if (_pgSz?.Width == null) return 0;
+                if (_pgSz.Width == null) return 0;
                 return (_pgSz.Width / 20.0F).Round(1);
             }
             set
@@ -79,7 +79,7 @@ namespace Berry.Docx.Documents
         {
             get
             {
-                if (_pgSz?.Height == null) return 0;
+                if (_pgSz.Height == null) return 0;
                 return (_pgSz.Height / 20.0F).Round(1);
             }
             set
@@ -147,7 +147,7 @@ namespace Berry.Docx.Documents
         {
             get
             {
-                if (_pgMar?.Left == null) return 0;
+                if (_pgMar.Left == null) return 0;
                 return (_pgMar.Left / 20.0F).Round(2);
             }
             set
@@ -164,7 +164,7 @@ namespace Berry.Docx.Documents
         {
             get
             {
-                if (_pgMar?.Right == null) return 0;
+                if (_pgMar.Right == null) return 0;
                 return (_pgMar.Right / 20.0F).Round(2);
             }
             set
@@ -181,7 +181,7 @@ namespace Berry.Docx.Documents
         {
             get
             {
-                if (_pgMar?.Top == null) return 0;
+                if (_pgMar.Top == null) return 0;
                 return (_pgMar.Top / 20.0F).Round(2);
             }
             set
@@ -198,7 +198,7 @@ namespace Berry.Docx.Documents
         {
             get
             {
-                if (_pgMar?.Bottom == null) return 0;
+                if (_pgMar.Bottom == null) return 0;
                 return (_pgMar.Bottom / 20.0F).Round(2);
             }
             set
@@ -214,7 +214,7 @@ namespace Berry.Docx.Documents
         {
             get
             {
-                if (_pgMar?.Gutter == null) return 0;
+                if (_pgMar.Gutter == null) return 0;
                 return (_pgMar.Gutter / 20.0F).Round(2);
             }
             set
@@ -249,7 +249,7 @@ namespace Berry.Docx.Documents
         {
             get
             {
-                if (_pgMar?.Header == null) return 0;
+                if (_pgMar.Header == null) return 0;
                 return (_pgMar.Header / 20.0F).Round(2);
             }
             set
@@ -266,7 +266,7 @@ namespace Berry.Docx.Documents
         {
             get
             {
-                if (_pgMar?.Footer == null) return 0;
+                if (_pgMar.Footer == null) return 0;
                 return (_pgMar.Footer / 20.0F).Round(2);
             }
             set
@@ -316,7 +316,7 @@ namespace Berry.Docx.Documents
         {
             get
             {
-                if (_vAlign?.Val == null) return VerticalJustificationType.Top;
+                if (_vAlign.Val == null) return VerticalJustificationType.Top;
                 return (VerticalJustificationType)(int)_vAlign.Val.Value;
             }
             set
@@ -337,7 +337,7 @@ namespace Berry.Docx.Documents
         {
             get
             {
-                if (_textDirection?.Val == null) return TextFlowDirection.Horizontal;
+                if (_textDirection.Val == null) return TextFlowDirection.Horizontal;
                 if (_textDirection.Val == W.TextDirectionValues.TopToBottomRightToLeft)
                     return TextFlowDirection.Vertical;
                 else if (_textDirection.Val == W.TextDirectionValues.LefttoRightTopToBottomRotated)
@@ -384,7 +384,7 @@ namespace Berry.Docx.Documents
         {
             get
             {
-                if (_docGrid?.Type == null) return DocGridType.None;
+                if (_docGrid.Type == null) return DocGridType.None;
                 return (DocGridType)(int)_docGrid.Type.Value;
             }
             set
@@ -406,9 +406,9 @@ namespace Berry.Docx.Documents
         {
             get
             {
-                if (_docGrid?.CharacterSpace == null) return 0;
+                if (_docGrid.CharacterSpace == null) return 0;
                 ParagraphStyle normal = _doc.Styles.FindByName("normal", StyleType.Paragraph) as ParagraphStyle;
-                float normalSz = normal?.CharacterFormat?.FontSize ?? 11.0F;
+				float normalSz = normal.CharacterFormat != null ? normal.CharacterFormat.FontSize : 11.0F;
                 return (_docGrid.CharacterSpace / 4096.0F + normalSz).Round(2);
             }
             set
@@ -419,7 +419,7 @@ namespace Berry.Docx.Documents
                     _sect.XElement.AddChild(_docGrid);
                 }
                 ParagraphStyle normal = _doc.Styles.FindByName("normal", StyleType.Paragraph) as ParagraphStyle;
-                float normalSz = normal?.CharacterFormat?.FontSize ?? 11.0F;
+				float normalSz = normal.CharacterFormat != null ? normal.CharacterFormat.FontSize : 11.0F;
                 _docGrid.CharacterSpace = Convert.ToInt32((value - normalSz) * 4096.0F);
             }
         }
@@ -431,7 +431,7 @@ namespace Berry.Docx.Documents
         {
             get
             {
-                if (_docGrid?.LinePitch == null) return 0;
+                if (_docGrid.LinePitch == null) return 0;
                 return (_docGrid.LinePitch / 20.0F).Round(2);
             }
             set
@@ -445,7 +445,7 @@ namespace Berry.Docx.Documents
             }
         }
 
-        public PageBorders Borders => _pageBorders;
+        public PageBorders Borders { get { return _pageBorders; } }
         #endregion
     }
 }

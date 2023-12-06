@@ -149,10 +149,10 @@ namespace Berry.Docx.Documents
         #endregion
 
         #region Internal Properties
-        internal W.Header Header => _header;
-        internal W.HeaderReference HeaderReference => _hdrRef;
-        internal W.Footer Footer => _footer;
-        internal W.FooterReference FooterReference => _ftrRef;
+        internal W.Header Header { get { return _header; } }
+        internal W.HeaderReference HeaderReference { get { return _hdrRef; } }
+        internal W.Footer Footer { get { return _footer; } }
+        internal W.FooterReference FooterReference { get { return _ftrRef; } }
         #endregion
 
         #region Private Methods

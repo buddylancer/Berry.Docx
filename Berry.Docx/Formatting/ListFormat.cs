@@ -50,8 +50,8 @@ namespace Berry.Docx.Formatting
                 if(_ownerParagraph != null) // Paragraph
                 {
                     // direct formatting
-                    W.NumberingProperties numPr = _ownerParagraph.ParagraphProperties?.NumberingProperties;
-                    if (numPr?.NumberingId != null && numPr?.NumberingLevelReference != null)
+                    W.NumberingProperties numPr = _ownerParagraph.ParagraphProperties.NumberingProperties;
+                    if (numPr.NumberingId != null && numPr.NumberingLevelReference != null)
                     {
                         W.AbstractNum abstractNum = GetAbstractNumByID(_doc, numPr.NumberingId.Val);
                         if(abstractNum != null) return new ListStyle(_doc, abstractNum);
@@ -82,8 +82,8 @@ namespace Berry.Docx.Formatting
                 if (_ownerParagraph != null) // Paragraph
                 {
                     // direct formatting
-                    W.NumberingProperties numPr = _ownerParagraph.ParagraphProperties?.NumberingProperties;
-                    if (numPr?.NumberingId != null && numPr?.NumberingLevelReference != null)
+                    W.NumberingProperties numPr = _ownerParagraph.ParagraphProperties.NumberingProperties;
+                    if (numPr.NumberingId != null && numPr.NumberingLevelReference != null)
                     {
                         W.AbstractNum abstractNum = GetAbstractNumByID(_doc, numPr.NumberingId.Val);
                         if (abstractNum != null)
@@ -124,7 +124,7 @@ namespace Berry.Docx.Formatting
         {
             get
             {
-                return CurrentLevel?.ListLevelNumber ?? 0;
+				return CurrentLevel != null ? CurrentLevel.ListLevelNumber : 0;
             }
             set
             {
@@ -203,7 +203,7 @@ namespace Berry.Docx.Formatting
             if(_ownerParagraph != null)
             {
                 var style = new Paragraph(_doc, _ownerParagraph).GetStyle();
-                if(style?.ListFormat.CurrentStyle != null)
+                if(style.ListFormat.CurrentStyle != null)
                 {
                     if (_ownerParagraph.ParagraphProperties == null)
                         _ownerParagraph.ParagraphProperties = new W.ParagraphProperties();
@@ -212,7 +212,7 @@ namespace Berry.Docx.Formatting
                         NumberingId = new W.NumberingId() { Val = 0 }
                     };
                 }
-                else if(_ownerParagraph.ParagraphProperties?.NumberingProperties != null)
+                else if(_ownerParagraph.ParagraphProperties.NumberingProperties != null)
                 {
                     _ownerParagraph.ParagraphProperties.NumberingProperties = null;
                 }
@@ -220,7 +220,7 @@ namespace Berry.Docx.Formatting
             else if(_ownerStyle != null)
             {
                 var baseStyle = new ParagraphStyle(_doc, _ownerStyle).BaseStyle;
-                if(baseStyle?.ListFormat?.CurrentStyle != null)
+                if(baseStyle.ListFormat.CurrentStyle != null)
                 {
                     if (_ownerStyle.StyleParagraphProperties == null)
                         _ownerStyle.StyleParagraphProperties = new W.StyleParagraphProperties();
@@ -229,7 +229,7 @@ namespace Berry.Docx.Formatting
                         NumberingId = new W.NumberingId() { Val = 0 }
                     };
                 }
-                else if (_ownerStyle.StyleParagraphProperties?.NumberingProperties != null)
+                else if (_ownerStyle.StyleParagraphProperties.NumberingProperties != null)
                 {
                     _ownerStyle.StyleParagraphProperties.NumberingProperties = null;
                 }
@@ -259,7 +259,7 @@ namespace Berry.Docx.Formatting
         }
         private static W.AbstractNum GetAbstractNumByID(Document doc, int numId)
         {
-            W.Numbering numbering = doc.Package.MainDocumentPart.NumberingDefinitionsPart?.Numbering;
+            W.Numbering numbering = doc.Package.MainDocumentPart.NumberingDefinitionsPart.Numbering;
             if (numbering == null) return null;
             W.NumberingInstance num = numbering.Elements<W.NumberingInstance>().Where(n => n.NumberID == numId).FirstOrDefault();
             if (num == null) return null;
@@ -270,17 +270,17 @@ namespace Berry.Docx.Formatting
 
         private static W.Level GetAbstractNumLevel(W.AbstractNum num, int levelIndex)
         {
-            return num?.Elements<W.Level>().Where(l => l.LevelIndex == levelIndex).FirstOrDefault();
+            return num.Elements<W.Level>().Where(l => l.LevelIndex == levelIndex).FirstOrDefault();
         }
 
         private static W.Level GetAbstractNumLevel(W.AbstractNum num, string styleId)
         {
-            return num?.Elements<W.Level>().Where(l => l.ParagraphStyleIdInLevel?.Val == styleId).FirstOrDefault();
+            return num.Elements<W.Level>().Where(l => l.ParagraphStyleIdInLevel.Val == styleId).FirstOrDefault();
         }
 
         private static W.AbstractNum GetStyleAbstractNumRecursively(Document doc, W.Style style)
         {
-            if (style.StyleParagraphProperties?.NumberingProperties?.NumberingId != null)
+            if (style.StyleParagraphProperties.NumberingProperties.NumberingId != null)
             {
                 int numId = style.StyleParagraphProperties.NumberingProperties.NumberingId.Val;
                 W.AbstractNum abstractNum = GetAbstractNumByID(doc, numId);

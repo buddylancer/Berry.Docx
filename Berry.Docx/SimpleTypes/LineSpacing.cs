@@ -42,7 +42,7 @@ namespace Berry.Docx
         #region Public Methods
         public override string ToString()
         {
-            return $"LineSpacing[{Val} {Rule}]";
+            return "LineSpacing[{Val} {Rule}]";
         }
         #endregion
     }

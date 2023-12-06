@@ -42,12 +42,12 @@ namespace Berry.Docx.Formatting
         /// <summary>
         /// Gets the table cell character format.
         /// </summary>
-        public CharacterFormat CharacterFormat => _cFormat;
+        public CharacterFormat CharacterFormat { get { return _cFormat; } }
 
         /// <summary>
         /// Gets the table cell paragraph format.
         /// </summary>
-        public ParagraphFormat ParagraphFormat => _pFormat;
+        public ParagraphFormat ParagraphFormat { get { return _pFormat; } }
 
         /// <summary>
         /// Gets or sets the horizontal alignment.
@@ -137,7 +137,7 @@ namespace Berry.Docx.Formatting
         /// <summary>
         /// Gets the table cell borders.
         /// </summary>
-        public TableBorders Borders => _borders;
+        public TableBorders Borders { get { return _borders; } }
         #endregion
     }
 

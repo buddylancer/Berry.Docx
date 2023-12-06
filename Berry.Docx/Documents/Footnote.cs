@@ -57,7 +57,7 @@ namespace Berry.Docx.Documents
         /// <summary>
         /// Gets footnote paragraphs.
         /// </summary>
-        public ParagraphCollection Paragraphs => new ParagraphCollection(_footnote, GetParagraphs());
+        public ParagraphCollection Paragraphs { get { return new ParagraphCollection(_footnote, GetParagraphs()); } }
         #endregion
 
         #region Private Methods

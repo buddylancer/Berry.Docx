@@ -50,7 +50,7 @@ namespace Berry.Docx
             get
             {
                 var type = _sectPr.GetFirstChild<W.SectionType>();
-                if (type?.Val == null) return SectionBreakType.NextPage;
+                if (type.Val == null) return SectionBreakType.NextPage;
                 if (type.Val.Value == W.SectionMarkValues.Continuous) return SectionBreakType.Continuous;
                 else if (type.Val.Value == W.SectionMarkValues.OddPage) return SectionBreakType.OddPage;
                 else if (type.Val.Value == W.SectionMarkValues.EvenPage) return SectionBreakType.EvenPage;
@@ -62,25 +62,25 @@ namespace Berry.Docx
         /// The Page Layout setup.
         /// <para>返回页面布局格式。</para>
         /// </summary>
-        public PageSetup PageSetup => new PageSetup(_document, this);
+        public PageSetup PageSetup { get { return new PageSetup(_document, this); } }
 
         /// <summary>
         /// Gets a collection of all child <see cref="DocumentObject"/> in the current section.
         /// <para>返回当前节中所有 DocumentObject 对象的集合。</para>
         /// </summary>
-        public DocumentObjectCollection ChildObjects => new DocumentItemCollection(_document.Package.GetBody(), ChildItems());
+        public DocumentObjectCollection ChildObjects { get { return new DocumentItemCollection(_document.Package.GetBody(), ChildItems()); } }
 
         /// <summary>
         /// Gets a collection of all <see cref="Paragraph"/> in the current section.
         /// <para>返回当前节中所有段落的集合。</para>
         /// </summary>
-        public ParagraphCollection Paragraphs => new ParagraphCollection(_document.Package.GetBody(), ChildItems().OfType<Paragraph>());
+        public ParagraphCollection Paragraphs { get { return new ParagraphCollection(_document.Package.GetBody(), ChildItems().OfType<Paragraph>()); } }
 
         /// <summary>
         /// Gets a collection of all <see cref="Table"/> in the current section.
         /// <para>返回当前节中所有表格的集合。</para>
         /// </summary>
-        public TableCollection Tables => new TableCollection(_document.Package.GetBody(), ChildItems().OfType<Table>());
+        public TableCollection Tables { get { return new TableCollection(_document.Package.GetBody(), ChildItems().OfType<Table>()); } }
 
         /// <summary>
         /// Gets the previous section.
@@ -116,19 +116,19 @@ namespace Berry.Docx
         /// Gets the headers and footers of this section.
         /// <para>返回节中的页眉页脚。</para>
         /// </summary>
-        public HeaderFooters HeaderFooters => new HeaderFooters(_document, this);
+        public HeaderFooters HeaderFooters { get { return new HeaderFooters(_document, this); } }
 
         /// <summary>
         /// Gets the footnote format in the current section.
         /// <para>返回当前节的脚注格式。</para>
         /// </summary>
-        public FootEndnoteFormat FootnoteFormat => new FootEndnoteFormat(_document, this, NoteType.SectionWideFootnote);
+        public FootEndnoteFormat FootnoteFormat { get { return new FootEndnoteFormat(_document, this, NoteType.SectionWideFootnote); } }
 
         /// <summary>
         /// Gets the endnote format in the current section.
         /// <para>返回当前节的尾注格式。</para>
         /// </summary>
-        public FootEndnoteFormat EndnoteFormat => new FootEndnoteFormat(_document, this, NoteType.SectionWideEndnote);
+        public FootEndnoteFormat EndnoteFormat { get { return new FootEndnoteFormat(_document, this, NoteType.SectionWideEndnote); } }
 
         #endregion
 
@@ -223,7 +223,7 @@ namespace Berry.Docx
         #endregion
 
         #region Internal Properties
-        internal W.SectionProperties XElement => _sectPr;
+        internal W.SectionProperties XElement { get { return _sectPr; } }
         #endregion
 
         #region Private Methods

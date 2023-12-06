@@ -68,7 +68,7 @@ namespace Berry.Docx.Field
         /// <summary>
         /// Gets the DocumentObject type.
         /// </summary>
-        public override DocumentObjectType DocumentObjectType => DocumentObjectType.TextRange;
+        public override DocumentObjectType DocumentObjectType { get { return DocumentObjectType.TextRange; } }
 
         /// <summary>
         /// Gets or sets the text.
@@ -108,7 +108,7 @@ namespace Berry.Docx.Field
         /// <summary>
         /// Gets the character format.
         /// </summary>
-        public override CharacterFormat CharacterFormat => _cFormat;
+        public override CharacterFormat CharacterFormat { get { return _cFormat; } }
 
         /// <summary>
         /// Gets the characters of the current text range.
@@ -133,7 +133,7 @@ namespace Berry.Docx.Field
         /// <returns></returns>
         public CharacterStyle GetStyle()
         {
-            if (_ownerRun?.RunProperties?.RunStyle != null)
+            if (_ownerRun.RunProperties.RunStyle != null)
             {
                 W.Styles styles = _doc.Package.MainDocumentPart.StyleDefinitionsPart.Styles;
                 string styleId = _ownerRun.RunProperties.RunStyle.Val.ToString();
@@ -181,7 +181,7 @@ namespace Berry.Docx.Field
             {
                 if (bstyle == BuiltInStyle.Normal)
                 {
-                    if (_ownerRun.RunProperties?.RunStyle != null)
+                    if (_ownerRun.RunProperties.RunStyle != null)
                         _ownerRun.RunProperties.RunStyle = null;
                 }
                 else
@@ -204,14 +204,14 @@ namespace Berry.Docx.Field
             if(_text != null)
             {
                 W.Text text = (W.Text)_text.CloneNode(true);
-                run.RunProperties = _ownerRun.RunProperties?.CloneNode(true) as W.RunProperties; // copy format
+                run.RunProperties = _ownerRun.RunProperties.CloneNode(true) as W.RunProperties; // copy format
                 run.AppendChild(text);
                 return new TextRange(_doc, run, text);
             }
             else
             {
                 var ele = _element.CloneNode(true);
-                run.RunProperties = _ownerRun.RunProperties?.CloneNode(true) as W.RunProperties; // copy format
+                run.RunProperties = _ownerRun.RunProperties.CloneNode(true) as W.RunProperties; // copy format
                 run.AppendChild(ele);
                 return new TextRange(_doc, run, ele);
             }

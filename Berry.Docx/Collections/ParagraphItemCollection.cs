@@ -33,14 +33,14 @@ namespace Berry.Docx.Collections
         /// </summary>
         /// <param name="index">The zero-based index.</param>
         /// <returns>The paragraph child item at the specified index.</returns>
-        public new ParagraphItem this[int index] => (ParagraphItem)base[index];
+        public new ParagraphItem this[int index] { get { return (ParagraphItem)base[index]; } }
 
         public override void Add(DocumentObject obj)
         {
             ParagraphItem item = obj as ParagraphItem;
             if (item == null)
             {
-                throw new InvalidCastException($"{obj.DocumentObjectType} is not a ParagraphItem!");
+                throw new InvalidCastException("{obj.DocumentObjectType} is not a ParagraphItem!");
             }
             Add(item);
         }
@@ -58,7 +58,7 @@ namespace Berry.Docx.Collections
             ParagraphItem item = obj as ParagraphItem;
             if (item == null)
             {
-                throw new InvalidCastException($"{obj.DocumentObjectType} is not a ParagraphItem!");
+                throw new InvalidCastException("{obj.DocumentObjectType} is not a ParagraphItem!");
             }
             InsertAt(item, index);
         }

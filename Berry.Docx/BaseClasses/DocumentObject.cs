@@ -34,7 +34,7 @@ namespace Berry.Docx
         /// <summary>
         /// Gets the owner document.
         /// </summary>
-        public Document Document => _doc;
+        public Document Document { get { return _doc; } }
 
         /// <summary>
         /// Gets all the child objects of the current object.
@@ -136,7 +136,7 @@ namespace Berry.Docx
         #endregion
 
         #region Internal Properties
-        internal O.OpenXmlElement XElement => _object;
+        internal O.OpenXmlElement XElement { get { return _object; } }
         #endregion
     }
 }

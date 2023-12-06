@@ -44,7 +44,7 @@ namespace Berry.Docx.Documents
         /// <summary>
         /// Gets the row count.
         /// </summary>
-        public int RowCount => Rows.Count;
+        public int RowCount { get { return Rows.Count; } }
 
         /// <summary>
         /// Gets the column count.
@@ -65,34 +65,34 @@ namespace Berry.Docx.Documents
         /// <summary>
         /// Gets the table format.
         /// </summary>
-        public TableFormat Format => new TableFormat(_doc, this);
+        public TableFormat Format { get { return new TableFormat(_doc, this); } }
 
         /// <summary>
         /// The DocumentObject type.
         /// </summary>
-        public override DocumentObjectType DocumentObjectType => DocumentObjectType.Table;
+        public override DocumentObjectType DocumentObjectType { get { return DocumentObjectType.Table; } }
 
         /// <summary>
         /// The child DocumentObjects of this table.
         /// </summary>
-        public override DocumentObjectCollection ChildObjects => Rows;
+        public override DocumentObjectCollection ChildObjects { get { return Rows; } }
 
         /// <summary>
         /// Gets the table row at the specified row.
         /// </summary>
         /// <param name="row">The zero-based index.</param>
         /// <returns>The table row at the specified index.</returns>
-        public TableRow this[int row] => Rows[row];
+        public TableRow this[int row] { get { return Rows[row]; } }
 
         /// <summary>
         /// The table rows collection.
         /// </summary>
-        public TableRowCollection Rows => new TableRowCollection(_table, TableRowsPrivate());
+        public TableRowCollection Rows { get { return new TableRowCollection(_table, TableRowsPrivate()); } }
 
         /// <summary>
         /// Gets the width of columns.
         /// </summary>
-        public ColumnWidthCollection ColumnWidths => new ColumnWidthCollection(_doc, this);
+        public ColumnWidthCollection ColumnWidths { get { return new ColumnWidthCollection(_doc, this); } }
         #endregion
 
         #region Public Methods
@@ -116,7 +116,7 @@ namespace Berry.Docx.Documents
         {
             W.Styles styles = _doc.Package.MainDocumentPart.StyleDefinitionsPart.Styles;
             W.TableProperties tblPr = _table.GetFirstChild<W.TableProperties>();
-            if (tblPr?.TableStyle?.Val != null)
+            if (tblPr.TableStyle.Val != null)
             {
                 string styleId = tblPr.TableStyle.Val.ToString();
                 W.Style style = styles.Elements<W.Style>().Where(s => s.StyleId == styleId).FirstOrDefault();
@@ -228,7 +228,7 @@ namespace Berry.Docx.Documents
         #endregion
 
         #region Internal
-        internal new W.Table XElement => _table;
+        internal new W.Table XElement { get { return _table; } }
         #endregion
 
         #region Private Methods

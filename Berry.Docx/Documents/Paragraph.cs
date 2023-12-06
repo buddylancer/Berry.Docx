@@ -79,12 +79,12 @@ namespace Berry.Docx.Documents
         /// <summary>
         /// The DocumentObject type.
         /// </summary>
-        public override DocumentObjectType DocumentObjectType { get => DocumentObjectType.Paragraph; }
+        public override DocumentObjectType DocumentObjectType { get { return DocumentObjectType.Paragraph; } }
 
         /// <summary>
         ///Gets all child <see cref="ParagraphItem"/> of this paragraph.
         /// </summary>
-        public ParagraphItemCollection ChildItems => new ParagraphItemCollection(_paragraph, ParagraphItems());
+        public ParagraphItemCollection ChildItems { get { return new ParagraphItemCollection(_paragraph, ParagraphItems()); } }
 
         /// <summary>
         /// Gets or sets the paragraph text.
@@ -131,7 +131,12 @@ namespace Berry.Docx.Documents
         /// Gets or sets a value indicating whether include the special text object when get <see cref="Text"/>.
         /// <para>The default value is <see cref="TextReadingMode.IncludeHiddenText"/> | <see cref="TextReadingMode.IncludeFieldCode"/> | <see cref="TextReadingMode.IncludeInsertedRevisions"/>".</para>
         /// </summary>
-        public TextReadingMode TextReadingMode { get; set; }
+        public TextReadingMode TextReadingMode
+		{
+			get { return mTextReadingMode; }
+			set { mTextReadingMode = value; }
+		}
+		private TextReadingMode mTextReadingMode
             = TextReadingMode.IncludeHiddenText | TextReadingMode.IncludeFieldCode | TextReadingMode.IncludeInsertedRevisions;
 
         /// <summary>
@@ -180,7 +185,7 @@ namespace Berry.Docx.Documents
                 StringBuilder listText = new StringBuilder();
                 foreach (var i in pattern)
                 {
-                    int.TryParse(i.ToString(), out int lvlNum);
+                    int lvlNum; int.TryParse(i.ToString(), out lvlNum);
                     if (lvlNum > 0)
                     {
                         ListLevel level = curStyle.Levels[lvlNum - 1];
@@ -210,18 +215,18 @@ namespace Berry.Docx.Documents
         /// <summary>
         /// Gets the paragraph format.
         /// </summary>
-        public ParagraphFormat Format => _pFormat;
+        public ParagraphFormat Format { get { return _pFormat; } }
 
         /// <summary>
         /// Gets the list format.
         /// </summary>
-        public ListFormat ListFormat => _listFormat;
+        public ListFormat ListFormat { get { return _listFormat; } }
 
         /// <summary>
         /// Gets the character format of paragraph mark for this paragraph.
         /// <para>获取段落标记的字符格式.</para>
         /// </summary>
-        public CharacterFormat MarkFormat => _cFormat;
+        public CharacterFormat MarkFormat { get { return _cFormat; } }
 
         /// <summary>
         /// Return true if the current paragraph is inserted in revision mode, otherwise false.
@@ -230,7 +235,7 @@ namespace Berry.Docx.Documents
         {
             get
             {
-                return _paragraph.ParagraphProperties?.ParagraphMarkRunProperties?.Inserted != null;
+                return _paragraph.ParagraphProperties.ParagraphMarkRunProperties.Inserted != null;
             }
         }
 
@@ -241,7 +246,7 @@ namespace Berry.Docx.Documents
         {
             get
             {
-                return _paragraph.ParagraphProperties?.ParagraphMarkRunProperties?.Deleted != null;
+                return _paragraph.ParagraphProperties.ParagraphMarkRunProperties.Deleted != null;
             }
         }
 
@@ -252,7 +257,7 @@ namespace Berry.Docx.Documents
         {
             get
             {
-                return _paragraph.ParagraphProperties?.SectionProperties != null
+                return _paragraph.ParagraphProperties.SectionProperties != null
                     || _paragraph.NextSibling() is W.SectionProperties;
             }
         }
@@ -327,7 +332,7 @@ namespace Berry.Docx.Documents
             {
                 if (bstyle == BuiltInStyle.Normal)
                 {
-                    if (_paragraph.ParagraphProperties?.ParagraphStyleId != null)
+                    if (_paragraph.ParagraphProperties.ParagraphStyleId != null)
                         _paragraph.ParagraphProperties.ParagraphStyleId = null;
                 }
                 else
@@ -499,7 +504,7 @@ namespace Berry.Docx.Documents
 
             Paragraph tocBegin = new Paragraph(_doc);
             Paragraph tocEnd = new Paragraph(_doc);
-            string code = $" TOC \\o \"{startOutlineLevel}-{endOutlineLevel}\" \\h \\z \\u ";
+            string code = " TOC \\o \"{startOutlineLevel}-{endOutlineLevel}\" \\h \\z \\u ";
             var fieldBegin = new FieldChar(_doc, FieldCharType.Begin);
             var fieldCode = new FieldCode(_doc, code);
             var fieldSeparate = new FieldChar(_doc, FieldCharType.Separate);

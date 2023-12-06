@@ -39,15 +39,15 @@ namespace Berry.Docx.Field
         /// <summary>
         /// Gets the type of the current document object.
         /// </summary>
-        public override DocumentObjectType DocumentObjectType => DocumentObjectType.BookmarkStart;
+        public override DocumentObjectType DocumentObjectType { get { return DocumentObjectType.BookmarkStart; } }
 
         /// <summary>
         /// Gets or sets the unique identifier for the bookmark.
         /// </summary>
         public string Id
         {
-            get => _bookmarkStart.Id;
-            set => _bookmarkStart.Id = value;
+            get { return _bookmarkStart.Id; }
+            set { _bookmarkStart.Id = value; }
         }
 
         /// <summary>
@@ -57,8 +57,8 @@ namespace Berry.Docx.Field
         /// </summary>
         public string Name
         {
-            get => _bookmarkStart.Name;
-            set => _bookmarkStart.Name = value;
+            get { return _bookmarkStart.Name; }
+			set { _bookmarkStart.Name = value; }
         }
         #endregion
 

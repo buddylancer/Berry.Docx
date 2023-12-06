@@ -44,27 +44,27 @@ namespace Berry.Docx.Formatting
                 W.Shading shd = null;
                 if (_cell != null)
                 {
-                    shd = _cell.TableCellProperties?.Shading;
+                    shd = _cell.TableCellProperties.Shading;
                 }
                 else if (_table != null)
                 {
-                    shd = _table.GetFirstChild<W.TableProperties>()?.GetFirstChild<W.Shading>();
+                    shd = _table.GetFirstChild<W.TableProperties>().GetFirstChild<W.Shading>();
                 }
                 else if (_style != null)
                 {
                     if (_region == TableRegionType.WholeTable)
                     {
-                        shd = _style.StyleTableCellProperties?.Shading;
+                        shd = _style.StyleTableCellProperties.Shading;
                     }
                     else
                     {
                         var type = _region.Convert<W.TableStyleOverrideValues>();
                         var tblStylePr = _style.Elements<W.TableStyleProperties>()
                             .Where(t => t.Type == type).FirstOrDefault();
-                        shd = tblStylePr?.TableStyleConditionalFormattingTableCellProperties?.Shading;
+                        shd = tblStylePr.TableStyleConditionalFormattingTableCellProperties.Shading;
                     }
                 }
-                if (shd?.Fill == null) return null;
+                if (shd.Fill == null) return null;
                 return shd.Fill.Value;
             }
             set
@@ -122,23 +122,23 @@ namespace Berry.Docx.Formatting
                 W.TableJustification jc = null;
                 if(_row != null)
                 {
-                    jc = _row.TableRowProperties?.GetFirstChild<W.TableJustification>();
+                    jc = _row.TableRowProperties.GetFirstChild<W.TableJustification>();
                 }
                 else if(_table != null)
                 {
-                    jc = _table.GetFirstChild<W.TableProperties>()?.GetFirstChild<W.TableJustification>();
+                    jc = _table.GetFirstChild<W.TableProperties>().GetFirstChild<W.TableJustification>();
                 }
                 else if(_style != null)
                 {
                     if (_region == TableRegionType.WholeTable)
                     {
-                        jc = _style.StyleTableProperties?.TableJustification;
+                        jc = _style.StyleTableProperties.TableJustification;
                     }
                     else
                     {
                         var type = _region.Convert<W.TableStyleOverrideValues>();
                         var tblStylePr = _style.Elements<W.TableStyleProperties>().Where(t => t.Type == type).FirstOrDefault();
-                        jc = tblStylePr?.TableStyleConditionalFormattingTableProperties?.TableJustification;
+                        jc = tblStylePr.TableStyleConditionalFormattingTableProperties.TableJustification;
                     }
                 }
                 if (jc == null) return null;
@@ -198,11 +198,11 @@ namespace Berry.Docx.Formatting
                 W.CantSplit cantSplit = null;
                 if (_row != null)
                 {
-                    cantSplit = _row.TableRowProperties?.GetFirstChild<W.CantSplit>();
+                    cantSplit = _row.TableRowProperties.GetFirstChild<W.CantSplit>();
                 }
                 else if (_style != null && _region == TableRegionType.WholeTable)
                 {
-                    cantSplit = _style.TableStyleConditionalFormattingTableRowProperties?.GetFirstChild<W.CantSplit>();
+                    cantSplit = _style.TableStyleConditionalFormattingTableRowProperties.GetFirstChild<W.CantSplit>();
                 }
                 if (cantSplit == null) return null;
                 if (cantSplit.Val == null) return false;
@@ -214,7 +214,7 @@ namespace Berry.Docx.Formatting
                 {
                     if (value)
                     {
-                        _row.TableRowProperties?.RemoveAllChildren<W.CantSplit>();
+                        _row.TableRowProperties.RemoveAllChildren<W.CantSplit>();
                     }
                     else
                     {
@@ -227,7 +227,7 @@ namespace Berry.Docx.Formatting
                 {
                     if (value)
                     {
-                        _style.TableStyleConditionalFormattingTableRowProperties?.RemoveAllChildren<W.CantSplit>();
+                        _style.TableStyleConditionalFormattingTableRowProperties.RemoveAllChildren<W.CantSplit>();
                     }
                     else
                     {
@@ -249,20 +249,20 @@ namespace Berry.Docx.Formatting
                 W.TableCellVerticalAlignment vAlign = null;
                 if (_cell != null)
                 {
-                    vAlign = _cell.TableCellProperties?.TableCellVerticalAlignment;
+                    vAlign = _cell.TableCellProperties.TableCellVerticalAlignment;
                 }
                 else if (_style != null)
                 {
                     if (_region == TableRegionType.WholeTable)
                     {
-                        vAlign = _style.StyleTableCellProperties?.TableCellVerticalAlignment;
+                        vAlign = _style.StyleTableCellProperties.TableCellVerticalAlignment;
                     }
                     else
                     {
                         var type = _region.Convert<W.TableStyleOverrideValues>();
                         var tblStylePr = _style.Elements<W.TableStyleProperties>()
                             .Where(t => t.Type == type).FirstOrDefault();
-                        vAlign = tblStylePr?.TableStyleConditionalFormattingTableCellProperties?.TableCellVerticalAlignment;
+                        vAlign = tblStylePr.TableStyleConditionalFormattingTableCellProperties.TableCellVerticalAlignment;
                     }
                 }
                 if (vAlign == null) return null;
@@ -311,16 +311,16 @@ namespace Berry.Docx.Formatting
                 W.GridSpan gridSpan = null;
                 if (_cell != null)
                 {
-                    gridSpan = _cell.TableCellProperties?.GridSpan;
+                    gridSpan = _cell.TableCellProperties.GridSpan;
                 }
-                if (gridSpan?.Val != null) return gridSpan.Val.Value;
+                if (gridSpan.Val != null) return gridSpan.Val.Value;
                 return null;
             }
             set
             {
                 if(_cell != null)
                 {
-                    if (value <= 1 && _cell.TableCellProperties?.GridSpan != null)
+                    if (value <= 1 && _cell.TableCellProperties.GridSpan != null)
                     {
                         _cell.TableCellProperties.GridSpan = null;
                         return;
@@ -339,7 +339,7 @@ namespace Berry.Docx.Formatting
                 W.VerticalMerge vMerge = null;
                 if (_cell != null)
                 {
-                    vMerge = _cell.TableCellProperties?.VerticalMerge;
+                    vMerge = _cell.TableCellProperties.VerticalMerge;
                 }
                 if (vMerge == null) return null;
                 if (vMerge.Val == null) return TableCellVerticalMergeType.Continue;
@@ -349,7 +349,7 @@ namespace Berry.Docx.Formatting
             {
                 if(_cell != null)
                 {
-                    if (value == TableCellVerticalMergeType.None && _cell.TableCellProperties?.VerticalMerge != null)
+                    if (value == TableCellVerticalMergeType.None && _cell.TableCellProperties.VerticalMerge != null)
                     {
                         _cell.TableCellProperties.VerticalMerge = null;
                         return;
@@ -373,7 +373,7 @@ namespace Berry.Docx.Formatting
                 W.TableHeader header = null;
                 if(_row != null)
                 {
-                    header = _row.TableRowProperties?.GetFirstChild<W.TableHeader>();
+                    header = _row.TableRowProperties.GetFirstChild<W.TableHeader>();
                 }
                 if (header == null) return null;
                 if (header.Val == null) return true;
@@ -391,7 +391,7 @@ namespace Berry.Docx.Formatting
                     }
                     else
                     {
-                        _row.TableRowProperties?.RemoveAllChildren<W.TableHeader>();
+                        _row.TableRowProperties.RemoveAllChildren<W.TableHeader>();
                     }
                 }
             }
@@ -409,9 +409,9 @@ namespace Berry.Docx.Formatting
                 W.TableLook look = null;
                 if(_table != null)
                 {
-                    look = _table.GetFirstChild<W.TableProperties>()?.TableLook;
+                    look = _table.GetFirstChild<W.TableProperties>().TableLook;
                 }
-                if (look?.FirstRow != null) return look.FirstRow.Value;
+                if (look.FirstRow != null) return look.FirstRow.Value;
                 return null;
             }
             set
@@ -438,9 +438,9 @@ namespace Berry.Docx.Formatting
                 W.TableLook look = null;
                 if (_table != null)
                 {
-                    look = _table.GetFirstChild<W.TableProperties>()?.TableLook;
+                    look = _table.GetFirstChild<W.TableProperties>().TableLook;
                 }
-                if (look?.LastRow != null) return look.LastRow.Value;
+                if (look.LastRow != null) return look.LastRow.Value;
                 return null;
             }
             set
@@ -467,9 +467,9 @@ namespace Berry.Docx.Formatting
                 W.TableLook look = null;
                 if (_table != null)
                 {
-                    look = _table.GetFirstChild<W.TableProperties>()?.TableLook;
+                    look = _table.GetFirstChild<W.TableProperties>().TableLook;
                 }
-                if (look?.FirstColumn != null) return look.FirstColumn.Value;
+                if (look.FirstColumn != null) return look.FirstColumn.Value;
                 return null;
             }
             set
@@ -496,9 +496,9 @@ namespace Berry.Docx.Formatting
                 W.TableLook look = null;
                 if (_table != null)
                 {
-                    look = _table.GetFirstChild<W.TableProperties>()?.TableLook;
+                    look = _table.GetFirstChild<W.TableProperties>().TableLook;
                 }
-                if (look?.LastColumn != null) return look.LastColumn.Value;
+                if (look.LastColumn != null) return look.LastColumn.Value;
                 return null;
             }
             set
@@ -525,7 +525,7 @@ namespace Berry.Docx.Formatting
                 if(_table != null)
                 {
                     var tblPr = _table.GetFirstChild<W.TableProperties>();
-                    return tblPr?.TablePositionProperties != null;
+                    return tblPr.TablePositionProperties != null;
                 }
                 return null;
             }

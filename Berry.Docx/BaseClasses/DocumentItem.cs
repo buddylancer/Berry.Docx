@@ -46,7 +46,7 @@ namespace Berry.Docx
         /// <summary>
         /// Gets all the child objects of the current item.
         /// </summary>
-        public override DocumentObjectCollection ChildObjects => new DocumentItemCollection(_element, ChildItems());
+        public override DocumentObjectCollection ChildObjects { get { return new DocumentItemCollection(_element, ChildItems()); } }
 
         /// <summary>
         /// Gets the object that immediately precedes the current object. 

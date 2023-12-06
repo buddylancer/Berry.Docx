@@ -22,7 +22,7 @@ namespace Berry.Docx.Field
             _drawing = drawing;
         }
 
-        public override DocumentObjectType DocumentObjectType => DocumentObjectType.Chart;
+        public override DocumentObjectType DocumentObjectType { get { return DocumentObjectType.Chart; } }
 
         #region Public Methods
         /// <summary>
@@ -33,7 +33,7 @@ namespace Berry.Docx.Field
         {
             W.Run run = new W.Run();
             W.Drawing drawing = (W.Drawing)_drawing.CloneNode(true);
-            run.RunProperties = _ownerRun.RunProperties?.CloneNode(true) as W.RunProperties; // copy format
+            run.RunProperties = _ownerRun.RunProperties.CloneNode(true) as W.RunProperties; // copy format
             run.AppendChild(drawing);
             return new Chart(_doc, run, drawing);
         }

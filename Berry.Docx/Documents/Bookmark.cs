@@ -30,17 +30,17 @@ namespace Berry.Docx.Documents
         /// <summary>
         /// Returns the unique identifier of the bookmark.
         /// </summary>
-        public string Id => _bookmarkStart.Id;
+        public string Id { get { return _bookmarkStart.Id; } }
 
         /// <summary>
         /// Returns the name of the bookmark.
         /// </summary>
-        public string Name => _bookmarkStart.Name;
+        public string Name { get { return _bookmarkStart.Name; } }
 
         /// <summary>
         /// Returns the start marker of the bookmark.
         /// </summary>
-        public BookmarkStart Start => new BookmarkStart(_doc, _bookmarkStart);
+        public BookmarkStart Start { get { return new BookmarkStart(_doc, _bookmarkStart); } }
 
         /// <summary>
         /// Returns the end marker of the bookmark.
@@ -49,7 +49,7 @@ namespace Berry.Docx.Documents
         {
             get
             {
-                W.Body body = _doc.Package.MainDocumentPart?.Document?.Body;
+                W.Body body = _doc.Package.MainDocumentPart.Document.Body;
                 if (body == null) return null;
                 var bookmark = body.Descendants<W.BookmarkEnd>().Where(b => b.Id == _bookmarkStart.Id).FirstOrDefault();
                 if(bookmark == null) return null;

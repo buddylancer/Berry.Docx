@@ -23,10 +23,10 @@ namespace Berry.Docx.Documents
             _sdtProperties = new SdtBlockFormat(doc, sdt.SdtProperties);
         }
 
-        public override DocumentObjectType DocumentObjectType => DocumentObjectType.SdtBlock;
+        public override DocumentObjectType DocumentObjectType { get { return DocumentObjectType.SdtBlock; } }
 
-        public SdtBlockFormat Format => _sdtProperties;
+        public SdtBlockFormat Format { get { return _sdtProperties; } }
 
-        public SdtBlockContent Content => _sdtContent;
+        public SdtBlockContent Content { get { return _sdtContent; } }
     }
 }

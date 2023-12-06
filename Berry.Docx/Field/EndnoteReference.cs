@@ -22,7 +22,7 @@ namespace Berry.Docx.Field
             _enRef = enRef;
         }
 
-        public override DocumentObjectType DocumentObjectType => DocumentObjectType.EndnoteReference;
+        public override DocumentObjectType DocumentObjectType { get { return DocumentObjectType.EndnoteReference; } }
 
         public int Id
         {
@@ -42,7 +42,7 @@ namespace Berry.Docx.Field
         {
             W.Run run = new W.Run();
             W.EndnoteReference enRef = (W.EndnoteReference)_enRef.CloneNode(true);
-            run.RunProperties = _ownerRun.RunProperties?.CloneNode(true) as W.RunProperties; // copy format
+            run.RunProperties = _ownerRun.RunProperties.CloneNode(true) as W.RunProperties; // copy format
             run.AppendChild(enRef);
             return new EndnoteReference(_doc, run, enRef);
         }

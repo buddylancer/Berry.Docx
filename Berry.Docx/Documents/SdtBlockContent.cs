@@ -12,6 +12,6 @@ namespace Berry.Docx.Documents
         {
         }
 
-        public override DocumentObjectType DocumentObjectType => DocumentObjectType.SdtBlockContent;
+        public override DocumentObjectType DocumentObjectType { get { return DocumentObjectType.SdtBlockContent; } }
     }
 }

@@ -32,8 +32,8 @@ namespace Berry.Docx.Formatting
         /// </summary>
         public bool FirstRowEnabled
         {
-            get => _tblPr.FirstRowEnabled ?? true;
-            set => _tblPr.FirstRowEnabled = value;
+            get { return _tblPr.FirstRowEnabled ?? true; }
+            set { _tblPr.FirstRowEnabled = value; }
         }
 
         /// <summary>
@@ -41,8 +41,8 @@ namespace Berry.Docx.Formatting
         /// </summary>
         public bool LastRowEnabled
         {
-            get => _tblPr.LastRowEnabled ?? false;
-            set => _tblPr.LastRowEnabled = value;
+            get { return _tblPr.LastRowEnabled ?? false; }
+            set { _tblPr.LastRowEnabled = value; }
         }
 
         /// <summary>
@@ -50,8 +50,8 @@ namespace Berry.Docx.Formatting
         /// </summary>
         public bool FirstColumnEnabled
         {
-            get => _tblPr.FirstColumnEnabled ?? true;
-            set => _tblPr.FirstColumnEnabled = value;
+            get { return _tblPr.FirstColumnEnabled ?? true; }
+            set { _tblPr.FirstColumnEnabled = value; }
         }
 
         /// <summary>
@@ -59,8 +59,8 @@ namespace Berry.Docx.Formatting
         /// </summary>
         public bool LastColumnEnabled
         {
-            get => _tblPr.LastColumnEnabled ?? false;
-            set => _tblPr.LastColumnEnabled = value;
+            get { return _tblPr.LastColumnEnabled ?? false; }
+            set { _tblPr.LastColumnEnabled = value; }
         }
 
         /// <summary>
@@ -104,8 +104,8 @@ namespace Berry.Docx.Formatting
         /// </summary>
         public bool WrapTextAround
         {
-            get => _tblPr.WrapTextAround ?? false;
-            set => _tblPr.WrapTextAround = value;
+            get { return _tblPr.WrapTextAround ?? false; }
+            set { _tblPr.WrapTextAround = value; }
         }
 
         /// <summary>
@@ -113,14 +113,14 @@ namespace Berry.Docx.Formatting
         /// </summary>
         public bool RepeatHeaderRow
         {
-            get => _table.Rows[0].RepeatHeaderRow;
-            set => _table.Rows[0].RepeatHeaderRow = value;
+            get { return _table.Rows[0].RepeatHeaderRow; }
+            set { _table.Rows[0].RepeatHeaderRow = value; }
         }
 
         /// <summary>
         /// Gets the table borders.
         /// </summary>
-        public TableBorders Borders => new TableBorders(_table);
+        public TableBorders Borders { get { return new TableBorders(_table); } }
         #endregion
     }
 }

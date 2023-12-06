@@ -44,7 +44,7 @@ namespace Berry.Docx.Field
         /// <summary>
         /// Gets the type of the current object.
         /// </summary>
-        public override DocumentObjectType DocumentObjectType => DocumentObjectType.Break;
+        public override DocumentObjectType DocumentObjectType { get { return DocumentObjectType.Break; } }
 
         /// <summary>
         /// Gets or sets the break type.
@@ -95,7 +95,7 @@ namespace Berry.Docx.Field
         {
             W.Run run = new W.Run();
             W.Break br = (W.Break)_break.CloneNode(true);
-            run.RunProperties = _ownerRun.RunProperties?.CloneNode(true) as W.RunProperties; // copy format
+            run.RunProperties = _ownerRun.RunProperties.CloneNode(true) as W.RunProperties; // copy format
             run.AppendChild(br);
             return new Break(_doc, run, br);
         }

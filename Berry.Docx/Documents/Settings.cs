@@ -18,7 +18,7 @@ namespace Berry.Docx.Documents
             _settings = settings;
         }
 
-        public W.Settings XElement => _settings;
+        public W.Settings XElement { get { return _settings; } }
 
         public bool EvenAndOddHeaders
         {
@@ -102,9 +102,9 @@ namespace Berry.Docx.Documents
             }
         }
 
-        public FootEndnoteFormat FootnoteFormt => new FootEndnoteFormat(_doc, this, NoteType.DocumentWideFootnote);
+        public FootEndnoteFormat FootnoteFormt { get { return new FootEndnoteFormat(_doc, this, NoteType.DocumentWideFootnote); } }
 
-        public FootEndnoteFormat EndnoteFormt => new FootEndnoteFormat(_doc, this, NoteType.DocumentWideEndnote);
+        public FootEndnoteFormat EndnoteFormt { get { return new FootEndnoteFormat(_doc, this, NoteType.DocumentWideEndnote); } }
 
     }
 }

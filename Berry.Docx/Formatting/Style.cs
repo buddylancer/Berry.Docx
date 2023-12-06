@@ -37,8 +37,8 @@ namespace Berry.Docx.Formatting
         /// </summary>
         public StyleType Type
         {
-            get => _style.Type.Value.Convert<StyleType>();
-            internal set => _style.Type = value.Convert<W.StyleValues>();
+            get { return _style.Type.Value.Convert<StyleType>(); }
+            internal set { _style.Type = value.Convert<W.StyleValues>(); }
         }
 
         /// <summary>
@@ -46,22 +46,22 @@ namespace Berry.Docx.Formatting
         /// </summary>
         public string StyleId
         {
-            get => _style.StyleId;
-            private set => _style.StyleId = value;
+            get { return _style.StyleId; }
+            private set { _style.StyleId = value; }
         }
 
         /// <summary>
         /// If current style is the default style, return true; otherwise, return false.
         /// </summary>
-        public bool IsDefault => _style.Default ?? false;
+        public bool IsDefault { get { return _style.Default ?? false; } }
 
         /// <summary>
         /// Gets the name of the current style.
         /// </summary>
         public string Name
         {
-            get => _style.StyleName?.Val ?? string.Empty;
-            internal set => _style.StyleName = new W.StyleName() { Val = value };
+            get { return _style.StyleName.Val ?? string.Empty; }
+            internal set { _style.StyleName = new W.StyleName() { Val = value }; }
         }
 
         /// <summary>
@@ -89,8 +89,8 @@ namespace Berry.Docx.Formatting
         /// </summary>
         public bool IsCustom
         {
-            get => _style.CustomStyle ?? false;
-            internal set => _style.CustomStyle = value;
+            get { return _style.CustomStyle ?? false; }
+            internal set { _style.CustomStyle = value; }
         }
         #endregion
 
@@ -143,7 +143,7 @@ namespace Berry.Docx.Formatting
             }
         }
 
-        internal W.Style XElement => _style;
+        internal W.Style XElement { get { return _style; } }
         #endregion
 
         #region Public Methods

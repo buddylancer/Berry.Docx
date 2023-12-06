@@ -35,7 +35,7 @@ namespace Berry.Docx.Collections
         /// </summary>
         /// <param name="index">The zero-based index.</param>
         /// <returns>The paragraph at the specified index.</returns>
-        public new Paragraph this[int index] => (Paragraph)base[index];
+        public new Paragraph this[int index] { get { return (Paragraph)base[index]; } }
 #endregion
 
         #region Public Methods
